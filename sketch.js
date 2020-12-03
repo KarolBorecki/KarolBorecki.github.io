@@ -1,3 +1,5 @@
+let cnvs;
+
 let canvasWidth = 1200;
 let canvasHeight = 700;
 
@@ -22,7 +24,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(canvasWidth, canvasHeight);
+  cnvs = createCanvas(canvasWidth, canvasHeight);
+
+  cnvs.touchStarted(click);
+
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
   player = new Player(canvasWidth/4, canvasWidth/8, playerImg);
 
@@ -83,10 +88,6 @@ function play(){
 }
 
 function mouseClicked() {
-  click();
-}
-
-function touchStarted(){
   click();
 }
 
