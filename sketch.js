@@ -22,8 +22,8 @@ function preload() {
   playerImg = loadImage("img/pizza.png");
   ingredientImg = loadImage("img/ingredient.png");
 
-  canvasWidth = windowWidth;
-  canvasHeight = windowHeight;
+  canvasWidth = windowWidth*0.8;
+  canvasHeight = windowHeight*0.5;
 }
 
 function setup() {
