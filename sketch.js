@@ -83,6 +83,14 @@ function play(){
 }
 
 function mouseClicked() {
+  click();
+}
+
+function touchStarted(){
+  click();
+}
+
+function click(){
   if(playBtn.over()){
     play()
     console.log("PLAY!");
