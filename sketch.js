@@ -21,6 +21,9 @@ function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
   ingredientImg = loadImage("img/ingredient.png");
+
+  canvasWidth = windowWidth;
+  canvasHeight = windowHeight;
 }
 
 function setup() {
