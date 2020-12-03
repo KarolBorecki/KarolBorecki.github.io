@@ -42,7 +42,6 @@ function draw() {
   }
   mouseY = 0;
   noCursor();
-  preventDefault();
   player.display();
   textSize(canvasWidth/20);
   text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
