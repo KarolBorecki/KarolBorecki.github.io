@@ -17,15 +17,17 @@ var ingredients = [];
 var ingredientCount = 0;
 var maxIngredientCount = 5;
 
-var ingredientsImg;
-let ingredientsCount = 5;
+var ingredientsImg = [];
+let ingredientsTypesCount = 5;
 
 function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
 
   for(var i = 0; i<ingredientCount; i++)
-  ingredientsImg[i] = loadImage("img/ingredient" + idea + ".png");
+    ingredientsImg[i] = loadImage("img/ingredient" + idea + ".png");
+
+  console.log(ingredientImg.length);
 
   canvasWidth = windowWidth*0.7;
   canvasHeight = windowHeight*0.8;
@@ -78,7 +80,7 @@ function getRandomIngredientY(){
 }
 
 function getRandomIngredientIndex(){
-  return random(0, ingredientCount-1);
+  return random(0, ingredientsTypesCount-1);
 }
 
 function deleteIngredient(index){
