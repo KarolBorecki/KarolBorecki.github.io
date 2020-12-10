@@ -27,7 +27,7 @@ function preload() {
   for(var i = 0; i<ingredientCount; i++)
     ingredientsImg[i] = loadImage("img/ingredient" + idea + ".png");
 
-  console.log(ingredientImg.length);
+  console.log(ingredientImg.length());
 
   canvasWidth = windowWidth*0.7;
   canvasHeight = windowHeight*0.8;
