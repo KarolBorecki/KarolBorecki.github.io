@@ -1,7 +1,7 @@
 let cnvs;
 
-let canvasWidth = 1200;
-let canvasHeight = 700;
+let canvasWidth;
+let canvasHeight;
 
 var isPlaying = false;
 var points = 0;
@@ -17,10 +17,15 @@ var ingredients = [];
 var ingredientCount = 0;
 var maxIngredientCount = 5;
 
+var ingredientsImg;
+let ingredientsCount = 5;
+
 function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
-  ingredientImg = loadImage("img/ingredient.png");
+
+  for(var i = 0; i<ingredientCount; i++)
+  ingredientsImg[i] = loadImage("img/ingredient" + idea + ".png");
 
   canvasWidth = windowWidth*0.7;
   canvasHeight = windowHeight*0.8;
@@ -28,11 +33,10 @@ function preload() {
 
 function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
-
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg);
+  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2]);
 
   setInterval(spawnIngredient, 3000);
 }
@@ -59,7 +63,8 @@ function draw() {
 
 function spawnIngredient(){
   if(!isPlaying || ingredientCount >= maxIngredientCount) return;
-  ingredients.push(new Ingredient(getRandomIngredientX(), ingredientImg, canvasWidth/10, random(1, 4)));
+  var type = getRandomIngredientIndex();
+  ingredients.push(new Ingredient(getRandomIngredientX(), ingredientsImg[type], canvasWidth/10, random(1, 4), type));
   ingredientCount++;
   console.log("Spawned");
 }
@@ -70,6 +75,10 @@ function getRandomIngredientX(){
 
 function getRandomIngredientY(){
   return random(-canvasWidth/8, -canvasWidth/9);
+}
+
+function getRandomIngredientIndex(){
+  return random(0, ingredientCount-1);
 }
 
 function deleteIngredient(index){
@@ -105,10 +114,11 @@ function click(){
 }
 
 class Player {
-  constructor(width, height, img){
+  constructor(width, height, img, ingrediens){
     this.width = width;
     this.height = height;
     this.img = img;
+    this.ingredients = ingredients;
 
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
@@ -121,11 +131,12 @@ class Player {
 }
 
 class Ingredient {
-  constructor(posX, img, width, speed){
+  constructor(posX, img, width, speed, type){
     this.x = posX;
     this.img = img;
     this.width = width;
     this.speed = speed;
+    this.type = type;
 
     this.standardY = getRandomIngredientY();
   }
