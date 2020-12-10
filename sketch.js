@@ -17,7 +17,7 @@ var ingredients = [];
 var ingredientCount = 0;
 var maxIngredientCount = 5;
 
-var ingredientsImg;
+var ingredientsImg = [];
 var temp;
 let ingredientsTypesCount = 5;
 
