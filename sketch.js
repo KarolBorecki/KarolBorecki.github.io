@@ -46,6 +46,7 @@ function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
+    image(ingredientsImg[0], 200, 200, 200, 200);
     return;
   }
   mouseY = 0;
