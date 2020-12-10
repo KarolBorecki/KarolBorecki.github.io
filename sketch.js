@@ -17,7 +17,7 @@ var ingredients = [];
 var ingredientCount = 0;
 var maxIngredientCount = 5;
 
-var ingredientsImg = [];
+var ingredientsImg;
 var temp;
 let ingredientsTypesCount = 5;
 
@@ -26,7 +26,7 @@ function preload() {
   playerImg = loadImage("img/pizza.png");
 
   for(var i = 0; i<ingredientCount; i++)
-    ingredientsImg[i] = loadImage("img/ingredients/ingredient" + i + ".png");
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i + ".png"));
 
 
   canvasWidth = windowWidth*0.7;
