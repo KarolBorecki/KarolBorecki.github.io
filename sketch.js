@@ -15,6 +15,9 @@ let playerImg;
 let floorImg;
 let frameImg;
 
+let marginTop;
+let marginSide;
+
 var ingredientsImg = [];
 var temp;
 let ingredientsTypesCount = 5;
@@ -40,6 +43,9 @@ function preload() {
 
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
+
+  marginTop = 1/22*canvasHeight;
+  marginSide = 1/17*canvasWidth;
 }
 
 function setup() {
@@ -62,8 +68,8 @@ function draw() {
   player.display();
 
   textSize(canvasWidth/20);
-  text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
-  text(errorsLeft, 0, 0, canvasWidth/10, canvasWidth/10);
+  text(points, canvasWidth - canvasWidth/10 + marginSide, marginTop, canvasWidth/10, canvasWidth/10);
+  text(errorsLeft, marginSide, marginTop, canvasWidth/10, canvasWidth/10);
 
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
