@@ -122,7 +122,7 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
-    this.ingredients.forEach((ingredient, i) => {
+    player.ingredients.forEach((ingredient, i) => {
       if(!ingredient.isFalling) ingredient.fall();
       return;
     });
