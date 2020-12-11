@@ -109,6 +109,7 @@ function play(){
 function gameOver(){
   isPlaying = false;
   player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2,3,4], 5);
+  lifesLeft = 3;
   player.start();
 }
 
@@ -209,8 +210,8 @@ class Ingredient {
       }
       else if(this.standardY > player.startPosY - player.width/4 &&
         this.standardY < player.startPosY + player.width/5 &&
-        this.x > mouseX - player.width/2 - this.width/4 &&
-        this.x < mouseX + player.width/2 + this.width/4 && !this.isPicked) {
+        this.x > mouseX - player.width/2 + this.width/4 &&
+        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked) {
         points++;
 
         this.isPicked = true;
