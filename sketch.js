@@ -126,7 +126,7 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
-    this.ingredients.forEach((ingredient, i) => {
+    player.ingredients.forEach((ingredient, i) => {
       if(!ingredient.isFalling) ingredient.fall();
       return;
     });
@@ -135,9 +135,9 @@ class Player {
 
   addRandomIngredient(){
     if(!isPlaying) return;
-    let type = this.ingredientstsTypes[getRandomInt(0, this.typesCount-1)];
+    let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
     console.log("spawning: " + type);
-    this.ingredients.push(new Ingredient(type));
+    player.ingredients.push(new Ingredient(type));
   }
 }
 
