@@ -13,6 +13,7 @@ let player;
 let playerImg;
 
 let floorImg;
+let frameImg;
 
 var ingredientsImg = [];
 var temp;
@@ -35,9 +36,10 @@ function preload() {
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
   floorImg = loadImage("img/floor.png");
+  frameImg = loadImage("img/frame.png");
 
-  canvasWidth = windowWidth*0.7;
-  canvasHeight = windowHeight*0.8;
+  canvasWidth = windowWidth;
+  canvasHeight = canvasWidth/1.8;
 }
 
 function setup() {
@@ -66,6 +68,8 @@ function draw() {
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
   });
+
+  image(frameImg, 0, 0, canvasWidth, canvasHeight);
 }
 
 //TODO move this function to ingredient as method
