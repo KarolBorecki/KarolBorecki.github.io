@@ -47,7 +47,7 @@ function preload() {
 }
 
 function setup() {
-  frameRate(60);
+  frameRate(40);
 
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
@@ -55,12 +55,13 @@ function setup() {
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
   gameOver();
 
-  setInterval(timeIt, 100);
+  //setInterval(timeIt, 100);
 }
 
+/*
 function timeIt(){
   time += 100;
-}
+}*/
 
 function draw() {
   background(255, 252, 212);
@@ -81,6 +82,7 @@ function draw() {
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
   });
+  time += 25;
 }
 
 //TODO move this function to ingredient as method
