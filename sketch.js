@@ -13,10 +13,6 @@ let player;
 let playerImg;
 
 let floorImg;
-let frameImg;
-
-let marginTop;
-let marginSide;
 
 var ingredientsImg = [];
 var temp;
@@ -39,13 +35,9 @@ function preload() {
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
   floorImg = loadImage("img/floor.png");
-  frameImg = loadImage("img/frame.png");
 
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
-
-  marginTop = 1/22*canvasHeight;
-  marginSide = 1/17*canvasWidth;
 }
 
 function setup() {
@@ -68,14 +60,12 @@ function draw() {
   player.display();
 
   textSize(canvasWidth/20);
-  text(points, canvasWidth - canvasWidth/10 + marginSide, marginTop, canvasWidth/10, canvasWidth/10);
-  text(errorsLeft, marginSide, marginTop, canvasWidth/10, canvasWidth/10);
+  text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
+  text(errorsLeft, 0, 0, canvasWidth/10, canvasWidth/10);
 
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
   });
-
-  image(frameImg, 0, 0, canvasWidth, canvasHeight);
 }
 
 //TODO move this function to ingredient as method
