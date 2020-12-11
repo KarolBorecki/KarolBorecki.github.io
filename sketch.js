@@ -145,12 +145,9 @@ class Ingredient {
   constructor(type){
     this.img = ingredientsImg[type];
     this.width = canvasWidth/10;
-    this.speed = random(2,5);
     this.type = type;
 
-    this.isFalling = false;
-
-    this.fall();
+    this.renew();
   }
 
   display(){
@@ -169,9 +166,15 @@ class Ingredient {
   }
 
   fall(){
+    this.renew();
+    this.isFalling = true;
+  }
+
+  renew(){
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
-    this.isFalling = true;
+    this.isFalling = false;
+    this.speed = random(2,5);
   }
 }
 
