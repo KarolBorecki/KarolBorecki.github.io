@@ -66,6 +66,7 @@ function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
+    cursor(CROSS);
     return;
   }
   image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
