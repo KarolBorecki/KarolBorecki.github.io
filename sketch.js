@@ -182,7 +182,7 @@ class Ingredient {
 
     if(this.standardY > canvasHeight) {
       lifesLeft--;
-      if(errorsLeft<=0) gameOver();
+      if(lifesLeft<=0) gameOver();
       this.renew();
     }
     else if(this.standardY > player.startPosY - player.width/4 && this.standardY < player.startPosY + player.width/5 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
