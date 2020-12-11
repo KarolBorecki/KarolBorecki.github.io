@@ -183,7 +183,7 @@ class Ingredient {
       this.standardY += this.speed;
       image(this.img, this.x, this.standardY, this.width, this.width);
     }else {
-      image(pickUpEffect, this.x, this.y-100, this.width, this.width);
+      image(pickUpEffectImg, this.x, this.y-100, this.width, this.width);
       setTimeout(this.renew, 500);
     }
     if(this.standardY > canvasHeight) {
