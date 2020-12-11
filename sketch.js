@@ -162,7 +162,7 @@ class Ingredient {
       errorsLeft--;
       this.isFalling = false;
     }
-    else if(this.standardY > player.startPosY - player.width/4 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
+    else if(this.standardY > player.startPosY - player.width/4 && this.standardY > canvasHeight - this.width/2 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
       points++;
       this.isFalling = false;
     }
