@@ -145,7 +145,7 @@ class Player {
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
         console.log("Falling: " + player.ingredients[i].type);
-        player.lastfall=i;
+        player.lastFall=i;
         break;
       }
   }
@@ -153,7 +153,7 @@ class Player {
   addRandomIngredient(){
     if(!isPlaying) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
-    console.log("spawning: " + type);
+    console.log("Spawning: " + type + " - - - " + player.ingredients);
     player.ingredients.push(new Ingredient(type));
     ingredientsCount++;
 
