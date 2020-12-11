@@ -14,6 +14,7 @@ let playerImg;
 
 let floorImg;
 let lifeImg;
+let pickUpEffectImg;
 
 var ingredientsImg = [];
 var temp;
@@ -37,6 +38,7 @@ function preload() {
 
   floorImg = loadImage("img/floor.png");
   lifeImg = loadImage("img/life.png");
+  pickUpEffectImg = loadImage("img/pickUpEffect.png");
 
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
@@ -177,20 +179,25 @@ class Ingredient {
 
   display(){
     if(!this.isFalling) return;
-    this.standardY += this.speed;
-    image(this.img, this.x, this.standardY, this.width, this.width);
-
+    if(!this.isPicked){
+      this.standardY += this.speed;
+      image(this.img, this.x, this.standardY, this.width, this.width);
+    }else {
+      image(pickUpEffect, this.x, this.y-100, this.width, this.width);
+      setTimeout(this.renew, 500);
+    }
     if(this.standardY > canvasHeight) {
       lifesLeft--;
       if(lifesLeft<=0) gameOver();
       this.renew();
     }
-    else if(this.standardY > player.startPosY - player.width/4 && 
-      this.standardY < player.startPosY + player.width/5 && 
-      this.x > mouseX - player.width/2 - this.width/4 && 
+    else if(this.standardY > player.startPosY - player.width/4 &&
+      this.standardY < player.startPosY + player.width/5 &&
+      this.x > mouseX - player.width/2 - this.width/4 &&
       this.x < mouseX + player.width/2 + this.width/4) {
       points++;
-      this.renew();
+
+      this.isPicked = true;
     }
   }
 
@@ -203,6 +210,7 @@ class Ingredient {
     this.x = getRandomIngredientX();
     this.isFalling = false;
     this.speed = random(2,maxSpeed);
+    this.isPicked = false;
   }
 }
 
