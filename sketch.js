@@ -55,7 +55,7 @@ function setup() {
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
   gameOver();
 
-  setInterval(timeIt(), 100);
+  setInterval(timeIt, 100);
 }
 
 function timeIt(){
