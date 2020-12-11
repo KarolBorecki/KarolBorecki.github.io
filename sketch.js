@@ -69,7 +69,7 @@ function draw() {
 
 function spawnIngredient(){
   if(!isPlaying || ingredientCount >= maxIngredientCount) return;
-  var type = getRandomInt(0, maxIngredientCount);
+  var type = getRandomInt(0, ingredientsTypesCount-1);
   ingredients.push(new Ingredient(getRandomIngredientX(), ingredientsImg[type], canvasWidth/10, random(1, 4), type));
   ingredientCount++;
   console.log("Spawned");
