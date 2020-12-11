@@ -126,15 +126,12 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
-    player.ingredients.forEach((ingredient, i) => {
-      if(!ingredient.isFalling){
-        //ingredient.fall();
+    for(var i=0; i<player.ingredients.length; i++)
+      if(!player.ingredients[i].isFalling){
+        ingredient.fall();
         console.log("Falling: " + i);
+        break;
       }
-
-      return;
-    });
-
   }
 
   addRandomIngredient(){
