@@ -183,13 +183,13 @@ class Ingredient {
 
   display(){
     if(!this.isFalling) return;
-    //if(!this.isPicked){
+    if(!this.isPicked){
       this.standardY += this.speed;
       image(this.img, this.x, this.standardY, this.width, this.width);
-    //}else {
-      //image(pickUpEffectImg, this.x, this.y, this.width, this.width);
-      //setTimeout(this.renew, 500);
-    //}
+    }else {
+      image(pickUpEffectImg, this.x, this.y, this.width, this.width);
+      setTimeout(this.renew, 500);
+    }
     if(this.standardY > canvasHeight) {
       lifesLeft--;
       if(lifesLeft<=0) gameOver();
