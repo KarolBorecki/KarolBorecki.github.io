@@ -138,7 +138,7 @@ class Player {
     console.log("Count: " + player.ingredients.length);
 
     setInterval(this.fallIngredient, timeToNextIngredient*1000);
-    setInterval(this.addRandomIngredient, timeToAddingredient*1000);
+    //setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
 
   display(){
@@ -174,11 +174,7 @@ class Ingredient {
     this.width = canvasWidth/10;
     this.type = type;
 
-    this.standardY = 0;
-    this.x = 0;
-    this.isFalling = false;
-    this.speed = 0;
-    this.isPicked = false;
+    renew();
 }
 
   display(){
