@@ -126,6 +126,7 @@ class Player {
 
   addRandomIngredient(){
     let type = this.ingredientstsTypes[getRandomInt(0, this.typesCount-1)];
+    console.log("spawning: " + type);
     this.ingredients.push(new Ingredient(type));
   }
 }
@@ -134,7 +135,7 @@ class Ingredient {
   constructor(type){
     this.img = ingredientsImg[type];
     this.width = canvasWidth/10;
-    this.speed = random(0,4);
+    this.speed = random(2,5);
     this.type = type;
 
     this.isFalling = false;
