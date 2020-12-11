@@ -25,7 +25,7 @@ function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
 
-  ingredientsImg.push(loadImage("img/ingredients/ingredient" + ingredientsTypesCount.toString(); +".png"));
+  ingredientsImg.push(loadImage("img/ingredients/ingredient" + ingredientsTypesCount.toString() + ".png"));
 
 
   canvasWidth = windowWidth*0.7;
