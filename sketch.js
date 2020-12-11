@@ -174,18 +174,22 @@ class Ingredient {
     this.width = canvasWidth/10;
     this.type = type;
 
-    this.renew();
+    this.standardY = getRandomIngredientY();
+    this.x = getRandomIngredientX();
+    this.isFalling = false;
+    this.speed = random(2, maxSpeed);
+    this.isPicked = false;
 }
 
   display(){
     if(!this.isFalling) return;
-    if(!this.isPicked){
+    //if(!this.isPicked){
       this.standardY += this.speed;
       image(this.img, this.x, this.standardY, this.width, this.width);
-    }else {
-      image(pickUpEffectImg, this.x, this.y, this.width, this.width);
-      setTimeout(this.renew, 500);
-    }
+    //}else {
+      //image(pickUpEffectImg, this.x, this.y, this.width, this.width);
+      //setTimeout(this.renew, 500);
+    //}
     if(this.standardY > canvasHeight) {
       lifesLeft--;
       if(lifesLeft<=0) gameOver();
@@ -197,7 +201,8 @@ class Ingredient {
       this.x < mouseX + player.width/2 + this.width/4 && !this.isPicked) {
       points++;
 
-      this.isPicked = true;
+      //this.isPicked = true;
+      this.renew();
     }
   }
 
@@ -212,7 +217,7 @@ class Ingredient {
     this.speed = random(2,maxSpeed);
     this.isPicked = false;
 
-    console.log("Renewing: " + this.type);
+    console.log("Renewing: " + this.type + " standardY: " + this.standardY + "isFalling: " + this.isFalling);
   }
 }
 
