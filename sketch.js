@@ -113,7 +113,7 @@ class Player {
 
   start(){
     for(var i=0; i<ingredientsCount; i++)
-      this.addRandomIngredient();
+      player.ingredients.push(new Ingredient(player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)]));
 
     setInterval(this.fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
@@ -149,8 +149,7 @@ class Ingredient {
     this.type = type;
 
     this.renew();
-    this.fall();
-  }
+}
 
   display(){
     if(!this.isFalling) return;
