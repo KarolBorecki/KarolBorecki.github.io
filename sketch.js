@@ -22,6 +22,10 @@ var timeToNextIngredient = 3;
 var timeToAddingredient = 5;
 var ingredientsCount = 5;
 
+var maxSpeed = 5;
+
+var increasingSpawn = 0.1;
+
 function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
@@ -38,7 +42,7 @@ function setup() {
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,2,4], 3);
+  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2,3,4], 5);
   player.start();
 }
 
@@ -81,6 +85,10 @@ function getRandomInt(min, max) {
 
 function play(){
   isPlaying =  true;
+}
+
+function gameOver(){
+  isPlaying = false;
 }
 
 function mouseClicked() {
@@ -141,6 +149,8 @@ class Player {
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
     console.log("spawning: " + type);
     player.ingredients.push(new Ingredient(type));
+    ingredientsCount++;
+
   }
 }
 
@@ -160,6 +170,7 @@ class Ingredient {
 
     if(this.standardY > canvasHeight) {
       errorsLeft--;
+      if(errorsLeft<=0) gameOver();
       this.renew();
     }
     else if(this.standardY > player.startPosY - player.width/4 && this.standardY < player.startPosY + player.width/5 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
@@ -176,7 +187,7 @@ class Ingredient {
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
     this.isFalling = false;
-    this.speed = random(2,5);
+    this.speed = random(2,maxSpeed);
   }
 }
 
