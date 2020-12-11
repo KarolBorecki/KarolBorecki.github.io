@@ -128,7 +128,7 @@ class Player {
     if(!isPlaying) return;
     for(var i=0; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
-        ingredient.fall();
+        player.ingredients[i].fall();
         console.log("Falling: " + i);
         break;
       }
