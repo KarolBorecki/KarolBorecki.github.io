@@ -115,6 +115,8 @@ class Player {
     for(var i=0; i<ingredientsCount; i++)
       player.ingredients.push(new Ingredient(player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)]));
 
+    console.log(player.ingredients);
+
     setInterval(this.fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
@@ -129,7 +131,7 @@ class Player {
     for(var i=0; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
-        console.log("Falling: " + i);
+        console.log("Falling: " + player.ingredients[i].type);
         break;
       }
   }
