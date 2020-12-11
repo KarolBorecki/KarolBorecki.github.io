@@ -165,11 +165,11 @@ class Player {
   fallIngredient(){
     if(!isPlaying) return;
     console.log("Trying to fall with lastFall = " + player.lastFall);
+    player.lastFall=getRandomInt(0, player.ingredients.length-1);
     for(var i=player.lastFall; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
         console.log("Falling: " + player.ingredients[i].type);
-        player.lastFall=getRandomInt(0, player.ingredients.length-1);
         break;
       }
   }
@@ -177,7 +177,7 @@ class Player {
   addRandomIngredient(){
     if(!isPlaying) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
-    console.log("Spawning: " + type + " - - - " + player.ingredients);
+    console.log("Spawning: " + type + " - speed: " + maxSpeed + " - timeToNextIngredient: " + timeToNextIngredient + " ingredientsCount: " + ingredientsCount);
     player.ingredients.push(new Ingredient(type));
     ingredientsCount++;
     if(timeToNextIngredient > 300)
