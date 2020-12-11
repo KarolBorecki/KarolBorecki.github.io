@@ -140,6 +140,7 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
+    console.log("Trying to fall with lastFall = " + this.lastFall);
     for(var i=this.lastFall+1; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
