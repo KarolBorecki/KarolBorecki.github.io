@@ -24,7 +24,7 @@ let ingredientsTypesCount = 5;
 function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
-  for(int i=0; i<ingredientsTypesCount; i++)
+  for(var i = 0; i<ingredientsTypesCount; i++)
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
 
