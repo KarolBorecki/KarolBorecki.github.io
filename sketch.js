@@ -12,14 +12,15 @@ let playBtnImg;
 let player;
 let playerImg;
 
-let ingredientImg;
-var ingredients = [];
-var ingredientCount = 0;
-var maxIngredientCount = 5;
-
 var ingredientsImg = [];
 var temp;
 let ingredientsTypesCount = 5;
+
+var errorsLeft = 3;
+
+var timeToNextIngredient = 3;
+var timeToAddingredient = 5;
+var ingredientsCount = 5;
 
 function preload() {
   playBtnImg = loadImage("img/Play.png");
@@ -37,42 +38,41 @@ function setup() {
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2]);
-
-  setInterval(spawnIngredient, 3000);
+  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,2,4]);
 }
 
 function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
-    image(ingredientsImg[0], 100, 100, 100, 100);
+  /*image(ingredientsImg[0], 100, 100, 100, 100);
     image(ingredientsImg[1], 200, 100, 100, 100);
     image(ingredientsImg[2], 300, 100, 100, 100);
     image(ingredientsImg[3], 400, 100, 100, 100);
-    image(ingredientsImg[4], 500, 100, 100, 100);
+    image(ingredientsImg[4], 500, 100, 100, 100);*/
     return;
   }
+
   mouseY = 0;
   noCursor();
   player.display();
+
   textSize(canvasWidth/20);
   text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
+  text(errorsLeft, 0, 0, canvasWidth/10, canvasWidth/10);
+
+  player.ingredients.forEach((ingredient, i) => {
+    ingredient.display();
+  });
+
+  /*
   for(var i = 0; i<ingredientCount; i++){
     ingredients[i].display();
-    if(ingredients[i].standardY > canvasHeight + 200)
+    if(ingredients[i].)
       missed(i);
     else if(ingredients[i].standardY > player.startPosY - player.width/4 && ingredients[i].x > mouseX - player.width/2 && ingredients[i].x < mouseX + player.width/2)
       picked(i);
-  }
-}
-
-function spawnIngredient(){
-  if(!isPlaying || ingredientCount >= maxIngredientCount) return;
-  var type = getRandomInt(0, ingredientsTypesCount-1);
-  ingredients.push(new Ingredient(getRandomIngredientX(), ingredientsImg[type], canvasWidth/10, random(1, 4), type));
-  ingredientCount++;
-  console.log("Spawned");
+  }*/
 }
 
 function getRandomIngredientX(){
@@ -89,22 +89,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-function deleteIngredient(index){
-  ingredients.splice(index, 1);
-  ingredientCount--;
-}
-
-function missed(index){
-  ingredients[index].standardY = getRandomIngredientY();
-  ingredients[index].x = getRandomIngredientX();
-}
-
-function picked(index){
-  points++;
-  missed(index);
-  console.log("Picked!");
-}
 
 function play(){
   isPlaying =  true;
@@ -123,36 +107,71 @@ function click(){
 }
 
 class Player {
-  constructor(width, height, img, ingrediens){
+  constructor(width, height, img, types){
     this.width = width;
     this.height = height;
     this.img = img;
-    this.ingredients = ingredients;
+
+    this.ingredientstTypes = types;
+
+    this.ingredients = [];
+    for(var i=0; i<ingredientsCount; i++)
+      addRandomIngredient();
+
 
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
+
+    //setInterval(fallIngredient, timeToNextIngredient*1000);
+    setInterval(addRandomIngredient, timeToAddingredient*1000);
   }
 
   display(){
     image(this.img, mouseX - this.width/2, this.startPosY, this.width, this.height);
     noTint();
   }
+
+  /*fallIngredient(){
+
+  }*/
+
+  addRandomIngredient(){
+    let type = ingredientstTypes[getRandomInt(0, this.ingredientstTypes.length-1)];
+    this.ingredients.push(new Ingredient(type));
+  }
 }
 
 class Ingredient {
-  constructor(posX, img, width, speed, type){
-    this.x = posX;
-    this.img = img;
-    this.width = width;
-    this.speed = speed;
+  constructor(type){
+    this.img = ingredientsImg[type];
+    this.width = canvasWidth/10;
+    this.speed = random(0,4);
     this.type = type;
 
-    this.standardY = getRandomIngredientY();
+    this.isFalling = false;
+
+    fall();
   }
 
   display(){
+    if(!isFalling) return;
     this.standardY += this.speed;
     image(this.img, this.x, this.standardY, this.width, this.width);
+
+    if(this.standardY > canvasHeight + this.width*2) {
+      errorsLeft--;
+      fall();
+    }
+    else if(this.standardY > player.startPosY - player.width/4 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
+      points++;
+      fall();
+    }
+  }
+
+  fall(){
+    this.standardY = getRandomIngredientY();
+    this.x = getRandomIngredientX();
+    isFalling = true;
   }
 }
 
