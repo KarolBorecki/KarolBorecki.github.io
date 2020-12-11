@@ -111,7 +111,7 @@ class Player {
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
 
-    //setInterval(fallIngredient, timeToNextIngredient*1000);
+    setInterval(fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
 
@@ -120,11 +120,17 @@ class Player {
     noTint();
   }
 
-  /*fallIngredient(){
+  fallIngredient(){
+    if(!isPlaying) return;
+    this.ingredients.forEach((ingredient, i) => {
+      if(!ingredient.isFalling) ingredient.fall();
+      return;
+    });
 
-  }*/
+  }
 
   addRandomIngredient(){
+    if(!isPlaying) return;
     let type = this.ingredientstsTypes[getRandomInt(0, this.typesCount-1)];
     console.log("spawning: " + type);
     this.ingredients.push(new Ingredient(type));
@@ -148,13 +154,13 @@ class Ingredient {
     this.standardY += this.speed;
     image(this.img, this.x, this.standardY, this.width, this.width);
 
-    if(this.standardY > canvasHeight + this.height) {
+    if(this.standardY > canvasHeight) {
       errorsLeft--;
-      this.fall();
+      this.isFalling = false;
     }
     else if(this.standardY > player.startPosY - player.width/4 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
       points++;
-      this.fall();
+      this.isFalling = false;
     }
   }
 
