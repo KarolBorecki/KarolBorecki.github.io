@@ -174,7 +174,7 @@ class Ingredient {
     this.width = canvasWidth/10;
     this.type = type;
 
-    renew();
+    this.renew();
 }
 
   display(){
