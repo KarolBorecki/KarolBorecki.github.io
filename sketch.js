@@ -45,11 +45,6 @@ function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
-  /*image(ingredientsImg[0], 100, 100, 100, 100);
-    image(ingredientsImg[1], 200, 100, 100, 100);
-    image(ingredientsImg[2], 300, 100, 100, 100);
-    image(ingredientsImg[3], 400, 100, 100, 100);
-    image(ingredientsImg[4], 500, 100, 100, 100);*/
     return;
   }
 
@@ -64,17 +59,9 @@ function draw() {
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
   });
-
-  /*
-  for(var i = 0; i<ingredientCount; i++){
-    ingredients[i].display();
-    if(ingredients[i].)
-      missed(i);
-    else if(ingredients[i].standardY > player.startPosY - player.width/4 && ingredients[i].x > mouseX - player.width/2 && ingredients[i].x < mouseX + player.width/2)
-      picked(i);
-  }*/
 }
 
+//TODO move this function to ingredient as method
 function getRandomIngredientX(){
   return random(canvasWidth/10, canvasWidth-canvasWidth/10);
 }
@@ -82,6 +69,7 @@ function getRandomIngredientX(){
 function getRandomIngredientY(){
   return random(-canvasWidth/8, -canvasWidth/9);
 }
+//End of TODO
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -112,11 +100,11 @@ class Player {
     this.height = height;
     this.img = img;
 
-    this.ingredientstTypes = types;
+    this.ingredientstsTypes = types;
 
     this.ingredients = [];
     for(var i=0; i<ingredientsCount; i++)
-      addRandomIngredient();
+      this.addRandomIngredient();
 
 
     this.startPosX = canvasWidth/2 - width/2;
@@ -136,7 +124,7 @@ class Player {
   }*/
 
   addRandomIngredient(){
-    let type = ingredientstTypes[getRandomInt(0, this.ingredientstTypes.length-1)];
+    let type = ingredientstTypes[getRandomInt(0, this.ingredientstsTypes.length-1)];
     this.ingredients.push(new Ingredient(type));
   }
 }
