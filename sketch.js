@@ -183,8 +183,8 @@ class Ingredient {
       this.standardY += this.speed;
       image(this.img, this.x, this.standardY, this.width, this.width);
     }else {
-      image(pickUpEffectImg, this.x, this.y-100, this.width, this.width);
-      setTimeout(this.renew, 500);
+      image(pickUpEffectImg, this.x, this.y, this.width, this.width);
+      //setTimeout(this.renew, 500);
     }
     if(this.standardY > canvasHeight) {
       lifesLeft--;
@@ -194,7 +194,7 @@ class Ingredient {
     else if(this.standardY > player.startPosY - player.width/4 &&
       this.standardY < player.startPosY + player.width/5 &&
       this.x > mouseX - player.width/2 - this.width/4 &&
-      this.x < mouseX + player.width/2 + this.width/4) {
+      this.x < mouseX + player.width/2 + this.width/4 && !this.isPicked) {
       points++;
 
       this.isPicked = true;
