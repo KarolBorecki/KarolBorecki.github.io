@@ -138,7 +138,7 @@ class Ingredient {
 
     this.isFalling = false;
 
-    fall();
+    this.fall();
   }
 
   display(){
@@ -148,18 +148,18 @@ class Ingredient {
 
     if(this.standardY > canvasHeight + this.width*2) {
       errorsLeft--;
-      fall();
+      this.fall();
     }
     else if(this.standardY > player.startPosY - player.width/4 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
       points++;
-      fall();
+      this.fall();
     }
   }
 
   fall(){
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
-    isFalling = true;
+    this.isFalling = true;
   }
 }
 
