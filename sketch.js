@@ -39,6 +39,7 @@ function setup() {
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
   player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,2,4], 3);
+  player.start();
 }
 
 function draw() {
@@ -104,12 +105,15 @@ class Player {
     this.typesCount = typesCount;
 
     this.ingredients = [];
-    for(var i=0; i<ingredientsCount; i++)
-      this.addRandomIngredient();
-
 
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
+
+  }
+
+  start(){
+    for(var i=0; i<ingredientsCount; i++)
+      this.addRandomIngredient();
 
     setInterval(this.fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
@@ -122,7 +126,7 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
-    player.ingredients.forEach((ingredient, i) => {
+    this.ingredients.forEach((ingredient, i) => {
       if(!ingredient.isFalling) ingredient.fall();
       return;
     });
