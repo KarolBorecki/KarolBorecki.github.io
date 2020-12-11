@@ -18,7 +18,7 @@ let ingredientsTypesCount = 5;
 
 var errorsLeft = 3;
 
-var timeToNextIngredient = 3;
+var timeToNextIngredient = 1.5;
 var timeToAddingredient = 5;
 var ingredientsCount = 5;
 
@@ -141,11 +141,11 @@ class Player {
   fallIngredient(){
     if(!isPlaying) return;
     console.log("Trying to fall with lastFall = " + player.lastFall);
-    for(var i=player.lastFall+1; i<player.ingredients.length; i++)
+    for(var i=player.lastFall; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
         console.log("Falling: " + player.ingredients[i].type);
-        player.lastFall=i;
+        player.lastFall=getRandomInt(0, player.ingredients.length-1);
         break;
       }
   }
