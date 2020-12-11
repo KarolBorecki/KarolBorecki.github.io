@@ -27,6 +27,7 @@ var timeToAddingredient = 20000;
 var ingredientsCount = 5;
 
 var maxSpeed = 5;
+var minSpeed = 2;
 
 var increasingSpawn = 0.1;
 
@@ -181,6 +182,8 @@ class Player {
     ingredientsCount++;
     if(timeToNextIngredient > 300)
       timeToNextIngredient-=100;
+    minSpeed+=0.1;
+    maxSpeed+=0.1;
   }
 }
 
@@ -213,7 +216,7 @@ class Ingredient {
       }
     }else {
       image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
-      this.renew();
+      if(time % 500 == 0) this.renew();
     }
   }
 
@@ -225,7 +228,7 @@ class Ingredient {
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
     this.isFalling = false;
-    this.speed = random(2, maxSpeed);
+    this.speed = random(minSpeed, maxSpeed);
     this.isPicked = false;
   }
 }
