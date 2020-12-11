@@ -46,11 +46,11 @@ function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
-    image(ingredientsImg[0], 100, 100, 500, 200);
-    image(ingredientsImg[1], 100, 100, 100, 200);
-    image(ingredientsImg[2], 100, 100, 200, 200);
-    image(ingredientsImg[3], 100, 100, 300, 200);
-    image(ingredientsImg[4], 100, 100, 400, 200);
+    image(ingredientsImg[0], 100, 100, 100, 100);
+    image(ingredientsImg[1], 200, 100, 100, 100);
+    image(ingredientsImg[2], 300, 100, 100, 100);
+    image(ingredientsImg[3], 400, 100, 100, 100);
+    image(ingredientsImg[4], 500, 100, 100, 100);
     return;
   }
   mouseY = 0;
