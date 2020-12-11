@@ -12,6 +12,8 @@ let playBtnImg;
 let player;
 let playerImg;
 
+let floorImg;
+
 var ingredientsImg = [];
 var temp;
 let ingredientsTypesCount = 5;
@@ -32,6 +34,7 @@ function preload() {
   for(var i = 0; i<ingredientsTypesCount; i++)
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
+  floorImg = loadImage("img/floor.png");
 
   canvasWidth = windowWidth*0.7;
   canvasHeight = windowHeight*0.8;
@@ -51,7 +54,7 @@ function draw() {
     playBtn.display();
     return;
   }
-
+  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
   mouseY = 0;
   noCursor();
   player.display();
