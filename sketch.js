@@ -142,7 +142,7 @@ class Ingredient {
   }
 
   display(){
-    if(!isFalling) return;
+    if(!this.isFalling) return;
     this.standardY += this.speed;
     image(this.img, this.x, this.standardY, this.width, this.width);
 
