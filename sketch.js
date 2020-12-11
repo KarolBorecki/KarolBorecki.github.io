@@ -23,7 +23,7 @@ let ingredientsTypesCount = 5;
 var lifesLeft = 3;
 
 var timeToNextIngredient = 1.5;
-var timeToAddingredient = 5;
+var timeToAddingredient = 20;
 var ingredientsCount = 5;
 
 var maxSpeed = 5;
@@ -184,7 +184,7 @@ class Ingredient {
       image(this.img, this.x, this.standardY, this.width, this.width);
     }else {
       image(pickUpEffectImg, this.x, this.y, this.width, this.width);
-      //setTimeout(this.renew, 500);
+      setTimeout(this.renew, 500);
     }
     if(this.standardY > canvasHeight) {
       lifesLeft--;
@@ -211,6 +211,8 @@ class Ingredient {
     this.isFalling = false;
     this.speed = random(2,maxSpeed);
     this.isPicked = false;
+
+    console.log("Renewing: " + this.type);
   }
 }
 
