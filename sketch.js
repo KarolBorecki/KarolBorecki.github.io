@@ -111,7 +111,7 @@ class Player {
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
 
-    setInterval(fallIngredient, timeToNextIngredient*1000);
+    setInterval(this.fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
 
