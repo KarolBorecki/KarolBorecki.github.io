@@ -22,13 +22,15 @@ let ingredientsTypesCount = 5;
 
 var lifesLeft = 3;
 
-var timeToNextIngredient = 1.5;
-var timeToAddingredient = 20;
+var timeToNextIngredient = 1500;
+var timeToAddingredient = 20000;
 var ingredientsCount = 5;
 
 var maxSpeed = 5;
 
 var increasingSpawn = 0.1;
+
+var time = 0;
 
 function preload() {
   playBtnImg = loadImage("img/Play.png");
@@ -45,11 +47,19 @@ function preload() {
 }
 
 function setup() {
+  frameRate(60);
+
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
   gameOver();
+
+  setInterval(timeIt(), 100);
+}
+
+function timeIt(){
+  time += 100;
 }
 
 function draw() {
@@ -137,13 +147,15 @@ class Player {
 
     console.log("Count: " + player.ingredients.length);
 
-    setInterval(this.fallIngredient, timeToNextIngredient*1000);
+    //setInterval(this.fallIngredient, timeToNextIngredient*1000);
     //setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
 
   display(){
     image(this.img, mouseX - this.width/2, this.startPosY, this.width, this.height);
     noTint();
+
+    if(time%timeToNextIngredient == 0) this.fallIngredient();
   }
 
   fallIngredient(){
