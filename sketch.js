@@ -38,7 +38,7 @@ function preload() {
   floorImg = loadImage("img/floor.png");
   frameImg = loadImage("img/frame.png");
 
-  canvasWidth = windowWidth;
+  canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
 }
 
