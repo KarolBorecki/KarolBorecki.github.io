@@ -148,7 +148,7 @@ class Ingredient {
     this.standardY += this.speed;
     image(this.img, this.x, this.standardY, this.width, this.width);
 
-    if(this.standardY > canvasHeight + this.width*2) {
+    if(this.standardY > canvasHeight + this.height) {
       errorsLeft--;
       this.fall();
     }
