@@ -69,8 +69,7 @@ function draw() {
 
 function spawnIngredient(){
   if(!isPlaying || ingredientCount >= maxIngredientCount) return;
-  var type = getRandomIngredientIndex();
-  console.log(type);
+  var type = getRandomInt(0, maxIngredientCount);
   ingredients.push(new Ingredient(getRandomIngredientX(), ingredientsImg[type], canvasWidth/10, random(1, 4), type));
   ingredientCount++;
   console.log("Spawned");
@@ -84,9 +83,12 @@ function getRandomIngredientY(){
   return random(-canvasWidth/8, -canvasWidth/9);
 }
 
-function getRandomIngredientIndex(){
-  return random(0, ingredientsTypesCount-1);
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 
 function deleteIngredient(index){
   ingredients.splice(index, 1);
