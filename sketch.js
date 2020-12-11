@@ -219,7 +219,7 @@ class Ingredient {
     }else {
       image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
       this.selfTimer += 25;
-      if(this.selfTimer % 300 == 0) this.renew();
+      if(this.selfTimer % 125 == 0) this.renew();
     }
   }
 
