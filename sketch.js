@@ -38,7 +38,7 @@ function setup() {
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,2,4]);
+  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,2,4], 3);
 }
 
 function draw() {
@@ -95,12 +95,13 @@ function click(){
 }
 
 class Player {
-  constructor(width, height, img, types){
+  constructor(width, height, img, types, typesCount){
     this.width = width;
     this.height = height;
     this.img = img;
 
     this.ingredientstsTypes = types;
+    this.typesCount = typesCount;
 
     this.ingredients = [];
     for(var i=0; i<ingredientsCount; i++)
@@ -124,7 +125,7 @@ class Player {
   }*/
 
   addRandomIngredient(){
-    let type = this.ingredientstsTypes[getRandomInt(0, this.ingredientstsTypes.length-1)];
+    let type = this.ingredientstsTypes[getRandomInt(0, this.typesCount-1)];
     this.ingredients.push(new Ingredient(type));
   }
 }
