@@ -200,7 +200,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x, this.y, this.width, this.width);
+      image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
       setTimeout(this.renew, 500);
     }
   }
