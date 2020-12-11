@@ -22,12 +22,12 @@ let ingredientsTypesCount = 5;
 
 var lifesLeft = 3;
 
-var timeToNextIngredient = 1500;
+var timeToNextIngredient = 1300;
 var timeToAddingredient = 15000;
 var ingredientsCount = 5;
 
-var maxSpeed = 6;
-var minSpeed = 3.5;
+var maxSpeed = 7;
+var minSpeed = 4;
 
 var time = 0;
 
