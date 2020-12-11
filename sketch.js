@@ -26,10 +26,8 @@ var timeToNextIngredient = 1500;
 var timeToAddingredient = 15000;
 var ingredientsCount = 5;
 
-var maxSpeed = 5;
-var minSpeed = 2;
-
-var increasingSpawn = 0.1;
+var maxSpeed = 6;
+var minSpeed = 3.5;
 
 var time = 0;
 
