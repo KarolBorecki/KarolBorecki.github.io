@@ -158,6 +158,7 @@ class Player {
     noTint();
 
     if(time%timeToNextIngredient == 0) this.fallIngredient();
+    if(time%timeToAddingredient == 0) this.addRandomIngredient();
   }
 
   fallIngredient(){
@@ -178,7 +179,8 @@ class Player {
     console.log("Spawning: " + type + " - - - " + player.ingredients);
     player.ingredients.push(new Ingredient(type));
     ingredientsCount++;
-
+    if(timeToNextIngredient > 300)
+      timeToNextIngredient-=100;
   }
 }
 
