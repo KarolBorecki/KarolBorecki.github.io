@@ -138,11 +138,11 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
-    for(var i=lastFall+1; i<player.ingredients.length; i++)
+    for(var i=this.lastFall+1; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
         console.log("Falling: " + player.ingredients[i].type);
-        lastfall=i;
+        this.lastfall=i;
         break;
       }
   }
