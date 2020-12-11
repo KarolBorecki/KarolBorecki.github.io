@@ -46,7 +46,11 @@ function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
-    image(ingredientsImg[0], 200, 200, 200, 200);
+    image(ingredientsImg[0], 100, 100, 500, 200);
+    image(ingredientsImg[1], 100, 100, 100, 200);
+    image(ingredientsImg[2], 100, 100, 200, 200);
+    image(ingredientsImg[3], 100, 100, 300, 200);
+    image(ingredientsImg[4], 100, 100, 400, 200);
     return;
   }
   mouseY = 0;
@@ -66,6 +70,7 @@ function draw() {
 function spawnIngredient(){
   if(!isPlaying || ingredientCount >= maxIngredientCount) return;
   var type = getRandomIngredientIndex();
+  console.log(type);
   ingredients.push(new Ingredient(getRandomIngredientX(), ingredientsImg[type], canvasWidth/10, random(1, 4), type));
   ingredientCount++;
   console.log("Spawned");
