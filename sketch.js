@@ -13,12 +13,13 @@ let player;
 let playerImg;
 
 let floorImg;
+let lifeImg;
 
 var ingredientsImg = [];
 var temp;
 let ingredientsTypesCount = 5;
 
-var errorsLeft = 3;
+var lifesLeft = 3;
 
 var timeToNextIngredient = 1.5;
 var timeToAddingredient = 5;
@@ -35,6 +36,7 @@ function preload() {
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
   floorImg = loadImage("img/floor.png");
+  lifeImg = loadImage("img/life.png");
 
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
@@ -61,7 +63,8 @@ function draw() {
 
   textSize(canvasWidth/20);
   text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
-  text(errorsLeft, 0, 0, canvasWidth/10, canvasWidth/10);
+  for(var i=0; i<lifesLeft; i++)
+    image(lifeImg, canvasWidth/31*i, 0, canvasWidth/30, canvasWidth/30);
 
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
@@ -178,7 +181,7 @@ class Ingredient {
     image(this.img, this.x, this.standardY, this.width, this.width);
 
     if(this.standardY > canvasHeight) {
-      errorsLeft--;
+      lifesLeft--;
       if(errorsLeft<=0) gameOver();
       this.renew();
     }
