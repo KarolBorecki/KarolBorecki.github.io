@@ -185,7 +185,10 @@ class Ingredient {
       if(lifesLeft<=0) gameOver();
       this.renew();
     }
-    else if(this.standardY > player.startPosY - player.width/4 && this.standardY < player.startPosY + player.width/5 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
+    else if(this.standardY > player.startPosY - player.width/4 && 
+      this.standardY < player.startPosY + player.width/5 && 
+      this.x > mouseX - player.width/2 - this.width/4 && 
+      this.x < mouseX + player.width/2 + this.width/4) {
       points++;
       this.renew();
     }
