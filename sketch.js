@@ -23,7 +23,7 @@ let ingredientsTypesCount = 5;
 var lifesLeft = 3;
 
 var timeToNextIngredient = 1500;
-var timeToAddingredient = 20000;
+var timeToAddingredient = 15000;
 var ingredientsCount = 5;
 
 var maxSpeed = 5;
@@ -194,6 +194,8 @@ class Ingredient {
     this.type = type;
 
     this.renew();
+
+    this.selfTimer = 0;
 }
 
   display(){
@@ -216,7 +218,8 @@ class Ingredient {
       }
     }else {
       image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
-      if(time % 500 == 0) this.renew();
+      this.selfTimer += 25;
+      if(this.selfTimer % 300 == 0) this.renew();
     }
   }
 
@@ -230,6 +233,7 @@ class Ingredient {
     this.isFalling = false;
     this.speed = random(minSpeed, maxSpeed);
     this.isPicked = false;
+    this.selfTimer = 0;
   }
 }
 
