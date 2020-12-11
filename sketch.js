@@ -42,8 +42,7 @@ function setup() {
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2,3,4], 5);
-  player.start();
+  gameOver();
 }
 
 function draw() {
@@ -89,6 +88,8 @@ function play(){
 
 function gameOver(){
   isPlaying = false;
+  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2,3,4], 5);
+  player.start();
 }
 
 function mouseClicked() {
@@ -117,13 +118,14 @@ class Player {
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
 
+    this.lastFall = 0;
   }
 
   start(){
-    for(var i=0; i<ingredientsCount; i++)
-      player.ingredients.push(new Ingredient(player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)]));
-
-    console.log(player.ingredients);
+    for(var i=0; i<ingredientsCount; i++){
+      player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)]));
+      console.log(player.ingredients[i].type);
+    }
 
     setInterval(this.fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
@@ -136,10 +138,11 @@ class Player {
 
   fallIngredient(){
     if(!isPlaying) return;
-    for(var i=0; i<player.ingredients.length; i++)
+    for(var i=lastFall+1; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
         console.log("Falling: " + player.ingredients[i].type);
+        lastfall=i;
         break;
       }
   }
