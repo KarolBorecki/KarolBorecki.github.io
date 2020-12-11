@@ -124,8 +124,10 @@ class Player {
   start(){
     for(var i=0; i<ingredientsCount; i++){
       player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)]));
-      console.log(player.ingredients[i].type);
+      console.log(i + " - type = " + player.ingredients[i].type);
     }
+
+    console.log("Count: " + player.ingredients.length);
 
     setInterval(this.fallIngredient, timeToNextIngredient*1000);
     setInterval(this.addRandomIngredient, timeToAddingredient*1000);
