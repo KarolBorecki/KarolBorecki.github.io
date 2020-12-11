@@ -127,7 +127,11 @@ class Player {
   fallIngredient(){
     if(!isPlaying) return;
     player.ingredients.forEach((ingredient, i) => {
-      if(!ingredient.isFalling) ingredient.fall();
+      if(!ingredient.isFalling){
+        //ingredient.fall();
+        console.log("Falling: " + i);
+      }
+
       return;
     });
 
@@ -148,6 +152,7 @@ class Ingredient {
     this.type = type;
 
     this.renew();
+    this.fall();
   }
 
   display(){
@@ -157,16 +162,15 @@ class Ingredient {
 
     if(this.standardY > canvasHeight) {
       errorsLeft--;
-      this.isFalling = false;
+      this.renew();
     }
     else if(this.standardY > player.startPosY - player.width/4 && this.standardY < player.startPosY + player.width/5 && this.x > mouseX - player.width/2 && this.x < mouseX + player.width/2) {
       points++;
-      this.isFalling = false;
+      this.renew();
     }
   }
 
   fall(){
-    this.renew();
     this.isFalling = true;
   }
 
