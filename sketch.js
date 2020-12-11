@@ -202,6 +202,7 @@ class Ingredient {
     }else {
       image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
       setTimeout(this.renew, 500);
+      console.log("renewed");
     }
   }
 
@@ -215,8 +216,6 @@ class Ingredient {
     this.isFalling = false;
     this.speed = random(2,maxSpeed);
     this.isPicked = false;
-
-    console.log("Renewing: " + this.type + " standardY: " + this.standardY + "isFalling: " + this.isFalling);
   }
 }
 
