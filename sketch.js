@@ -124,7 +124,7 @@ class Player {
   }*/
 
   addRandomIngredient(){
-    let type = ingredientstTypes[getRandomInt(0, this.ingredientstsTypes.length-1)];
+    let type = ingredientstsTypes[getRandomInt(0, this.ingredientstsTypes.length-1)];
     this.ingredients.push(new Ingredient(type));
   }
 }
