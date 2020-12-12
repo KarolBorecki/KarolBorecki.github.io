@@ -30,6 +30,7 @@ let ingredientsTypesCount = 21;
 let floorImg;
 let lifeImg;
 let pickUpEffectImg;
+let underline;
 
 var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
 [10, 6, 19, 5, 2], //chicken curry
@@ -47,6 +48,7 @@ function preload() {
   playBtnImg = loadImage("img/layout/start.png");
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
+  pickUpEffectImg = loadImage("img/layout/underline.png");
 
   //TODO wrap to one loop
   for(var i = 0; i<ingredientsTypesCount; i++)
@@ -72,6 +74,12 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   if(gameStatus == 0){
+    image(underline, canvasWidth/4, canvasHeight/10, canvasWidth/2, canvasWidth/16);
+
+    image(playersImg[0], canvasWidth/4, canvasHeight/3, canvasWidth/4, canvasWidth/7);
+    image(playersImg[1], 0, canvasHeight/3, canvasWidth/8, canvasWidth/11);
+    image(playersImg[2], canvasWidth*7/8, canvasHeight/3, canvasWidth/8, canvasWidth/11);
+
     playBtn.display();
     cursor(CROSS);
     return;
