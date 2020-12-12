@@ -64,7 +64,7 @@ function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
-  playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight,
+  playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/6, canvasWidth/6);
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
@@ -76,9 +76,9 @@ function draw() {
   if(gameStatus == 0){
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/3.5, canvasWidth/4, canvasWidth/7);
-    image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/5.5, canvasWidth/8, canvasWidth/11);
-    image(playersImg[2], canvasWidth*6/8, canvasHeight/2-canvasWidth/5.5, canvasWidth/8, canvasWidth/11);
+    image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+    image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+    image(playersImg[2], canvasWidth*6/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
     playBtn.display();
     cursor(CROSS);
