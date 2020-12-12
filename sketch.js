@@ -44,7 +44,7 @@ function preload() {
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
 
-  playBtnImg = loadImage("img/layout/play.png");
+  playBtnImg = loadImage("img/layout/start.png");
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
 
@@ -62,8 +62,8 @@ function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
-  playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20,
-    playBtnImg, canvasWidth/10, canvasWidth/10);
+  playBtn = new Button(canvasWidth/2 - canvasWidth/7, canvasHeight  - canvasWidth*3/7,
+    playBtnImg, canvasWidth*2/7, canvasWidth**2/7);
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   player.start();
