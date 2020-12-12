@@ -52,7 +52,7 @@ function preload() {
   for(var i = 0; i<ingredientsTypesCount; i++)
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
   for(var i = 0; i<playersTypesCount; i++)
-    ingredientsImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+    playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
   //END OF TODO
 }
 
