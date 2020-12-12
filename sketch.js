@@ -62,8 +62,8 @@ function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
-  playBtn = new Button(canvasWidth/2 - canvasWidth/7, canvasHeight  - canvasWidth*3/7,
-    playBtnImg, canvasWidth*2/7, canvasWidth*2/7);
+  playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight  - canvasWidth/5,
+    playBtnImg, canvasWidth/6, canvasWidth/6);
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   player.start();
