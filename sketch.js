@@ -74,7 +74,7 @@ function setup() {
   playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/6, canvasWidth/6);
   arrowLeft  = new Button(canvasWidth/4, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
-  arrowRight  = new Button(canvasWidth*2/4, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
+  arrowRight  = new Button(canvasWidth*5/8, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   player.start();
