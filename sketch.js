@@ -48,7 +48,7 @@ function preload() {
   playBtnImg = loadImage("img/layout/start.png");
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
-  pickUpEffectImg = loadImage("img/layout/underline.png");
+  underline = loadImage("img/layout/underline.png");
 
   //TODO wrap to one loop
   for(var i = 0; i<ingredientsTypesCount; i++)
