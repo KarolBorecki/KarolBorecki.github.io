@@ -3,7 +3,7 @@ let cnvs;
 let canvasWidth;
 let canvasHeight;
 
-var isPlaying = false;
+var gameStatus = 0;
 var points = 0;
 var lifesLeft = 3;
 
@@ -64,27 +64,35 @@ function setup() {
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20,
     playBtnImg, canvasWidth/10, canvasWidth/10);
-  gameOver();
+
+  player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
+  player.start();
 }
 
 function draw() {
   background(255, 252, 212);
-  if(!isPlaying){
+  if(gameStatus == 0){
     playBtn.display();
     cursor(CROSS);
     return;
   }
-  noCursor();
-  mouseY = 0;
+  else if(gameStatus == 1){
+    text("Game Over");
+  }else if(gameStatus == 2){
+    noCursor();
+    mouseY = 0;
 
-  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+    image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
 
-  player.display();
-  player.ingredients.forEach((ingredient, i) => {ingredient.display();});
+    player.display();
+    player.ingredients.forEach((ingredient, i) => {ingredient.display();});
 
-  textSize(canvasWidth/20);
-  text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
-  time += 25;
+    textSize(canvasWidth/20);
+    text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
+    time += 25;
+  }else{
+    text("Game Over");
+  }
 }
 
 //TODO move this function to ingredient as method
@@ -103,25 +111,13 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-function play(){
-  isPlaying =  true;
-}
-
-function gameOver(){
-  isPlaying = false;
-  player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
-  lifesLeft = 3;
-  player.start();
-}
-
 function mouseClicked() {
   click();
 }
 
 function click(){
   if(playBtn.over()){
-    play()
+    gameStatus = 2;
     console.log("PLAY!");
   }
   return false;
@@ -165,7 +161,7 @@ class Player {
   }
 
   fallIngredient(){
-    if(!isPlaying) return;
+    if(gameStatus != 2) return;
     console.log("Trying to fall with lastFall = " + player.lastFall);
     player.lastFall=getRandomInt(0, player.ingredients.length-1);
     for(var i=player.lastFall; i<player.ingredients.length; i++)
@@ -177,7 +173,7 @@ class Player {
   }
 
   addRandomIngredient(){
-    if(!isPlaying) return;
+    if(gameStatus != 2) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
     console.log("Spawning: " + type + " - speed: " + maxSpeed + " - timeToNextIngredient: " + timeToNextIngredient + " ingredientsCount: " + ingredientsCount);
     player.ingredients.push(new Ingredient(type));
@@ -207,7 +203,7 @@ class Ingredient {
       image(this.img, this.x, this.standardY, this.width, this.width);
       if(this.standardY > canvasHeight) {
         lifesLeft--;
-        if(lifesLeft<=0) gameOver();
+        if(lifesLeft<=0) gameStatus = 3;
         this.renew();
       }
       else if(this.standardY > player.startPosY - player.width/4 &&
