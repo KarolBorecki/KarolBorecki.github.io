@@ -78,7 +78,7 @@ function draw() {
   mouseY = 0;
 
   image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
-  
+
   player.display();
   player.ingredients.forEach((ingredient, i) => {ingredient.display();});
 
@@ -128,12 +128,12 @@ function click(){
 }
 
 class Player {
-  constructor(width, height, img, types, typesCount){
+  constructor(type, width, height, ingredientTypes, typesCount){
     this.width = width;
     this.height = height;
-    this.img = img;
+    this.img = playersImg[type];
 
-    this.ingredientstsTypes = types;
+    this.ingredientstsTypes = ingredientTypes;
     this.typesCount = typesCount;
 
     this.ingredients = [];
