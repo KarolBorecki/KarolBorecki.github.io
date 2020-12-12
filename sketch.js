@@ -229,7 +229,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x, this.standardY, this.width*1.5, this.width*1.5);
+      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/4, this.width*1.5, this.width*1.5);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
