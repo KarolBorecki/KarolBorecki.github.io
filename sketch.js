@@ -71,8 +71,8 @@ function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
-  playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight-canvasWidth/6,
-    playBtnImg, canvasWidth/6, canvasWidth/6);
+  playBtn = new Button(canvasWidth*5/12, canvasHeight-canvasWidth/6,
+    playBtnImg, canvasWidth/7, canvasWidth/7);
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
 
@@ -92,6 +92,9 @@ function draw() {
     image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[2], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+
+    textSize(canvasWidth/18);
+    text("PIZZA NAME", canvasWidth*5/12, canvasHeight-canvasWidth/3, canvasWidth/2, canvasWidth/8)
 
     playBtn.display();
     arrowLeft.display();
