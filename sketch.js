@@ -21,7 +21,7 @@ let playBtnImg;
 
 let arrowLeft;
 let arrowRight;
-let arrowBtn;
+let arrowImg;
 
 var player;
 var playersImg = [];
@@ -53,6 +53,7 @@ function preload() {
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
+  arrowImg = loadImage("img/layout/arrow.png");
 
   //TODO wrap to one loop
   for(var i = 0; i<ingredientsTypesCount; i++)
@@ -70,6 +71,8 @@ function setup() {
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/6, canvasWidth/6);
+  arrowLeft  = new Button(canvasWidth*3/8, canvasHeight/2-canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
+  arrowRight  = new Button(canvasWidth*3/4, canvasHeight/2-canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   player.start();
@@ -78,13 +81,12 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   if(gameStatus == 0){
+    text("Zagraj!", canvasWidth/4, canvasHeight/6, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
-    image(playersImg[2], canvasWidth*6/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
-
-
+    image(playersImg[2], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
     playBtn.display();
     cursor(CROSS);
