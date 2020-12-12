@@ -93,8 +93,8 @@ function draw() {
     image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[2], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
-    textSize(canvasWidth/18);
-    text("PIZZA NAME", canvasWidth*5/12, canvasHeight-canvasWidth/3, canvasWidth/2, canvasWidth/8)
+    textSize(canvasWidth/23);
+    text("PIZZA NAME", canvasWidth*5/12, canvasHeight-canvasWidth/3, canvasWidth/7, canvasWidth/12)
 
     playBtn.display();
     arrowLeft.display();
