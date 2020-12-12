@@ -44,7 +44,7 @@ function preload() {
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
 
-  playBtnImg = loadImage("img/layout/play.png");
+  playBtnImg = loadImage("img/layout/start.png");
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
 
