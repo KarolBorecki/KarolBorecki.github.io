@@ -91,7 +91,7 @@ function draw() {
     return;
   }
   else if(gameStatus == 1){
-    text("Game Over");
+    text("Game Over", canvasWidth/2, canvasWidth/2);
   }else if(gameStatus == 2){
     noCursor();
     mouseY = 0;
@@ -105,7 +105,7 @@ function draw() {
     text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
     time += 25;
   }else{
-    text("Game Over");
+    text("Game Over", canvasWidth/2, canvasWidth/2);
   }
 }
 
