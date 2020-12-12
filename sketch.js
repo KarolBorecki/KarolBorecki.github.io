@@ -5,43 +5,55 @@ let canvasHeight;
 
 var isPlaying = false;
 var points = 0;
-
-let playBtn;
-let playBtnImg;
-
-let player;
-let playerImg;
-
-let floorImg;
-let lifeImg;
-let pickUpEffectImg;
-
-var ingredientsImg = [];
-var temp;
-let ingredientsTypesCount = 5;
-
 var lifesLeft = 3;
+
+var maxSpeed = 7;
+var minSpeed = 4;
 
 var timeToNextIngredient = 1300;
 var timeToAddingredient = 15000;
 var ingredientsCount = 5;
 
-var maxSpeed = 7;
-var minSpeed = 4;
-
 var time = 0;
 
-function preload() {
-  playBtnImg = loadImage("img/layout/play.png");
-  playerImg = loadImage("img/players/player0.png");
-  for(var i = 0; i<ingredientsTypesCount; i++)
-    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
+let playBtn;
+let playBtnImg;
 
+var player;
+var playersImg = [];
+let playersTypesCount = 6;
+
+var ingredientsImg = [];
+let ingredientsTypesCount = 21;
+
+//layout Img
+let floorImg;
+let lifeImg;
+let pickUpEffectImg;
+
+var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
+[10, 6, 19, 5, 2], //chicken curry
+[15, 19, 1, 20, 8], //ham garlic
+[3, 20, 19, 12, 14], //ham
+[16, 20, 19, 7, 5], //hot salame
+[14, 19, 4, 20, 3],//mushroom
+]
+
+
+function preload() {
+  canvasWidth = windowWidth*0.6;
+  canvasHeight = canvasWidth/1.8;
+
+  playBtnImg = loadImage("img/layout/play.png");
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
 
-  canvasWidth = windowWidth*0.6;
-  canvasHeight = canvasWidth/1.8;
+  //TODO wrap to one loop
+  for(var i = 0; i<ingredientsTypesCount; i++)
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
+  for(var i = 0; i<playersTypesCount; i++)
+    ingredientsImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+  //END OF TODO
 }
 
 function setup() {
@@ -50,7 +62,8 @@ function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
-  playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
+  playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20,
+    playBtnImg, canvasWidth/10, canvasWidth/10);
   gameOver();
 }
 
@@ -61,17 +74,16 @@ function draw() {
     cursor(CROSS);
     return;
   }
-  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
-  mouseY = 0;
   noCursor();
+  mouseY = 0;
+
+  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+  
   player.display();
+  player.ingredients.forEach((ingredient, i) => {ingredient.display();});
 
   textSize(canvasWidth/20);
   text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
-
-  player.ingredients.forEach((ingredient, i) => {
-    ingredient.display();
-  });
   time += 25;
 }
 
@@ -98,7 +110,7 @@ function play(){
 
 function gameOver(){
   isPlaying = false;
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2,3,4], 5);
+  player = new Player(0, canvasWidth/4, canvasWidth/8, playerImg, playersIngredients[0], 4);
   lifesLeft = 3;
   player.start();
 }
@@ -207,7 +219,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
+      image(pickUpEffectImg, this.x, this.standardY, this.width, this.width/3);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
