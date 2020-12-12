@@ -32,8 +32,8 @@ var minSpeed = 4;
 var time = 0;
 
 function preload() {
-  playBtnImg = loadImage("img/layout/Play.png");
-  playerImg = loadImage("img/players/0.png");
+  playBtnImg = loadImage("img/layout/play.png");
+  playerImg = loadImage("img/players/player0.png");
   for(var i = 0; i<ingredientsTypesCount; i++)
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
