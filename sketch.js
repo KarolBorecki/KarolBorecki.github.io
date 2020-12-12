@@ -110,7 +110,7 @@ function play(){
 
 function gameOver(){
   isPlaying = false;
-  player = new Player(0, canvasWidth/4, canvasWidth/8, playerImg, playersIngredients[0], 4);
+  player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   lifesLeft = 3;
   player.start();
 }
