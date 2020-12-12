@@ -71,8 +71,8 @@ function setup() {
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/6, canvasWidth/6);
-  arrowLeft  = new Button(canvasWidth*3/8, canvasHeight/2-canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
-  arrowRight  = new Button(canvasWidth*3/4, canvasHeight/2-canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
+  arrowLeft  = new Button(canvasWidth/8, canvasHeight/2+canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
+  arrowRight  = new Button(canvasWidth*3/4, canvasHeight/2+canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   player.start();
@@ -81,7 +81,7 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   if(gameStatus == 0){
-    textSize(canvasWidth/5);
+    textSize(canvasWidth/10);
     textAlign(CENTER);
     fill('#a91f13');
     text("Zagraj!", canvasWidth/4, canvasHeight/6, canvasWidth/2, canvasWidth/8);
