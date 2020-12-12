@@ -12,65 +12,78 @@ let playBtnImg;
 let player;
 let playerImg;
 
-let ingredientImg;
-var ingredients = [];
-var ingredientCount = 0;
-var maxIngredientCount = 5;
+let floorImg;
+let lifeImg;
+let pickUpEffectImg;
 
 var ingredientsImg = [];
 var temp;
 let ingredientsTypesCount = 5;
 
+var lifesLeft = 3;
+
+var timeToNextIngredient = 1300;
+var timeToAddingredient = 15000;
+var ingredientsCount = 5;
+
+var maxSpeed = 7;
+var minSpeed = 4;
+
+var time = 0;
+
 function preload() {
   playBtnImg = loadImage("img/Play.png");
   playerImg = loadImage("img/pizza.png");
+  for(var i = 0; i<ingredientsTypesCount; i++)
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
   ingredientsImg.push(loadImage("img/ingredients/ingredient0.png"));
 
-
-  canvasWidth = windowWidth*0.7;
-  canvasHeight = windowHeight*0.8;
+  canvasWidth = windowWidth*0.6;
+  canvasHeight = canvasWidth/1.8;
 }
 
 function setup() {
+  frameRate(40);
+
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
-  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2]);
+  gameOver();
 
-  setInterval(spawnIngredient, 3000);
+  //setInterval(timeIt, 100);
 }
+
+/*
+function timeIt(){
+  time += 100;
+}*/
 
 function draw() {
   background(255, 252, 212);
   if(!isPlaying){
     playBtn.display();
-    image(ingredientsImg[0], 200, 200, 200, 200);
+    cursor(CROSS);
     return;
   }
+  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
   mouseY = 0;
   noCursor();
   player.display();
+
   textSize(canvasWidth/20);
   text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
-  for(var i = 0; i<ingredientCount; i++){
-    ingredients[i].display();
-    if(ingredients[i].standardY > canvasHeight + 200)
-      missed(i);
-    else if(ingredients[i].standardY > player.startPosY - player.width/4 && ingredients[i].x > mouseX - player.width/2 && ingredients[i].x < mouseX + player.width/2)
-      picked(i);
-  }
+  for(var i=0; i<lifesLeft; i++)
+    image(lifeImg, canvasWidth/31*i, 0, canvasWidth/30, canvasWidth/30);
+
+  player.ingredients.forEach((ingredient, i) => {
+    ingredient.display();
+  });
+  time += 25;
 }
 
-function spawnIngredient(){
-  if(!isPlaying || ingredientCount >= maxIngredientCount) return;
-  var type = getRandomIngredientIndex();
-  ingredients.push(new Ingredient(getRandomIngredientX(), ingredientsImg[type], canvasWidth/10, random(1, 4), type));
-  ingredientCount++;
-  console.log("Spawned");
-}
-
+//TODO move this function to ingredient as method
 function getRandomIngredientX(){
   return random(canvasWidth/10, canvasWidth-canvasWidth/10);
 }
@@ -78,29 +91,24 @@ function getRandomIngredientX(){
 function getRandomIngredientY(){
   return random(-canvasWidth/8, -canvasWidth/9);
 }
+//End of TODO
 
-function getRandomIngredientIndex(){
-  return random(0, ingredientsTypesCount-1);
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function deleteIngredient(index){
-  ingredients.splice(index, 1);
-  ingredientCount--;
-}
-
-function missed(index){
-  ingredients[index].standardY = getRandomIngredientY();
-  ingredients[index].x = getRandomIngredientX();
-}
-
-function picked(index){
-  points++;
-  missed(index);
-  console.log("Picked!");
-}
 
 function play(){
   isPlaying =  true;
+}
+
+function gameOver(){
+  isPlaying = false;
+  player = new Player(canvasWidth/4, canvasWidth/8, playerImg, [0,1,2,3,4], 5);
+  lifesLeft = 3;
+  player.start();
 }
 
 function mouseClicked() {
@@ -116,36 +124,114 @@ function click(){
 }
 
 class Player {
-  constructor(width, height, img, ingrediens){
+  constructor(width, height, img, types, typesCount){
     this.width = width;
     this.height = height;
     this.img = img;
-    this.ingredients = ingredients;
+
+    this.ingredientstsTypes = types;
+    this.typesCount = typesCount;
+
+    this.ingredients = [];
 
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
+
+    this.lastFall = 0;
+  }
+
+  start(){
+    for(var i=0; i<ingredientsCount; i++){
+      player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)]));
+      console.log(i + " - type = " + player.ingredients[i].type);
+    }
+
+    console.log("Count: " + player.ingredients.length);
+
+    //setInterval(this.fallIngredient, timeToNextIngredient*1000);
+    //setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
 
   display(){
     image(this.img, mouseX - this.width/2, this.startPosY, this.width, this.height);
     noTint();
+
+    if(time%timeToNextIngredient == 0) this.fallIngredient();
+    if(time%timeToAddingredient == 0) this.addRandomIngredient();
+  }
+
+  fallIngredient(){
+    if(!isPlaying) return;
+    console.log("Trying to fall with lastFall = " + player.lastFall);
+    player.lastFall=getRandomInt(0, player.ingredients.length-1);
+    for(var i=player.lastFall; i<player.ingredients.length; i++)
+      if(!player.ingredients[i].isFalling){
+        player.ingredients[i].fall();
+        console.log("Falling: " + player.ingredients[i].type);
+        break;
+      }
+  }
+
+  addRandomIngredient(){
+    if(!isPlaying) return;
+    let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
+    console.log("Spawning: " + type + " - speed: " + maxSpeed + " - timeToNextIngredient: " + timeToNextIngredient + " ingredientsCount: " + ingredientsCount);
+    player.ingredients.push(new Ingredient(type));
+    ingredientsCount++;
+    if(timeToNextIngredient > 300)
+      timeToNextIngredient-=100;
+    minSpeed+=0.1;
+    maxSpeed+=0.1;
   }
 }
 
 class Ingredient {
-  constructor(posX, img, width, speed, type){
-    this.x = posX;
-    this.img = img;
-    this.width = width;
-    this.speed = speed;
+  constructor(type){
+    this.img = ingredientsImg[type];
+    this.width = canvasWidth/10;
     this.type = type;
 
-    this.standardY = getRandomIngredientY();
-  }
+    this.renew();
+
+    this.selfTimer = 0;
+}
 
   display(){
-    this.standardY += this.speed;
-    image(this.img, this.x, this.standardY, this.width, this.width);
+    if(!this.isFalling) return;
+    if(!this.isPicked){
+      this.standardY += this.speed;
+      image(this.img, this.x, this.standardY, this.width, this.width);
+      if(this.standardY > canvasHeight) {
+        lifesLeft--;
+        if(lifesLeft<=0) gameOver();
+        this.renew();
+      }
+      else if(this.standardY > player.startPosY - player.width/4 &&
+        this.standardY < player.startPosY + player.width/6 &&
+        this.x > mouseX - player.width/2 - this.width/4 &&
+        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked) {
+        points++;
+
+        this.isPicked = true;
+      }
+    }else {
+      image(pickUpEffectImg, this.x, this.standardY, this.width, this.width);
+      this.selfTimer += 25;
+      if(this.selfTimer % 125 == 0) this.renew();
+    }
+  }
+
+  fall(){
+    this.isFalling = true;
+  }
+
+  renew(){
+    this.standardY = getRandomIngredientY();
+    this.x = getRandomIngredientX();
+    this.isFalling = false;
+    this.speed = random(minSpeed, maxSpeed);
+    this.isPicked = false;
+    this.selfTimer = 0;
   }
 }
 
