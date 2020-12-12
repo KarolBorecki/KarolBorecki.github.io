@@ -21,7 +21,8 @@ let playBtnImg;
 
 let arrowLeft;
 let arrowRight;
-let arrowImg;
+let arrowRightImg;
+let arrowLeftImg;
 
 var player;
 var playersImg = [];
@@ -53,7 +54,8 @@ function preload() {
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
-  arrowImg = loadImage("img/layout/arrow.png");
+  arrowRightImg = loadImage("img/layout/arrow.png");
+  arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
   //TODO wrap to one loop
   for(var i = 0; i<ingredientsTypesCount; i++)
@@ -71,8 +73,8 @@ function setup() {
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/6, canvasWidth/6);
-  arrowLeft  = new Button(canvasWidth/8, canvasHeight/2+canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
-  arrowRight  = new Button(canvasWidth*3/4, canvasHeight/2+canvasWidth/11,  arrowImg, canvasWidth/8, canvasWidth/11)
+  arrowLeft  = new Button(canvasWidth/8, canvasHeight/2+canvasWidth/22,  arrowImg, canvasWidth/8, canvasWidth/11)
+  arrowRight  = new Button(canvasWidth*3/4, canvasHeight/2+canvasWidth/22,  arrowImg, canvasWidth/8, canvasWidth/11)
 
   player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
   player.start();
