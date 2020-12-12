@@ -19,6 +19,10 @@ var time = 0;
 let playBtn;
 let playBtnImg;
 
+let arrowLeft;
+let arrowRight;
+let arrowBtn;
+
 var player;
 var playersImg = [];
 let playersTypesCount = 6;
@@ -79,6 +83,8 @@ function draw() {
     image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[2], canvasWidth*6/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+
+
 
     playBtn.display();
     cursor(CROSS);
@@ -223,7 +229,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x, this.standardY, this.width, this.width/3);
+      image(pickUpEffectImg, this.x, this.standardY, this.width*1.5, this.width*1.5);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
@@ -254,7 +260,7 @@ class Button {
 
   display() {
     stroke(0);
-    if (this.over()) tint(204, 0, 128);
+    if (this.over()) noTint();
     else noTint();
 
     image(this.img, this.x, this.y, this.width, this.height);
