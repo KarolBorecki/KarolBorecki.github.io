@@ -83,10 +83,10 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   if(gameStatus == 0){
-    textSize(canvasWidth/15);
+    textSize(canvasWidth/18);
     textAlign(CENTER);
     fill('#a91f13');
-    text("Zagraj!", canvasWidth/4, canvasHeight/7, canvasWidth/2, canvasWidth/8);
+    text("Zagraj!", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
