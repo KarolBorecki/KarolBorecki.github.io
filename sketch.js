@@ -76,9 +76,9 @@ function draw() {
   if(gameStatus == 0){
     image(underline, canvasWidth/4, canvasHeight/10, canvasWidth/2, canvasWidth/16);
 
-    image(playersImg[0], canvasWidth/4, canvasHeight/3, canvasWidth/4, canvasWidth/7);
-    image(playersImg[1], 0, canvasHeight/3, canvasWidth/8, canvasWidth/11);
-    image(playersImg[2], canvasWidth*7/8, canvasHeight/3, canvasWidth/8, canvasWidth/11);
+    image(playersImg[0], canvasWidth/2 - canvasWidth/4, canvasHeight/3, canvasWidth/4, canvasWidth/7);
+    image(playersImg[1], canvasWidth/8, canvasHeight/3, canvasWidth/8, canvasWidth/11);
+    image(playersImg[2], canvasWidth*6/8, canvasHeight/3, canvasWidth/8, canvasWidth/11);
 
     playBtn.display();
     cursor(CROSS);
