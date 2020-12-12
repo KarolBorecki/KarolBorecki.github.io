@@ -97,7 +97,7 @@ function draw() {
 
     textAlign(CENTER);
     textSize(canvasWidth/30);
-    text("PIZZA NAME", canvasWidth*3/8, canvasHeight/2-canvasWidth/22, canvasWidth/4, canvasWidth/11)
+    text("PIZZA NAME", canvasWidth*3/8, canvasHeight/2+canvasWidth/11, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
     arrowLeft.display();
