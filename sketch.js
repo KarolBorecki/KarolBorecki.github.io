@@ -32,12 +32,13 @@ var minSpeed = 4;
 var time = 0;
 
 function preload() {
-  playBtnImg = loadImage("img/Play.png");
-  playerImg = loadImage("img/pizza.png");
+  playBtnImg = loadImage("img/layout/Play.png");
+  playerImg = loadImage("img/players/0.png");
   for(var i = 0; i<ingredientsTypesCount; i++)
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
 
-  ingredientsImg.push(loadImage("img/ingredients/ingredient0.png"));
+  floorImg = loadImage("img/layout/floor.png");
+  pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
 
   canvasWidth = windowWidth*0.6;
   canvasHeight = canvasWidth/1.8;
@@ -51,14 +52,7 @@ function setup() {
 
   playBtn = new Button(canvasWidth/2 - canvasWidth/20, canvasHeight/2  - canvasWidth/20, playBtnImg, canvasWidth/10, canvasWidth/10);
   gameOver();
-
-  //setInterval(timeIt, 100);
 }
-
-/*
-function timeIt(){
-  time += 100;
-}*/
 
 function draw() {
   background(255, 252, 212);
@@ -74,8 +68,6 @@ function draw() {
 
   textSize(canvasWidth/20);
   text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
-  for(var i=0; i<lifesLeft; i++)
-    image(lifeImg, canvasWidth/31*i, 0, canvasWidth/30, canvasWidth/30);
 
   player.ingredients.forEach((ingredient, i) => {
     ingredient.display();
