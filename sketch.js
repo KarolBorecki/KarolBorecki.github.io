@@ -16,6 +16,8 @@ var ingredientsCount = 5;
 
 var time = 0;
 
+var choosenPizza = 0;
+
 let playBtn;
 let playBtnImg;
 
@@ -145,8 +147,13 @@ function click(){
   if(playBtn.over()){
     gameStatus = 2;
     console.log("PLAY!");
+  }else if(arrowLeft.over()){
+    choosenPizza = (choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1; 
+  }else if(arrowRight.over()){
+    choosenPizza = (choosenPizza + 1)%(playersTypesCount-1);
   }
-  return false;
+  console.log("Choosen Pizza: " + choosenPizza);
+  return;
 }
 
 class Player {
