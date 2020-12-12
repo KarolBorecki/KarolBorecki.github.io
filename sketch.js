@@ -81,6 +81,9 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   if(gameStatus == 0){
+    textSize(canvasWidth/5);
+    textAlign(CENTER);
+    fill('#a91f13');
     text("Zagraj!", canvasWidth/4, canvasHeight/6, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -89,6 +92,8 @@ function draw() {
     image(playersImg[2], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
     playBtn.display();
+    arrowLeft.display();
+    arrowRight.display();
     cursor(CROSS);
     return;
   }
