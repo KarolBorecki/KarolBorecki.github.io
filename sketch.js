@@ -95,8 +95,9 @@ function draw() {
     image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[2], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
-    textSize(canvasWidth/23);
-    text("PIZZA NAME", canvasWidth*5/12, canvasHeight-canvasWidth/3, canvasWidth/7, canvasWidth/12)
+    textAlign(CENTER);
+    textSize(canvasWidth/30);
+    text("PIZZA NAME", canvasWidth*5/12, canvasHeight-canvasWidth/4, canvasWidth/7, canvasWidth/12)
 
     playBtn.display();
     arrowLeft.display();
@@ -148,9 +149,9 @@ function click(){
     gameStatus = 2;
     console.log("PLAY!");
   }else if(arrowLeft.over()){
-    choosenPizza = (choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1; 
+    choosenPizza = (choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1;
   }else if(arrowRight.over()){
-    choosenPizza = (choosenPizza + 1)%(playersTypesCount-1);
+    choosenPizza = (choosenPizza < playersTypesCount-1) ? choosenPizza+1 : 0;
   }
   console.log("Choosen Pizza: " + choosenPizza);
   return;
