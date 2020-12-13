@@ -132,9 +132,9 @@ function draw() {
 
     for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2-canvasWidth/14, canvasWidth/6, canvasWidth/6);
-      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*(i)), canvasHeight/2-canvasWidth/12, canvasWidth/15, canvasWidth/15);
+      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*(i)), canvasHeight/2-canvasWidth/10, canvasWidth/15, canvasWidth/15);
     }
-    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2-canvasWidth/10, canvasWidth/6, canvasWidth/6);
+    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2-canvasWidth/14, canvasWidth/6, canvasWidth/6);
 
     playBtn.display();
     cursor(CROSS);
@@ -247,6 +247,7 @@ class Player {
     }
     player.badIngredient = new Ingredient(player.ingredientstsTypes[4], true);
     console.log("bad - type = " + player.badIngredient.type);
+    player.badIngredient.fall();
 
     console.log("Count: " + player.ingredients.length);
   }
