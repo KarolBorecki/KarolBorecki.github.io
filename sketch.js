@@ -148,15 +148,17 @@ function click(){
   if(playBtn.over()){
     gameStatus = 2;
     console.log("PLAY!");
+    return;
   }else if(arrowLeft.over()){
     choosenPizza = (choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1;
-    console.log("click - left");
+    console.log("click - left  -  " + choosenPizza);
+    return;
   }else if(arrowRight.over()){
     choosenPizza = (choosenPizza < playersTypesCount-1) ? choosenPizza+1 : 0;
-    console.log("click - right");
+    console.log("click - right - " + choosenPizza);
+    return;
   }
-  console.log("Choosen Pizza: " + choosenPizza);
-  return;
+
 }
 
 class Player {
