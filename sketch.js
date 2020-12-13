@@ -198,21 +198,21 @@ function mouseClicked() {
 }
 
 function click(){
-  if(playBtn.over()){
+  if(playBtn.over() && (gameStatus == 0 || gameStatus == 1)){
     gameStatus = (gameStatus==0) ? 1 : 2;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
     player.start();
     console.log("----------------Play----------------");
     return;
-  }else if(arrowLeft.over()){
+  }else if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
     console.log("click - left  -  " + choosenPizza);
     return;
-  }else if(arrowRight.over()){
+  }else if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
     console.log("click - right - " + choosenPizza);
     return;
-  }else if(playAgainBtn.over()){
+  }else if(playAgainBtn.over() && gameStatus == 3){
     gameStatus = 0;
     console.log("----------------Again----------------");
     return;
