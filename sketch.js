@@ -93,7 +93,7 @@ function setup() {
   playBtn = new Button(canvasWidth*5/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/7, canvasWidth/7);
   playAgainBtn = new Button(canvasWidth*5/12, canvasHeight/3,
-    playBtnImg, canvasWidth/7, canvasWidth/7);
+    playAgainBtnImg, canvasWidth/7, canvasWidth/7);
 
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
@@ -159,11 +159,11 @@ function draw() {
       textAlign(CENTER);
       fill('#fffcd3');
       textSize(canvasWidth/18);
-      text("Game Over", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+      text("Game Over", canvasWidth/4, canvasHeight/7, canvasWidth/2, canvasWidth/8);
       textSize(canvasWidth/25);
-      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight/6, canvasWidth/2, canvasWidth/8);
       textSize(canvasWidth/18);
-      text("11 Pizz!!!", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+      text("11 Pizz!!!", canvasWidth/4, canvasHeight/5, canvasWidth/2, canvasWidth/8);
       playAgainBtn.display();
     }
     time += 25;
