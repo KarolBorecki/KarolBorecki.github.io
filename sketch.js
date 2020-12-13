@@ -253,7 +253,7 @@ class Player {
   }
 
   display(){
-    image(player.badIngredient.img, 0, 0);
+    player.badIngredient.display();
     if(gameStatus == 2){
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
