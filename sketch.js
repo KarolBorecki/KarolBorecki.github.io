@@ -153,7 +153,7 @@ function draw() {
       textSize(canvasWidth/16);
       textAlign(CENTER);
       text(points, canvasWidth - canvasWidth/12, canvasWidth/10);
-      image(pointsFrame, canvasWidth - canvasWidth/6, 0, canvasWidth/6, canvasWidth/6);
+      image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
     }
 
     if(gameStatus == 3){
@@ -162,10 +162,10 @@ function draw() {
       fill('#fffcd3');
       textSize(canvasWidth/18);
       text("Game Over", canvasWidth/2, canvasHeight/4);
-      textSize(canvasWidth/30);
-      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
+      textSize(canvasWidth/33);
+      text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
       textSize(canvasWidth/18);
-      text("11 Pizz!!!", canvasWidth/2, canvasHeight/2);
+      text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
       playAgainBtn.display();
 
       cursor(CROSS);
@@ -199,24 +199,21 @@ function mouseClicked() {
 }
 
 function click(){
+  if(gameStatus == 2) return;
   if(playBtn.over() && (gameStatus == 0 || gameStatus == 1)){
     gameStatus = (gameStatus==0) ? 1 : 2;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
     player.start();
     console.log("----------------Play----------------");
-    return;
   }else if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
     console.log("click - left  -  " + choosenPizza);
-    return;
   }else if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
     console.log("click - right - " + choosenPizza);
-    return;
   }else if(playAgainBtn.over() && gameStatus == 3){
     gameStatus = 0;
     console.log("----------------Again----------------");
-    return;
   }
 
 }
