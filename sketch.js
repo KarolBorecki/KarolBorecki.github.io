@@ -161,7 +161,7 @@ function mouseClicked() {
 
 function click(){
   if(playBtn.over()){
-    gameStatus = gameStatus++;
+    gameStatus = (gameStatus==0) ? 1 : 2;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
     player.start();
     console.log("PLAY!");
