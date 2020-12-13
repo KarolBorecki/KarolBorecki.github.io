@@ -108,7 +108,15 @@ function draw() {
     return;
   }
   else if(gameStatus == 1){
-    text("Game Over", canvasWidth/2, canvasWidth/2);
+    textSize(canvasWidth/18);
+    textAlign(CENTER);
+    fill('#a91f13');
+    text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+    image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
+
+    playBtn.display();
+    cursor(CROSS);
+    return;
   }else if(gameStatus == 2){
     noCursor();
     mouseY = 0;
@@ -153,7 +161,7 @@ function mouseClicked() {
 
 function click(){
   if(playBtn.over()){
-    gameStatus = 2;
+    gameStatus = gameStatus++;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
     player.start();
     console.log("PLAY!");
