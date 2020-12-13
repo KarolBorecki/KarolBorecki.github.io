@@ -112,7 +112,7 @@ function draw() {
     textAlign(CENTER);
     fill('#a91f13');
     textFont(fontBold);
-    text("Zagraj!", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+    text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
@@ -135,7 +135,7 @@ function draw() {
     textAlign(CENTER);
     fill('#a91f13');
     textFont(fontBold);
-    text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+    text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     for(var i = 0; i<5; i++){
@@ -174,7 +174,7 @@ function draw() {
       text("Game Over", canvasWidth/2, canvasHeight/4);
       textSize(canvasWidth/33);
       textFont(font);
-      text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
+      text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
       textSize(canvasWidth/18);
       textFont(fontBold);
       text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
