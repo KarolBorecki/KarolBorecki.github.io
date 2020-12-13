@@ -127,7 +127,8 @@ function draw() {
     player.ingredients.forEach((ingredient, i) => {ingredient.display();});
 
     textSize(canvasWidth/18);
-    text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+    textAlign(CENTER);
+    text(points, canvasWidth - canvasWidth/9, canvasWidth/18, canvasWidth/9, canvasWidth/9);
     image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
     time += 25;
   }else{
