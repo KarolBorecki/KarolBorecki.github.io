@@ -41,6 +41,10 @@ let underline;
 let pointsFrame;
 let xImg;
 let okImg
+let endImg;
+
+let playAgainBtn;
+let playAgainBtnImg;
 
 var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
 [10, 6, 19, 5, 2], //chicken curry
@@ -58,12 +62,16 @@ function preload() {
   canvasHeight = canvasWidth/1.8;
 
   playBtnImg = loadImage("img/layout/start.png");
+
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
   pointsFrame = loadImage("img/layout/counterFrame.png");
   xImg = loadImage("img/layout/x.png");
   okImg = loadImage("img/layout/ok.png");
+  endImg = loadImage("img/layout/gameOverScreen.png");
+
+  playAgainBtnImg = loadImage("img/layout/start_01.png");
 
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
@@ -84,6 +92,9 @@ function setup() {
 
   playBtn = new Button(canvasWidth*5/12, canvasHeight-canvasWidth/6,
     playBtnImg, canvasWidth/7, canvasWidth/7);
+  playAgainBtn = new Button(canvasWidth*5/12, canvasHeight/3,
+    playBtnImg, canvasWidth/7, canvasWidth/7);
+
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
 }
@@ -141,6 +152,10 @@ function draw() {
     text(points, canvasWidth - canvasWidth/12, canvasWidth/10);
     image(pointsFrame, canvasWidth - canvasWidth/6, 0, canvasWidth/6, canvasWidth/6);
 
+    if(gameStatus == 3){
+      image(endImg, 0,0, canvasWidth, canvasHeight);
+      playAgainBtn.display();
+    }
     time += 25;
   }
 }
@@ -174,7 +189,7 @@ function click(){
     gameStatus = (gameStatus==0) ? 1 : 2;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
     player.start();
-    console.log("PLAY!");
+    console.log("----------------Play----------------");
     return;
   }else if(arrowLeft.over()){
     choosenPizza = getNextPizzaImgIndex(false);
@@ -183,6 +198,10 @@ function click(){
   }else if(arrowRight.over()){
     choosenPizza = getNextPizzaImgIndex(true);
     console.log("click - right - " + choosenPizza);
+    return;
+  }else if(playAgainBtn.over()){
+    gameStatus = 0;
+    console.log("----------------Again----------------");
     return;
   }
 
