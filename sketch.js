@@ -11,6 +11,7 @@ var maxSpeed = 7;
 var minSpeed = 4;
 
 var timeToNextIngredient = 1300;
+var timeToNextBadIngredient = 8000;
 var timeToAddingredient = 15000;
 var ingredientsCount = 5;
 
@@ -229,6 +230,7 @@ class Player {
     this.typesCount = typesCount;
 
     this.ingredients = [];
+    this.badIngredient;
 
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
@@ -240,9 +242,10 @@ class Player {
 
   start(){
     for(var i=0; i<ingredientsCount; i++){
-      player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)]));
+      player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)], false));
       console.log(i + " - type = " + player.ingredients[i].type);
     }
+    this.badIngredient = new Ingredient(player.ingredientstsTypes[this.ingredients[5]], true);
 
     console.log("Count: " + player.ingredients.length);
   }
@@ -255,6 +258,7 @@ class Player {
 
       if(time%timeToNextIngredient == 0) this.fallIngredient();
       if(time%timeToAddingredient == 0) this.addRandomIngredient();
+      if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
     }
@@ -272,6 +276,12 @@ class Player {
       }
   }
 
+  fallBadIngredient(){
+    if(gameStatus != 2) return;
+    console.log("Falling bad ingredient" + player.badIngredient);
+    player.badIngredient.fall();
+  }
+
   addRandomIngredient(){
     if(gameStatus != 2) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
@@ -286,10 +296,11 @@ class Player {
 }
 
 class Ingredient {
-  constructor(type){
+  constructor(type, isBad){
     this.img = ingredientsImg[type];
     this.width = canvasWidth/10;
     this.type = type;
+    this.isBad = isBad;
 
     this.renew();
 
@@ -302,8 +313,7 @@ class Ingredient {
       this.standardY += this.speed;
       image(this.img, this.x, this.standardY, this.width, this.width);
       if(this.standardY > canvasHeight) {
-        lifesLeft--;
-        if(lifesLeft<=0) gameStatus = 3;
+        if(this.isBad) gameStatus = 3;
         this.renew();
       }
       else if(this.standardY > player.startPosY - player.width/4 &&
