@@ -245,7 +245,7 @@ class Player {
       player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)], false));
       console.log(i + " - type = " + player.ingredients[i].type);
     }
-    player.badIngredient = new Ingredient(player.ingredientstsTypes[player.ingredients[5]], true);
+    player.badIngredient = new Ingredient(5, true);
 
     console.log("Count: " + player.ingredients.length);
   }
@@ -278,7 +278,7 @@ class Player {
 
   fallBadIngredient(){
     if(gameStatus != 2) return;
-    console.log("Falling bad ingredient" + player.badIngredient.type);
+    console.log("Falling bad ingredient " + player.badIngredient.type);
     player.badIngredient.fall();
   }
 
