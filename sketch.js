@@ -150,8 +150,10 @@ function click(){
     console.log("PLAY!");
   }else if(arrowLeft.over()){
     choosenPizza = (choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1;
+    console.log("click - left");
   }else if(arrowRight.over()){
     choosenPizza = (choosenPizza < playersTypesCount-1) ? choosenPizza+1 : 0;
+    console.log("click - right");
   }
   console.log("Choosen Pizza: " + choosenPizza);
   return;
