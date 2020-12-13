@@ -71,7 +71,7 @@ function preload() {
   okImg = loadImage("img/layout/ok.png");
   endImg = loadImage("img/layout/gameoverScreen.png");
 
-  playAgainBtnImg = loadImage("img/layout/start_01.png");
+  playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
@@ -144,16 +144,26 @@ function draw() {
 
     image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
 
-    player.display();
-    player.ingredients.forEach((ingredient, i) => {ingredient.display();});
+    if(gameStatus == 2){
+      player.display();
+      player.ingredients.forEach((ingredient, i) => {ingredient.display();});
 
-    textSize(canvasWidth/16);
-    textAlign(CENTER);
-    text(points, canvasWidth - canvasWidth/12, canvasWidth/10);
-    image(pointsFrame, canvasWidth - canvasWidth/6, 0, canvasWidth/6, canvasWidth/6);
+      textSize(canvasWidth/16);
+      textAlign(CENTER);
+      text(points, canvasWidth - canvasWidth/12, canvasWidth/10);
+      image(pointsFrame, canvasWidth - canvasWidth/6, 0, canvasWidth/6, canvasWidth/6);
+    }
 
     if(gameStatus == 3){
       image(endImg, 0,0, canvasWidth, canvasHeight);
+      textAlign(CENTER);
+      fill('#fffcd3');
+      textSize(canvasWidth/18);
+      text("Game Over", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+      textSize(canvasWidth/25);
+      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
+      textSize(canvasWidth/18);
+      text("11 Pizz!!!", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
       playAgainBtn.display();
     }
     time += 25;
