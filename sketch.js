@@ -115,7 +115,7 @@ function draw() {
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     for(var i = 0; i<4; i++)
-      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/8*(i+1)), canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/8 + canvasWidth/7*i), canvasHeight/2-canvasWidth/14, canvasWidth/7, canvasWidth/7);
 
     playBtn.display();
     cursor(CROSS);
@@ -132,7 +132,8 @@ function draw() {
     textSize(canvasWidth/16);
     textAlign(CENTER);
     text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/7, canvasWidth/7);
-    image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/7, canvasWidth/7);
+    image(pointsFrame, canvasWidth - canvasWidth/7, canvasWidth/14, canvasWidth/7, canvasWidth/7);
+
     time += 25;
   }else{
     text("Game Over", canvasWidth/2, canvasWidth/2);
