@@ -163,7 +163,7 @@ function draw() {
       textSize(canvasWidth/25);
       text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth*3/16, canvasHeight/2);
       textSize(canvasWidth/18);
-      text("11 Pizz!!!", canvasWidth/2, ccanvasWidth/8);
+      text("11 Pizz!!!", canvasWidth/2, canvasWidth/8);
       playAgainBtn.display();
 
       cursor(CROSS);
