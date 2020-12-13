@@ -159,11 +159,11 @@ function draw() {
       textAlign(CENTER);
       fill('#fffcd3');
       textSize(canvasWidth/18);
-      text("Game Over", canvasWidth/4, canvasHeight/7, canvasWidth/2, canvasWidth/8);
+      text("Game Over", canvasWidth/2, canvasHeight/5);
       textSize(canvasWidth/25);
-      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight/6, canvasWidth/2, canvasWidth/8);
+      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/2, canvasHeight/2);
       textSize(canvasWidth/18);
-      text("11 Pizz!!!", canvasWidth/4, canvasHeight/5, canvasWidth/2, canvasWidth/8);
+      text("11 Pizz!!!", canvasWidth/2, canvasHeight*3/4);
       playAgainBtn.display();
     }
     time += 25;
