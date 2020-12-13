@@ -134,7 +134,7 @@ function getRandomIngredientY(){
 //End of TODO
 
 function getNextPizzaImgIndex(increment){
-  return increment ? ((choosenPizza+1)%(playersTypesCount-1)) : ((choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1)
+  return increment ? ((choosenPizza+1)%(playersTypesCount)) : ((choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1)
 }
 
 function getRandomInt(min, max) {
