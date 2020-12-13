@@ -47,6 +47,8 @@ var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
 [14, 19, 4, 20, 3],//mushroom
 ]
 
+var pizzaNames = ["4 sery", "Chicken curry", "Ham garlic", "Ham",
+"Hot salame", "Mushroom"];
 
 function preload() {
   canvasWidth = windowWidth*0.6;
@@ -94,7 +96,7 @@ function draw() {
 
     textAlign(CENTER);
     textSize(canvasWidth/30);
-    text("PIZZA NAME", canvasWidth*3/8, canvasHeight/2+canvasWidth/11, canvasWidth/4, canvasWidth/11)
+    text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/11, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
     arrowLeft.display();
