@@ -3,6 +3,9 @@ let cnvs;
 let canvasWidth;
 let canvasHeight;
 
+let font;
+let fontBold;
+
 var gameStatus = 0;
 var points = 0;
 
@@ -76,6 +79,9 @@ function preload() {
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
+  font = loadFont('fonts/OpenSans-Regular.ttf');
+  fontBold = loadFont('fonts/OpenSans-Bold.ttf')
+
   //TODO wrap to one loop
   for(var i = 0; i<ingredientsTypesCount; i++)
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
@@ -105,6 +111,7 @@ function draw() {
     textSize(canvasWidth/18);
     textAlign(CENTER);
     fill('#a91f13');
+    textFont(fontBold);
     text("Zagraj!", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -114,6 +121,7 @@ function draw() {
 
     textAlign(CENTER);
     textSize(canvasWidth/30);
+    textFont(fontBold);
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/11, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
@@ -126,6 +134,7 @@ function draw() {
     textSize(canvasWidth/18);
     textAlign(CENTER);
     fill('#a91f13');
+    textFont(fontBold);
     text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -151,6 +160,7 @@ function draw() {
 
       textSize(canvasWidth/22);
       textAlign(CENTER);
+      textFont(font);
       text(points, canvasWidth - canvasWidth/18, canvasWidth/14);
       image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
     }
@@ -160,10 +170,13 @@ function draw() {
       textAlign(CENTER);
       fill('#fffcd3');
       textSize(canvasWidth/18);
+      textFont(fontBold);
       text("Game Over", canvasWidth/2, canvasHeight/4);
       textSize(canvasWidth/33);
+      textFont(font);
       text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
       textSize(canvasWidth/18);
+      textFont(fontBold);
       text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
       playAgainBtn.display();
 
