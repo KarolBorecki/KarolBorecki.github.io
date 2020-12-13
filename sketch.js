@@ -148,6 +148,7 @@ function draw() {
     if(gameStatus == 2){
       player.display();
       player.ingredients.forEach((ingredient, i) => {ingredient.display();});
+      player.badIngredient.display();
 
       textSize(canvasWidth/16);
       textAlign(CENTER);
@@ -253,7 +254,6 @@ class Player {
   }
 
   display(){
-    player.badIngredient.display();
     if(gameStatus == 2){
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
