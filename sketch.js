@@ -38,6 +38,7 @@ let floorImg;
 let lifeImg;
 let pickUpEffectImg;
 let underline;
+let pointsFrame;
 
 var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
 [10, 6, 19, 5, 2], //chicken curry
@@ -58,6 +59,8 @@ function preload() {
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
+  pointsFrame = loadImage("img/layout/counterFrame.png");
+
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
@@ -115,8 +118,9 @@ function draw() {
     player.display();
     player.ingredients.forEach((ingredient, i) => {ingredient.display();});
 
-    textSize(canvasWidth/20);
-    text(points, canvasWidth - canvasWidth/10, 0, canvasWidth/10, canvasWidth/10);
+    textSize(canvasWidth/18);
+    text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+    image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
     time += 25;
   }else{
     text("Game Over", canvasWidth/2, canvasWidth/2);
