@@ -245,7 +245,7 @@ class Player {
       player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)], false));
       console.log(i + " - type = " + player.ingredients[i].type);
     }
-    player.badIngredient = new Ingredient(player.ingredientstsTypes[this.ingredients[5]], true);
+    player.badIngredient = new Ingredient(player.ingredientstsTypes[player.ingredients[5]], true);
 
     console.log("Count: " + player.ingredients.length);
   }
