@@ -246,7 +246,7 @@ class Player {
       console.log(i + " - type = " + player.ingredients[i].type);
     }
     player.badIngredient = new Ingredient(player.ingredientstsTypes[5], true);
-    console.log("bad - type = " + player.ingredients[i].type);
+    console.log("bad - type = " + player.badIngredient.type);
 
     console.log("Count: " + player.ingredients.length);
   }
