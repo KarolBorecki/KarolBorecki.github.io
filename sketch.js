@@ -321,7 +321,7 @@ class Ingredient {
       else if(this.standardY > player.startPosY - player.width/4 &&
         this.standardY < player.startPosY + player.width/6 &&
         this.x > mouseX - player.width/2 - this.width/4 &&
-        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked)
+        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked){
         if(this.isBad) gameStatus = 3;
         else points++;
 
