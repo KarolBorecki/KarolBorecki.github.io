@@ -5,7 +5,6 @@ let canvasHeight;
 
 var gameStatus = 0;
 var points = 0;
-var lifesLeft = 3;
 
 var maxSpeed = 7;
 var minSpeed = 4;
@@ -152,7 +151,7 @@ function draw() {
 
       textSize(canvasWidth/22);
       textAlign(CENTER);
-      text(points, canvasWidth - canvasWidth/18, canvasWidth/13);
+      text(points, canvasWidth - canvasWidth/18, canvasWidth/15);
       image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
     }
 
@@ -203,6 +202,16 @@ function click(){
   if(playBtn.over() && (gameStatus == 0 || gameStatus == 1)){
     gameStatus = (gameStatus==0) ? 1 : 2;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
+    points = 0;
+    time = 0;
+
+    maxSpeed = 7;
+    minSpeed = 4;
+
+    timeToNextIngredient = 1300;
+    timeToNextBadIngredient = 8000;
+    timeToAddingredient = 15000;
+    ingredientsCount = 5;
     player.start();
     console.log("----------------Play----------------");
   }else if(arrowLeft.over() && gameStatus == 0){
