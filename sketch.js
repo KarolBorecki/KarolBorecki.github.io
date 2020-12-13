@@ -77,9 +77,6 @@ function setup() {
     playBtnImg, canvasWidth/7, canvasWidth/7);
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
-
-  player = new Player(0, canvasWidth/4, canvasWidth/8, playersIngredients[0], 4);
-  player.start();
 }
 
 function draw() {
@@ -91,9 +88,9 @@ function draw() {
     text("Zagraj!", canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    image(playersImg[0], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
-    image(playersImg[1], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
-    image(playersImg[2], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+    image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+    image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
     textAlign(CENTER);
     textSize(canvasWidth/30);
@@ -134,6 +131,10 @@ function getRandomIngredientY(){
 }
 //End of TODO
 
+function getNextPizzaImgIndex(increment){
+  return increment ? ((choosenPizza+1)%(playersTypesCount-1)) : ((choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1)
+}
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -147,14 +148,16 @@ function mouseClicked() {
 function click(){
   if(playBtn.over()){
     gameStatus = 2;
+    player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
+    player.start();
     console.log("PLAY!");
     return;
   }else if(arrowLeft.over()){
-    choosenPizza = (choosenPizza > 0) ? choosenPizza-1 : playersTypesCount-1;
+    choosenPizza = getNextPizzaImgIndex(false);
     console.log("click - left  -  " + choosenPizza);
     return;
   }else if(arrowRight.over()){
-    choosenPizza = (choosenPizza < playersTypesCount-1) ? choosenPizza+1 : 0;
+    choosenPizza = getNextPizzaImgIndex(true);
     console.log("click - right - " + choosenPizza);
     return;
   }
