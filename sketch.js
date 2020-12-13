@@ -114,8 +114,8 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    for(var i = 0; i<4; i++)
-      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/8 + canvasWidth/7*i), canvasHeight/2-canvasWidth/14, canvasWidth/7, canvasWidth/7);
+    for(var i = 0; i<5; i++)
+      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/7*i), canvasHeight/2-canvasWidth/14, canvasWidth/6, canvasWidth/6);
 
     playBtn.display();
     cursor(CROSS);
@@ -131,7 +131,7 @@ function draw() {
 
     textSize(canvasWidth/16);
     textAlign(CENTER);
-    text(points, canvasWidth - canvasWidth/12, canvasWidth/8);
+    text(points, canvasWidth - canvasWidth/12, canvasWidth/10);
     image(pointsFrame, canvasWidth - canvasWidth/6, 0, canvasWidth/6, canvasWidth/6);
 
     time += 25;
