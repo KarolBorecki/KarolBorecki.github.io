@@ -69,7 +69,7 @@ function preload() {
   pointsFrame = loadImage("img/layout/counterFrame.png");
   xImg = loadImage("img/layout/x.png");
   okImg = loadImage("img/layout/ok.png");
-  endImg = loadImage("img/layout/gameOverScreen.png");
+  endImg = loadImage("img/layout/gameoverScreen.png");
 
   playAgainBtnImg = loadImage("img/layout/start_01.png");
 
