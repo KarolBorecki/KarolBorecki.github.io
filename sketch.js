@@ -152,7 +152,7 @@ function draw() {
 
       textSize(canvasWidth/16);
       textAlign(CENTER);
-      text(points, canvasWidth - canvasWidth/12, canvasWidth/10);
+      text(points, canvasWidth - canvasWidth/18, canvasWidth/18);
       image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
     }
 
