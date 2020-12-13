@@ -161,7 +161,7 @@ function draw() {
       textSize(canvasWidth/18);
       text("Game Over", canvasWidth/2, canvasHeight/4);
       textSize(canvasWidth/30);
-      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight/4, canvasWidth/2);
+      text("Udało ci się zebrać 34 składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
       textSize(canvasWidth/18);
       text("11 Pizz!!!", canvasWidth/2, canvasHeight/2);
       playAgainBtn.display();
