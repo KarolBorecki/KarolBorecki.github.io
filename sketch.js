@@ -39,6 +39,8 @@ let lifeImg;
 let pickUpEffectImg;
 let underline;
 let pointsFrame;
+let xImg;
+let okImg
 
 var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
 [10, 6, 19, 5, 2], //chicken curry
@@ -60,6 +62,8 @@ function preload() {
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
   pointsFrame = loadImage("img/layout/counterFrame.png");
+  xImg = loadImage("img/layout/x.png");
+  okImg = loadImage("img/layout/ok.png");
 
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
@@ -114,13 +118,15 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/8, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    for(var i = 0; i<5; i++)
+    for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2-canvasWidth/14, canvasWidth/6, canvasWidth/6);
+      if(i<4)image(okImg, (canvasWidth/12 + canvasWidth/6*(i+1)), canvasHeight/2, canvasWidth/15, canvasWidth/15);
+    }
 
     playBtn.display();
     cursor(CROSS);
     return;
-  }else if(gameStatus == 2){
+  }else{
     noCursor();
     mouseY = 0;
 
@@ -135,8 +141,6 @@ function draw() {
     image(pointsFrame, canvasWidth - canvasWidth/6, 0, canvasWidth/6, canvasWidth/6);
 
     time += 25;
-  }else{
-    text("Game Over", canvasWidth/2, canvasWidth/2);
   }
 }
 
@@ -198,6 +202,8 @@ class Player {
     this.startPosY = canvasHeight - this.height;
 
     this.lastFall = 0;
+
+    this.x = 0;
   }
 
   start(){
@@ -207,17 +213,19 @@ class Player {
     }
 
     console.log("Count: " + player.ingredients.length);
-
-    //setInterval(this.fallIngredient, timeToNextIngredient*1000);
-    //setInterval(this.addRandomIngredient, timeToAddingredient*1000);
   }
 
   display(){
-    image(this.img, mouseX - this.width/2, this.startPosY, this.width, this.height);
-    noTint();
+    if(gameStatus == 2){
+      this.x = mouseX - this.width/2;
+      image(this.img, this.x, this.startPosY, this.width, this.height);
+      noTint();
 
-    if(time%timeToNextIngredient == 0) this.fallIngredient();
-    if(time%timeToAddingredient == 0) this.addRandomIngredient();
+      if(time%timeToNextIngredient == 0) this.fallIngredient();
+      if(time%timeToAddingredient == 0) this.addRandomIngredient();
+    }else{
+      image(this.img, this.x, this.startPosY, this.width, this.height);
+    }
   }
 
   fallIngredient(){
