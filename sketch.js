@@ -131,8 +131,8 @@ function draw() {
 
     textSize(canvasWidth/16);
     textAlign(CENTER);
-    text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
-    image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+    text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/7, canvasWidth/7);
+    image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/7, canvasWidth/7);
     time += 25;
   }else{
     text("Game Over", canvasWidth/2, canvasWidth/2);
