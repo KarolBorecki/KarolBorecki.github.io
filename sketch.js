@@ -289,7 +289,7 @@ class Player {
     if(gameStatus != 2) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
     console.log("Spawning: " + type + " - speed: " + maxSpeed + " - timeToNextIngredient: " + timeToNextIngredient + " ingredientsCount: " + ingredientsCount);
-    player.ingredients.push(new Ingredient(type));
+    player.ingredients.push(new Ingredient(type, false));
     ingredientsCount++;
     if(timeToNextIngredient > 300)
       timeToNextIngredient-=100;
@@ -316,14 +316,14 @@ class Ingredient {
       this.standardY += this.speed;
       image(this.img, this.x, this.standardY, this.width, this.width);
       if(this.standardY > canvasHeight) {
-        if(this.isBad) gameStatus = 3;
         this.renew();
       }
       else if(this.standardY > player.startPosY - player.width/4 &&
         this.standardY < player.startPosY + player.width/6 &&
         this.x > mouseX - player.width/2 - this.width/4 &&
-        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked) {
-        points++;
+        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked)
+        if(this.isBad) gameStatus = 3;
+        else points++;
 
         this.isPicked = true;
       }
