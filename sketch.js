@@ -282,7 +282,7 @@ class Button {
 
   display() {
     stroke(0);
-    if (this.over()) noTint();
+    if (this.over()) tint(0,0,0);
     else noTint();
 
     image(this.img, this.x, this.y, this.width, this.height);
