@@ -115,7 +115,7 @@ function draw() {
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     for(var i = 0; i<4; i++)
-      image(playersIngredients[choosenPizza][i], (canvasWidth/8*(i+1)), canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/8*(i+1)), canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
 
     playBtn.display();
     cursor(CROSS);
