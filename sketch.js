@@ -284,7 +284,7 @@ class Player {
     for(var i=player.lastFall; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
-        console.log("Falling: " + player.ingredients[i].type + " speed: " + players.ingredients[i].speed + " (" + maxSpeed * Math.sqrt(maxSpeed) + ")");
+        console.log("Falling: " + player.ingredients[i].type + " speed: " + player.ingredients[i].speed + " (" + maxSpeed * Math.sqrt(maxSpeed) + ")");
         return;
       }
     player.addRandomIngredient();
