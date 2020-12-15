@@ -177,7 +177,7 @@ function draw() {
       text("Game Over", canvasWidth/2, canvasHeight/4);
       textSize(canvasWidth/33);
       //textFont(font);
-      text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
+      text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
       textSize(canvasWidth/18);
       //textFont(fontBold);
       text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
