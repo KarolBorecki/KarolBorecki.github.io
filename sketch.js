@@ -288,7 +288,7 @@ class Player {
     for(var i=player.lastFall; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
-        console.log("Falling: " + player.ingredients[i].type + " speed: " + player.ingredients[i].speed + " (" + maxSpeed * Math.sqrt(maxSpeed) + ")");
+        console.log("Falling: " + player.ingredients[i].type + " speed: " + player.ingredients[i].speed + " (" + maxSpeed * Math.sqrt(startMinSpeed) + ")");
         return;
       }
     player.addRandomIngredient();
@@ -341,7 +341,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/4, this.width*2, this.width*2);
+      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
@@ -355,7 +355,7 @@ class Ingredient {
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
     this.isFalling = false;
-    this.speed = random(minSpeed * Math.sqrt(minSpeed), maxSpeed * Math.sqrt(maxSpeed));
+    this.speed = random(minSpeed * Math.sqrt(startMinSpeed), maxSpeed * Math.sqrt(startMaxSpeed));
     this.isPicked = false;
     this.selfTimer = 0;
   }
