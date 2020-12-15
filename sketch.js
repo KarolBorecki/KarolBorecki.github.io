@@ -115,6 +115,7 @@ function draw() {
   background(255, 252, 212);
   noTint();
   if(playAgainBtn.over()) console.log("OVER PLAY AGAIN Btn");
+  if(playBtn.over()) console.log("OVER PLAY Btn");
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
@@ -180,7 +181,7 @@ function draw() {
       text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
       textSize(canvasWidth/19);
       text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
-      
+
       playAgainBtn.display();
 
       cursor(CROSS);
