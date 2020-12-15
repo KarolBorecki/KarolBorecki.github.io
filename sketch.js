@@ -10,7 +10,7 @@ var gameStatus = 0;
 var points = 0;
 
 var maxSpeed = 5;
-var minSpeed = 2;
+var minSpeed = 3.5;
 
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
@@ -66,8 +66,12 @@ var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
 "Ham & Salami hot", "Ham & Mushroom", "Barbecue", "Kebab", "Salami"];
 
 function preload() {
-  canvasWidth = windowWidth*0.6;
+  canvasWidth = windowWidth;
   canvasHeight = canvasWidth/1.8;
+  if(canvasHeight>windowHeight){
+    canvasHeight=windowHeight;
+    canvasWidth = canvasHeight*1.8;
+  }
 
   playBtnImg = loadImage("img/layout/start.png");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
@@ -310,7 +314,7 @@ class Player {
 class Ingredient {
   constructor(type, isBad){
     this.img = ingredientsImg[type];
-    this.width = canvasWidth/8;
+    this.width = canvasWidth/6;
     this.type = type;
     this.isBad = isBad;
 
@@ -337,7 +341,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-this.width/4, this.standardY+this.width/4, this.width*2, this.width*2);
+      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/2, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
