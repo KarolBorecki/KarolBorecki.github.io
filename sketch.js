@@ -17,6 +17,8 @@ var startMinSpeed = 1;
 
 var timeToNextIngredient = 2000;
 var timeToNextBadIngredient = 8000;
+var startTimeToNextIngredient = 1;
+var startTimeToNextBadIngredient = 1;
 var ingredientsCount = 5;
 
 var time = 0;
@@ -273,6 +275,9 @@ class Player {
     if(gameStatus == 2){
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
+
+      var val = 25*Math.floor(timeToNextIngredient*Math.sqrt(startTimeToNextIngredient));
+      console.log(val);
 
       if(time%timeToNextIngredient == 0) this.fallIngredient();
       if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
