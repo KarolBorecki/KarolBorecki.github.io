@@ -133,7 +133,7 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
-    playBtnAnim.position(canvasWidth*5/12, canvasHeight-canvasWidth/7);
+    playBtnAnim.position(canvasWidth*5/12+canvasWidth/20, canvasHeight-canvasWidth/7+canvasWidth/20);
     playBtnAnim.size(canvasWidth/7, canvasWidth/7);
     arrowLeft.display();
     arrowRight.display();
