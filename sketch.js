@@ -15,10 +15,9 @@ var minSpeed = 3.5;
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
-var timeToNextIngredient = 2000;
-var timeToNextBadIngredient = 8000;
-var startTimeToNextIngredient = 1;
-var startTimeToNextBadIngredient = 1;
+var timeToNextIngredient = 80;
+var timeToNextBadIngredient = 200;
+var timeDivider = 1;
 var ingredientsCount = 5;
 
 var time = 0;
@@ -276,11 +275,8 @@ class Player {
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
 
-      var val = Math.floor(timeToNextIngredient/Math.sqrt(startTimeToNextIngredient));
-      console.log(val + " --------- " + time/25);
-
-      if((time/25)%val == 0) this.fallIngredient();
-      if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
+      if((time/25)%Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)) == 0) this.fallIngredient();
+      if((time/25)%Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider)) == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
     }
@@ -305,7 +301,7 @@ class Player {
     player.badIngredient.fall();
     startMinSpeed += 1;
     startMaxSpeed += 1;
-    startTimeToNextIngredient += 0.5;
+    timeDivider += 0.5;
   }
 
   addRandomIngredient(){
