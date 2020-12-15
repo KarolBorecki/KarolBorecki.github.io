@@ -16,7 +16,7 @@ var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
 var timeToNextIngredient = 55;
-var timeToNextBadIngredient = 150;
+var timeToNextBadIngredient = 100;
 var timeDivider = 1;
 var ingredientsCount = 5;
 
@@ -218,7 +218,7 @@ function click(){
     startMinSpeed = 1;
 
     timeToNextIngredient = 60;
-    timeToNextBadIngredient = 150;
+    timeToNextBadIngredient = 100;
     ingredientsCount = 5;
     player.start();
     console.log("----------------Play----------------");
@@ -250,12 +250,13 @@ class Player {
     this.typesCount = typesCount;
 
     this.ingredients = [];
-    this.badIngredient;
+    this.badIngredient = [];
 
     this.startPosX = canvasWidth/2 - width/2;
     this.startPosY = canvasHeight - this.height;
 
     this.lastFall = 0;
+    this.lastFallBad = 0;
 
     this.x = 0;
   }
@@ -264,8 +265,8 @@ class Player {
     for(var i=0; i<ingredientsCount; i++){
       player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)], false));
     }
-    player.badIngredient = new Ingredient(player.ingredientstsTypes[4], true);
-    player.badIngredient.fall();
+    player.badIngredient[0] = new Ingredient(player.ingredientstsTypes[4], true);
+    player.badIngredient[0].fall();
 
   }
 
@@ -299,11 +300,19 @@ class Player {
 
   fallBadIngredient(){
     if(gameStatus != 2 || player.badIngredient.isFalling) return;
-    console.log("Falling bad ingredient " + player.badIngredient.type);
-    player.badIngredient.fall();
+
     startMinSpeed += 1;
     startMaxSpeed += 1;
     timeDivider += 0.1;
+
+    layer.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
+    for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
+      if(!player.badIngredient[i].isFalling){
+        player.badIngredient[i].fall();
+        console.log("Falling bad ingredient " + player.badIngredient.type);
+        return;
+      }
+    player.badIngredient.push(new Ingredient(player.ingredientstsTypes[4], true));
   }
 
   addRandomIngredient(){
