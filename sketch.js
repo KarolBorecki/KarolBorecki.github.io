@@ -145,7 +145,7 @@ function draw() {
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? canvasWidth/28 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
       if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/28 : 0), canvasWidth/15, canvasWidth/15);
     }
-    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2, canvasWidth/6, canvasWidth/6);
+    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
 
     playBtn.display();
     cursor(CROSS);
@@ -277,7 +277,7 @@ class Player {
       image(this.img, this.x, this.startPosY, this.width, this.height);
 
       var val = Math.floor(timeToNextIngredient/Math.sqrt(startTimeToNextIngredient));
-      console.log(val*25.0);
+      console.log(val + " --------- " + time/25);
 
       if(time%timeToNextIngredient == 0) this.fallIngredient();
       if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
