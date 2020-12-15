@@ -314,7 +314,7 @@ class Player {
 class Ingredient {
   constructor(type, isBad){
     this.img = ingredientsImg[type];
-    this.width = canvasWidth/6;
+    this.width = canvasWidth/7;
     this.type = type;
     this.isBad = isBad;
 
@@ -341,7 +341,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/2, this.width*2, this.width*2);
+      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/4, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
