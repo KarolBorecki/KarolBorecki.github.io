@@ -192,8 +192,8 @@ function draw() {
 
       cursor(CROSS);
     }
-    time += 25;
   }
+  time += 25;
 }
 
 //TODO move this function to ingredient as method
