@@ -107,6 +107,8 @@ function setup() {
 
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
+
+  //maxSpeed*= 
 }
 
 function draw() {
@@ -305,7 +307,7 @@ class Player {
     startMaxSpeed += 1;
     timeDivider += 0.1;
 
-    layer.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
+    player.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
     for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
       if(!player.badIngredient[i].isFalling){
         player.badIngredient[i].fall();
