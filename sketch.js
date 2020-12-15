@@ -75,7 +75,8 @@ function preload() {
     canvasWidth = canvasHeight*1.8;
   }
 
-  playBtnImg = loadImage("img/layout/start.png");
+  playBtnImg = loadImage("img/layout/start_01.png");
+  playBtnAnim =  loadImage("img/layout/playBtnAnim.gif");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   floorImg = loadImage("img/layout/floor.png");
@@ -89,7 +90,7 @@ function preload() {
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
-  pickupAnim = loadImage("img/layout/pickupEffect-Anim.gif");
+  //pickupAnim = loadImage("img/layout/pickupEffect-Anim.gif");
 
   for(var i = 0; i<ingredientsTypesCount; i++){
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
@@ -131,6 +132,7 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
+    image(playBtnAnim, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
     arrowLeft.display();
     arrowRight.display();
     cursor(CROSS);
@@ -359,7 +361,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickupAnim, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
+      image(pickupEffect, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
