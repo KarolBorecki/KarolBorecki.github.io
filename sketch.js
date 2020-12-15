@@ -276,8 +276,8 @@ class Player {
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
 
-      var val = Math.floor(timeToNextIngredient/Math.sqrt(startTimeToNextIngredient))*25;
-      console.log(val);
+      var val = Math.floor(timeToNextIngredient/Math.sqrt(startTimeToNextIngredient));
+      console.log(val*25);
 
       if(time%timeToNextIngredient == 0) this.fallIngredient();
       if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
