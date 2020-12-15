@@ -33,6 +33,9 @@ var player;
 var playersImg = [];
 let playersTypesCount = 9;
 
+var playerChooseAnimationState = 0;
+let playerAnimationTime = 2;
+
 var ingredientsImg = [];
 let ingredientsTypesCount = 21;
 
@@ -118,8 +121,9 @@ function draw() {
     text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
+    var centerPlayerAnimationX = time/playerAnimationTime*canvasWidth/20*playerChooseAnimationState;
     image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
-    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8 + centerPlayerAnimationX, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
     textAlign(CENTER);
@@ -131,6 +135,9 @@ function draw() {
     arrowLeft.display();
     arrowRight.display();
     cursor(CROSS);
+
+    if(centerPlayerAnimationX>=canvasWidth/12)
+    playerChooseAnimationState *= playerChooseAnimationState==1 ? -1 : 0;
     return;
   }
   else if(gameStatus == 1){
@@ -230,13 +237,18 @@ function click(){
     ingredientsCount = 5;
     player.start();
     console.log("----------------Play----------------");
-  }else if(arrowLeft.over() && gameStatus == 0){
+  }
+  if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
     console.log("click - left  -  " + choosenPizza);
-  }else if(arrowRight.over() && gameStatus == 0){
+    playerChooseAnimationState = 1;
+  }
+  if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
     console.log("click - right - " + choosenPizza);
-  }else if(playAgainBtn.over() && gameStatus == 3){
+    playerChooseAnimationState = 1;
+  }
+  if(playAgainBtn.over() && gameStatus == 3){
     gameStatus = 0;
     console.log("----------------Again----------------");
   }
