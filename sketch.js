@@ -371,7 +371,7 @@ class Ingredient {
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
     this.isFalling = false;
-    this.speed = random(minSpeed * Math.sqrt(startMinSpeed), maxSpeed * Math.sqrt(startMaxSpeed));
+    this.speed = random(minSpeed * Math.sqrt(startMinSpeed), maxSpeed * Math.sqrt(startMaxSpeed)) * canvasHeight/800;
     this.isPicked = false;
     this.selfTimer = 0;
   }
