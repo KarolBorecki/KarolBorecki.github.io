@@ -134,8 +134,8 @@ function draw() {
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     for(var i = 0; i<5; i++){
-      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? -canvasWidth/14 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
-      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10, canvasWidth/15, canvasWidth/15);
+      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
+      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/14 : 0), canvasWidth/15, canvasWidth/15);
     }
     image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2-canvasWidth/14, canvasWidth/6, canvasWidth/6);
 
@@ -296,8 +296,6 @@ class Player {
     if(gameStatus != 2 || player.badIngredient.isFalling) return;
     console.log("Falling bad ingredient " + player.badIngredient.type);
     player.badIngredient.fall();
-    if(timeToNextBadIngredient > 400)
-      timeToNextBadIngredient-=125;
   }
 
   addRandomIngredient(){
@@ -306,10 +304,6 @@ class Player {
     console.log("Spawning: " + type + " - speed: " + maxSpeed + " - timeToNextIngredient: " + timeToNextIngredient + " ingredientsCount: " + ingredientsCount);
     player.ingredients.push(new Ingredient(type, false));
     ingredientsCount++;
-    if(timeToNextIngredient > 300)
-      timeToNextIngredient-=100;
-    minSpeed+=0.1;
-    maxSpeed+=0.1;
   }
 }
 
