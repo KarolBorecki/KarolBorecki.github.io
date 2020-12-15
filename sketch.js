@@ -279,7 +279,7 @@ class Player {
       var val = Math.floor(timeToNextIngredient/Math.sqrt(startTimeToNextIngredient));
       console.log(val + " --------- " + time/25);
 
-      if(time%timeToNextIngredient == 0) this.fallIngredient();
+      if((time/25)%val == 0) this.fallIngredient();
       if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
