@@ -121,7 +121,7 @@ function draw() {
     text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    var centerPlayerAnimationX = time/playerAnimationTime*(canvasWidth/2*canvasWidth)*playerChooseAnimationState;
+    var centerPlayerAnimationX = time/playerAnimationTime*(canvasWidth/canvasWidth)*playerChooseAnimationState;
     image(playersImg[choosenPizza], canvasWidth*3/8 + centerPlayerAnimationX, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
