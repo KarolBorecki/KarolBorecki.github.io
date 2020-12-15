@@ -170,7 +170,7 @@ function draw() {
     }
 
     if(gameStatus == 3){
-      image(endImg, 0,0, canvasWidth, canvasHeight);
+      //image(endImg, 0,0, canvasWidth, canvasHeight);
       textAlign(CENTER);
       fill('#fffcd3');
       textSize(canvasWidth/19);
@@ -390,7 +390,7 @@ class Button {
   display() {
     stroke(0);
     if (this.over()) tint(84, 28, 16);
-    else noTint();
+    else tint(65, 9, 7);
 
     image(this.img, this.x, this.y, this.width, this.height);
   }
