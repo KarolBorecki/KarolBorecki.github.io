@@ -275,8 +275,8 @@ class Player {
       image(this.img, this.x, this.startPosY, this.width, this.height);
       noTint();
 
-      if(time%25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider))) == 0) this.fallIngredient();
-      if(time%25*(Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider))) == 0) this.fallBadIngredient();
+      if(time%(25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)))) == 0) this.fallIngredient();
+      if(time%(25*(Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider))) == 0)) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
     }
@@ -301,13 +301,13 @@ class Player {
     player.badIngredient.fall();
     startMinSpeed += 1;
     startMaxSpeed += 1;
-    timeDivider += 0.5;
+    timeDivider *= 1.2;
   }
 
   addRandomIngredient(){
     if(gameStatus != 2) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
-    console.log("Spawning: " + type + " - speed: " + maxSpeed + " - timeToNextIngredient: " + timeToNextIngredient + " ingredientsCount: " + ingredientsCount);
+    console.log("Spawning: " + type + " - speed: " + maxSpeed * Math.sqrt(maxSpeed) + " - timeToNextIngredient: " + (25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)))) == 0) + " ingredientsCount: " + ingredientsCount);
     player.ingredients.push(new Ingredient(type, false));
     ingredientsCount++;
   }
