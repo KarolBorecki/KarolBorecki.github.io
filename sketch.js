@@ -9,8 +9,8 @@ let fontBold;
 var gameStatus = 0;
 var points = 0;
 
-var maxSpeed = 7;
-var minSpeed = 4;
+var maxSpeed = 5;
+var minSpeed = 2;
 
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
@@ -279,12 +279,12 @@ class Player {
 
   fallIngredient(){
     if(gameStatus != 2) return;
-    console.log("Trying to fall with lastFall = " + player.lastFall);
+    //console.log("Trying to fall with lastFall = " + player.lastFall);
     player.lastFall=getRandomInt(0, player.ingredients.length-1);
     for(var i=player.lastFall; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
-        console.log("Falling: " + player.ingredients[i].type);
+        console.log("Falling: " + player.ingredients[i].type + " speed: " + players.ingredients[i].speed + " (" + maxSpeed * Math.sqrt(maxSpeed) + ")");
         return;
       }
     player.addRandomIngredient();
@@ -310,7 +310,7 @@ class Player {
 class Ingredient {
   constructor(type, isBad){
     this.img = ingredientsImg[type];
-    this.width = canvasWidth/10;
+    this.width = canvasWidth/8;
     this.type = type;
     this.isBad = isBad;
 
@@ -337,7 +337,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-this.width/4, this.standardY+this.width/4, this.width*1.5, this.width*1.5);
+      image(pickUpEffectImg, this.x-this.width/4, this.standardY+this.width/4, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
