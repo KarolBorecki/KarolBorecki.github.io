@@ -301,7 +301,7 @@ class Player {
     player.badIngredient.fall();
     startMinSpeed += 1;
     startMaxSpeed += 1;
-    timeDivider *= 1.2;
+    timeDivider += 1;
   }
 
   addRandomIngredient(){
