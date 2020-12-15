@@ -33,7 +33,7 @@ var player;
 var playersImg = [];
 let playersTypesCount = 9;
 
-var playerChooseAnimationState = 1;
+var playerChooseAnimationState = 3;
 let playerAnimationTime = 25;
 var centerPlayerAnimationX = 0;
 
@@ -137,8 +137,8 @@ function draw() {
     arrowRight.display();
     cursor(CROSS);
 
-    if(centerPlayerAnimationX>=canvasWidth/10 || centerPlayerAnimationX<=-canvasWidth/10)
-      playerChooseAnimationState *= playerChooseAnimationState==1 ? -1 : 0;
+    if(centerPlayerAnimationX>=canvasWidth/15 || centerPlayerAnimationX<=-canvasWidth/15)
+      playerChooseAnimationState *= playerChooseAnimationState==3 ? -3 : 0;
     
     time += 25;
     return;
