@@ -108,7 +108,7 @@ function setup() {
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
 
-  //maxSpeed*= 
+  //maxSpeed*=
 }
 
 function draw() {
@@ -160,7 +160,7 @@ function draw() {
     if(gameStatus == 2){
       player.display();
       player.ingredients.forEach((ingredient, i) => {ingredient.display();});
-      player.badIngredient.display();
+      player.badIngredient.forEach((badIngredient, i) => {badIngredient.display();});
 
       textSize(canvasWidth/22);
       textAlign(CENTER);
