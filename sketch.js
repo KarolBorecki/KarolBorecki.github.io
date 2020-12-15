@@ -26,6 +26,7 @@ var choosenPizza = 0;
 
 let playBtn;
 let playBtnImg;
+let playBtnAnim;
 
 let arrowLeft;
 let arrowRight;
