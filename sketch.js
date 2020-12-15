@@ -15,7 +15,7 @@ var minSpeed = 4;
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
-var timeToNextIngredient = 100;
+var timeToNextIngredient = 10000;
 var timeToNextBadIngredient = 200;
 var timeDivider = 1;
 var ingredientsCount = 5;
