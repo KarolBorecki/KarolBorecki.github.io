@@ -274,8 +274,8 @@ class Player {
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
 
-      if(time%(25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)))) == 0) this.fallIngredient();
-      if(time%(25*(Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider)))) == 0) this.fallBadIngredient();
+      if(time%25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider))) == 0) this.fallIngredient();
+      if(time%25*(Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider))) == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
     }
