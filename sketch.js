@@ -15,9 +15,8 @@ var minSpeed = 4;
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
-var timeToNextIngredient = 100;
-var timeToNextBadIngredient = 200;
-var timeDivider = 1;
+var timeToNextIngredient = 2000;
+var timeToNextBadIngredient = 8000;
 var ingredientsCount = 5;
 
 var time = 0;
@@ -260,23 +259,19 @@ class Player {
   start(){
     for(var i=0; i<ingredientsCount; i++){
       player.ingredients.push(new Ingredient(player.ingredientstsTypes[i%(this.typesCount-1)], false));
-      console.log(i + " - type = " + player.ingredients[i].type);
     }
     player.badIngredient = new Ingredient(player.ingredientstsTypes[4], true);
-    console.log("bad - type = " + player.badIngredient.type);
     player.badIngredient.fall();
 
-    console.log("Count: " + player.ingredients.length);
   }
 
   display(){
     if(gameStatus == 2){
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
-      var val = 25*timeToNextIngredient;
-      console.log(val);
-      if(time%val == 0) this.fallIngredient();
-      if(time%(25*Math.floor(timeToNextBadIngredient/timeDivider)) == 0) this.fallBadIngredient();
+
+      if(time%timeToNextIngredient == 0) this.fallIngredient();
+      if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
     }
@@ -301,7 +296,6 @@ class Player {
     player.badIngredient.fall();
     startMinSpeed += 1;
     startMaxSpeed += 1;
-    //timeDivider += 1;
   }
 
   addRandomIngredient(){
