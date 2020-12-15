@@ -114,6 +114,7 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   noTint();
+  if(playAgainBtn.over()) console.log("OVER PLAY AGAIN Btn");
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
