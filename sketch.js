@@ -15,7 +15,7 @@ var minSpeed = 3.5;
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
-var timeToNextIngredient = 80;
+var timeToNextIngredient = 55;
 var timeToNextBadIngredient = 150;
 var timeDivider = 1;
 var ingredientsCount = 5;
@@ -217,7 +217,7 @@ function click(){
     startMaxSpeed = 1;
     startMinSpeed = 1;
 
-    timeToNextIngredient = 80;
+    timeToNextIngredient = 60;
     timeToNextBadIngredient = 150;
     ingredientsCount = 5;
     player.start();
@@ -303,7 +303,7 @@ class Player {
     player.badIngredient.fall();
     startMinSpeed += 1;
     startMaxSpeed += 1;
-    timeDivider += 0.5;
+    timeDivider += 0.1;
   }
 
   addRandomIngredient(){
