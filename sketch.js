@@ -15,9 +15,9 @@ var minSpeed = 3.5;
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
-var timeToNextIngredient = 55;
-var timeToNextBadIngredient = 100;
-var timeDivider = 1;
+var timeToNextIngredient;
+var timeToNextBadIngredient;
+var timeDivider;
 var ingredientsCount = 5;
 
 var time = 0;
@@ -218,9 +218,10 @@ function click(){
 
     startMaxSpeed = 1;
     startMinSpeed = 1;
+    timeDivider = 1;
 
     timeToNextIngredient = 60;
-    timeToNextBadIngredient = 100;
+    timeToNextBadIngredient = 150;
     ingredientsCount = 5;
     player.start();
     console.log("----------------Play----------------");
@@ -303,8 +304,8 @@ class Player {
   fallBadIngredient(){
     if(gameStatus != 2 || player.badIngredient.isFalling) return;
 
-    startMinSpeed += 1;
-    startMaxSpeed += 1;
+    startMinSpeed += 0.4;
+    startMaxSpeed += 0.4;
     timeDivider += 0.1;
 
     player.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
