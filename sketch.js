@@ -12,9 +12,12 @@ var points = 0;
 var maxSpeed = 7;
 var minSpeed = 4;
 
+var startMaxSpeed = 1;
+var startMinSpeed = 1;
+
 var timeToNextIngredient = 1300;
 var timeToNextBadIngredient = 8000;
-var timeToAddingredient = 15000;
+var timeDivider = 1;
 var ingredientsCount = 5;
 
 var time = 0;
@@ -137,7 +140,7 @@ function draw() {
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
       if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/14 : 0), canvasWidth/15, canvasWidth/15);
     }
-    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2-canvasWidth/14, canvasWidth/6, canvasWidth/6);
+    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2, canvasWidth/6, canvasWidth/6);
 
     playBtn.display();
     cursor(CROSS);
@@ -207,8 +210,8 @@ function click(){
     points = 0;
     time = 0;
 
-    maxSpeed = 7;
-    minSpeed = 4;
+    startMaxSpeed = 1;
+    startMinSpeed = 1;
 
     timeToNextIngredient = 1300;
     timeToNextBadIngredient = 8000;
@@ -272,8 +275,8 @@ class Player {
       image(this.img, this.x, this.startPosY, this.width, this.height);
       noTint();
 
-      if(time%timeToNextIngredient == 0) this.fallIngredient();
-      if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
+      if(time%25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider))) == 0) this.fallIngredient();
+      if(time%25*(Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider))) == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
     }
@@ -296,6 +299,9 @@ class Player {
     if(gameStatus != 2 || player.badIngredient.isFalling) return;
     console.log("Falling bad ingredient " + player.badIngredient.type);
     player.badIngredient.fall();
+    startMinSpeed += 1;
+    startMaxSpeed += 1;
+    timeDivider += 1;
   }
 
   addRandomIngredient(){
@@ -351,7 +357,7 @@ class Ingredient {
     this.standardY = getRandomIngredientY();
     this.x = getRandomIngredientX();
     this.isFalling = false;
-    this.speed = random(minSpeed, maxSpeed);
+    this.speed = random(minSpeed * Math.sqrt(minSpeed), maxSpeed * Math.sqrt(maxSpeed));
     this.isPicked = false;
     this.selfTimer = 0;
   }
