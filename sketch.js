@@ -15,7 +15,7 @@ var minSpeed = 4;
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
 
-var timeToNextIngredient = 10000;
+var timeToNextIngredient = 100;
 var timeToNextBadIngredient = 200;
 var timeDivider = 1;
 var ingredientsCount = 5;
@@ -273,8 +273,9 @@ class Player {
     if(gameStatus == 2){
       this.x = mouseX - this.width/2;
       image(this.img, this.x, this.startPosY, this.width, this.height);
-
-      if(time%(25*Math.floor(timeToNextIngredient/Math.sqrt(timeDivider))) == 0) this.fallIngredient();
+      var val = (25*Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)));
+      console.log(val);
+      if(time%val == 0) this.fallIngredient();
       if(time%(25*Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider))) == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
