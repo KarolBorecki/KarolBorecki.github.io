@@ -135,15 +135,15 @@ function draw() {
     return;
   }
   else if(gameStatus == 1){
-    textSize(canvasWidth/23);
+    textSize(canvasWidth/28);
     textAlign(CENTER);
     fill('#a91f13');
     text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
     for(var i = 0; i<5; i++){
-      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
-      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/14 : 0), canvasWidth/15, canvasWidth/15);
+      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? canvasWidth/28 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
+      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/28 : 0), canvasWidth/15, canvasWidth/15);
     }
     image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2, canvasWidth/6, canvasWidth/6);
 
@@ -171,11 +171,11 @@ function draw() {
       image(endImg, 0,0, canvasWidth, canvasHeight);
       textAlign(CENTER);
       fill('#fffcd3');
-      textSize(canvasWidth/18);
+      textSize(canvasWidth/19);
       text("Game Over", canvasWidth/2, canvasHeight/4);
-      textSize(canvasWidth/33);
+      textSize(canvasWidth/34);
       text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
-      textSize(canvasWidth/18);
+      textSize(canvasWidth/19);
       text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
       playAgainBtn.display();
 
@@ -277,7 +277,7 @@ class Player {
       image(this.img, this.x, this.startPosY, this.width, this.height);
 
       var val = Math.floor(timeToNextIngredient/Math.sqrt(startTimeToNextIngredient));
-      console.log(val*25);
+      console.log(val*25.0);
 
       if(time%timeToNextIngredient == 0) this.fallIngredient();
       if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
