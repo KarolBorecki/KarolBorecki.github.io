@@ -114,7 +114,7 @@ function setup() {
 function draw() {
   background(255, 252, 212);
   noTint();
-  console.log("play btn: " + platBtn.over() + " --- play again btn " + playAgainBtn.over());
+  console.log("play btn: " + playBtn.over() + " --- play again btn " + playAgainBtn.over());
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
