@@ -307,7 +307,7 @@ class Player {
   addRandomIngredient(){
     if(gameStatus != 2) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
-    console.log("Spawning: " + type + " - speed: " + maxSpeed * Math.sqrt(maxSpeed) + " - timeToNextIngredient: " + (25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)))) == 0) + " ingredientsCount: " + ingredientsCount);
+    console.log("Spawning: " + type + " - speed: " + maxSpeed * Math.sqrt(maxSpeed) + " - timeToNextIngredient: " + (25*(Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)))) + " ingredientsCount: " + ingredientsCount);
     player.ingredients.push(new Ingredient(type, false));
     ingredientsCount++;
   }
