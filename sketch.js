@@ -48,6 +48,7 @@ let pointsFrame;
 let xImg;
 let okImg
 let endImg;
+let pickupAnim;
 
 let playAgainBtn;
 let playAgainBtnImg;
@@ -88,6 +89,8 @@ function preload() {
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
+  pickupAnim = loadImage("img/layout/pickupEffect-Anim.gif");
+
   for(var i = 0; i<ingredientsTypesCount; i++){
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
     if(i<playersTypesCount)playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
@@ -107,14 +110,11 @@ function setup() {
 
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
-
-  //maxSpeed*=
 }
 
 function draw() {
   background(255, 252, 212);
   noTint();
-  console.log("play btn: " + playBtn.over() + " --- play again btn " + playAgainBtn.over());
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
@@ -359,7 +359,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
+      image(pickupAnim, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
