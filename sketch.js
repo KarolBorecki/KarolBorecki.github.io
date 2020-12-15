@@ -77,8 +77,8 @@ function preload() {
   }
 
   playBtnImg = loadImage("img/layout/start_01.png");
-  playBtnAnim =  loadImage("img/layout/playBtnAnim.gif");
-  playAgainBtnImg = createImg("img/layout/playAgain.png");
+  playBtnAnim =  createImg("img/layout/playBtnAnim.gif");
+  playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
