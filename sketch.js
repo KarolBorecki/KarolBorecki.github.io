@@ -217,9 +217,8 @@ function click(){
     startMaxSpeed = 1;
     startMinSpeed = 1;
 
-    timeToNextIngredient = 1300;
-    timeToNextBadIngredient = 8000;
-    timeToAddingredient = 15000;
+    timeToNextIngredient = 80;
+    timeToNextBadIngredient = 150;
     ingredientsCount = 5;
     player.start();
     console.log("----------------Play----------------");
