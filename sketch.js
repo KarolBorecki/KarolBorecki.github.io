@@ -388,8 +388,8 @@ class Button {
 
   display() {
     stroke(0);
-    if (this.over()) fill(84, 28, 16);
-    else fill(255, 255, 255);
+    if (this.over()) tint(84, 28, 16);
+    else noTint();
 
     image(this.img, this.x, this.y, this.width, this.height);
   }
