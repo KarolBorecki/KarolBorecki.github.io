@@ -155,11 +155,10 @@ function draw() {
     return;
   }else{
     noCursor();
-    mouseY = 0;
-
     image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
 
     if(gameStatus == 2){
+      mouseY = 0;
       player.display();
       player.ingredients.forEach((ingredient, i) => {ingredient.display();});
       player.badIngredient.forEach((badIngredient, i) => {badIngredient.display();});
