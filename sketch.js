@@ -136,7 +136,7 @@ function draw() {
     arrowRight.display();
     cursor(CROSS);
 
-    if(centerPlayerAnimationX>=canvasWidth/12 || centerPlayerAnimationX<=-canvasWidth/12)
+    if(centerPlayerAnimationX>=canvasWidth/3 || centerPlayerAnimationX<=-canvasWidth/3)
     playerChooseAnimationState *= playerChooseAnimationState==1 ? -1 : 0;
     return;
   }
