@@ -170,7 +170,7 @@ function draw() {
     }
 
     if(gameStatus == 3){
-      //image(endImg, 0,0, canvasWidth, canvasHeight);
+      image(endImg, 0,0, canvasWidth, canvasHeight);
       textAlign(CENTER);
       fill('#fffcd3');
       textSize(canvasWidth/19);
@@ -179,6 +179,7 @@ function draw() {
       text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
       textSize(canvasWidth/19);
       text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
+      
       playAgainBtn.display();
 
       cursor(CROSS);
@@ -390,7 +391,7 @@ class Button {
   display() {
     stroke(0);
     if (this.over()) tint(84, 28, 16);
-    else tint(65, 9, 7);
+    else noTint();//tint(65, 9, 7);
 
     image(this.img, this.x, this.y, this.width, this.height);
   }
