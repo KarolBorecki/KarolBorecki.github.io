@@ -138,6 +138,8 @@ function draw() {
 
     if(centerPlayerAnimationX>=canvasWidth/3 || centerPlayerAnimationX<=-canvasWidth/3)
     playerChooseAnimationState *= playerChooseAnimationState==1 ? -1 : 0;
+    
+    time += 25;
     return;
   }
   else if(gameStatus == 1){
@@ -192,8 +194,8 @@ function draw() {
 
       cursor(CROSS);
     }
+    time += 25;
   }
-  time += 25;
 }
 
 //TODO move this function to ingredient as method
