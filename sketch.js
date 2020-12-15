@@ -31,7 +31,7 @@ let arrowLeftImg;
 
 var player;
 var playersImg = [];
-let playersTypesCount = 6;
+let playersTypesCount = 9;
 
 var ingredientsImg = [];
 let ingredientsTypesCount = 21;
@@ -49,16 +49,19 @@ let endImg;
 let playAgainBtn;
 let playAgainBtnImg;
 
-var playersIngredients = [[0, 11, 18, 19, 16], //4 sery
-[10, 6, 19, 5, 2], //chicken curry
+var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
+[10, 6, 19, 5, 2], //Chicken curry
 [15, 19, 1, 20, 8], //ham garlic
 [3, 20, 19, 12, 14], //ham
 [16, 20, 19, 7, 5], //hot salame
 [14, 19, 4, 20, 3],//mushroom
+[4, 17, 19, 13, 12],//barbecue
+[2, 8, 12, 19, 13],//kebab
+[19, 9, 16, 5, 7]//Salami
 ]
 
-var pizzaNames = ["4 sery", "Chicken curry", "Ham garlic", "Ham",
-"Hot salame", "Mushroom"];
+var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
+"Ham & Salami hot", "Ham & Mushroom", "Barbecue", "Kebab", "Salami"];
 
 function preload() {
   canvasWidth = windowWidth*0.6;
@@ -279,7 +282,6 @@ class Player {
       noTint();
 
       if(time%timeToNextIngredient == 0) this.fallIngredient();
-      if(time%timeToAddingredient == 0) this.addRandomIngredient();
       if(time%timeToNextBadIngredient == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.startPosY, this.width, this.height);
@@ -294,15 +296,16 @@ class Player {
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
         console.log("Falling: " + player.ingredients[i].type);
-        break;
+        return;
       }
+    player.addRandomIngredient();
   }
 
   fallBadIngredient(){
-    if(gameStatus != 2) return;
+    if(gameStatus != 2 || player.badIngredient.isFalling) return;
     console.log("Falling bad ingredient " + player.badIngredient.type);
     player.badIngredient.fall();
-    if(timeToNextBadIngredient > 600)
+    if(timeToNextBadIngredient > 400)
       timeToNextBadIngredient-=125;
   }
 
