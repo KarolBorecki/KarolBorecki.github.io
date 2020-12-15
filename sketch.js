@@ -33,7 +33,7 @@ var player;
 var playersImg = [];
 let playersTypesCount = 9;
 
-var playerChooseAnimationState = 0;
+var playerChooseAnimationState = 1;
 let playerAnimationTime = 100;
 
 var ingredientsImg = [];
