@@ -429,8 +429,8 @@ class GifBtn {
     for(var i = 0; i<frames; i++)
       this.img[i] = loadImage(path.toString()+ "/" + (i+1).toString() + ".png");
 
-    this.x = posX;
-    this.y = posY;
+    this.x = 0;
+    this.y = 0;
     this.width = width;
     this.height = height;
 
