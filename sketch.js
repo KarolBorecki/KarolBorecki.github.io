@@ -134,20 +134,16 @@ function draw() {
     textSize(canvasWidth/30);
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
-    playBtn.display();
+    playBtn.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
     //playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
     //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
-    arrowLeft.display();
-    arrowRight.display();
+
 
     if(Math.abs(arrowMove)>canvasWidth/20) arrowMoveRight = !arrowMoveRight;
     arrowMove += (arrowMoveRight) ? 2 : -2;
 
-    if(arrowRight.over())
-      arrowRight.x += arrowMove;
-    else if(arrowLeft.over())
-      arrowLeft.x+= arrowMove;
-    else arrowMove = 0;
+    arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
+    arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
 
     cursor(CROSS);
 
@@ -404,12 +400,12 @@ class Button {
     this.height = height;
   }
 
-  display() {
+  display(x, y) {
     stroke(0);
     if (this.over()) tint(84, 28, 16);
     else noTint();//tint(65, 9, 7);
 
-    image(this.img, this.x, this.y, this.width, this.height);
+    image(this.img, x, y, this.width, this.height);
   }
 
   over() {
