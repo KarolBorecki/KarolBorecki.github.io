@@ -421,7 +421,7 @@ class Gif {
   constructor(path, frames, posX, posY, width, height) {
     this.img = [];
     for(var i = 0; i<frames; i++)
-      this.img[i] = loadImage(path.toString() + i.toString() + ".png");
+      this.img[i] = loadImage(path.toString() + (i+1).toString() + ".png");
 
     this.x = posX;
     this.y = posY;
