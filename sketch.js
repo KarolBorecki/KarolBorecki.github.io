@@ -67,8 +67,8 @@ var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
 var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
 "Ham & Salami hot", "Ham & Mushroom", "Barbecue", "Kebab", "Salami"];
 
-var pizzaMove = 0;
-var pizzaMoveState = 0;
+var arrowMove = 0;
+var arrowMoveRight = true;
 
 function preload() {
   canvasWidth = windowWidth;
@@ -126,12 +126,6 @@ function draw() {
     text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    if(pizzaMove>canvasWidth/20) pizzaMoveState==1;
-    if(pizzaMoveState!=2) pizzaMove += (pizzaMoveState==0) ? 2 : -2;
-    if(pizzaMoveState == 1 && (pizzaMove<=canvasWidth/100 || pizzaMove>=-canvasWidth/100)){
-      pizzaMoveState = 2
-    }
-
     image(playersImg[choosenPizza], canvasWidth*3/8 + pizzaMove, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
@@ -145,6 +139,16 @@ function draw() {
     //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
     arrowLeft.display();
     arrowRight.display();
+
+    if(Math.abs(arrowMove)>canvasWidth/20) arrowMoveRight = !arrowMoveRight;
+    arrowMove += (arrowMoveRight) ? 2 : -2;
+
+    if(arrowRight.over())
+      arrowRight.x += arrowMove;
+    else if(arrowLeft.over())
+      arrowLeft.x+= arrowMove;
+    else arrowMove = 0;
+    
     cursor(CROSS);
 
     return;
