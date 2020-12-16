@@ -2,8 +2,8 @@
   <head>
   </head>
   <body>
-    <div id="squareContainer">
-      <div id="square">
+    <div id="game-container">
+      <div id="game">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
         <script src="sketch.js"></script>
       </div>
@@ -15,20 +15,20 @@
       background-color: black;
     }
 
-    #squareContainer {
+    #game-container {
       display: flex;
-      width: 50%;
-      height: 50%;
-      margin: 0 auto;
-      background-color: white;
-    }
-
-    #square {
-      box-sizing: border-box;
       width: 80%;
       height: 80%;
-      margin: auto;
+      margin: 0 auto;
       background-color: red;
+    }
+
+    #game {
+      box-sizing: border-box;
+      width: 90%;
+      height: 90%;
+      margin: auto;
+      background-color: green;
     }
   </style>
 </html>
