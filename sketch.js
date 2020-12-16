@@ -79,7 +79,7 @@ function preload() {
   }
 
   playBtnImg = loadImage("img/layout/start_01.png");
-  playBtnAnim =  createImg("img/layout/playBtnAnim.gif");
+  //playBtnAnim =  createImg("img/layout/playBtnAnim.gif");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   floorImg = loadImage("img/layout/floor.png");
@@ -128,7 +128,7 @@ function draw() {
 
     if(Math.abs(pizzaMove)>canvasWidth/12) pizzaMoveRight = !pizzaMoveRight;
     pizzaMove += (pizzaMoveRight) ? 2 : -2;
-    image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+    image(playersImg[choosenPizza], canvasWidth*3/8 + pizzaMove, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
