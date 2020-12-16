@@ -109,13 +109,10 @@ function setup() {
     maxSpeed+=3;
   }
 
-  playBtn = new Button(canvasWidth*5/12, canvasHeight-canvasWidth/7,
-    playBtnImg, canvasWidth/7, canvasWidth/7);
-  playAgainBtn = new Button(canvasWidth/2-canvasWidth/14, canvasHeight/2,
-    playAgainBtnImg, canvasWidth/7, canvasWidth/7);
+  playAgainBtn = new Button(playAgainBtnImg, canvasWidth/7, canvasWidth/7);
 
-  arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
-  arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
+  arrowLeft  = new Button(arrowLeftImg, canvasWidth/8, canvasWidth/11)
+  arrowRight  = new Button(arrowRightImg, canvasWidth/8, canvasWidth/11)
 
   playGIF = new GifBtn("img/layout/playBtn", 15, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
 }
@@ -146,98 +143,131 @@ function touchMoved(event) {
 function draw() {
   background(255, 252, 212);
   noTint();
+  if(gameStatus == 0) menuView();
+  else if(gameStatus == 1) instructionView();
+  else if(gameStatus == 2)gameView();
+  else if(gameStatus == 3)endView();
+}
 
-  if(gameStatus == 0){
-    textSize(canvasWidth/18);
-    if(isVertical)textSize(canvasWidth/12);
-    textAlign(CENTER);
-    fill('#a91f13');
-    text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
-    image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
+function gameView(){
+  noCursor();
+  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+  mouseY = 0;
+  player.display();
+  player.ingredients.forEach((ingredient, i) => {ingredient.display();});
+  player.badIngredient.forEach((badIngredient, i) => {badIngredient.display();});
 
-    image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
-    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
-    image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+  textSize(canvasWidth/22);
+  textAlign(CENTER);
+  text(points, canvasWidth - canvasWidth/18, canvasWidth/14);
+  image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+  time += 25;
+}
 
-    textAlign(CENTER);
-    textSize(canvasWidth/30);
-    text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
+function menuView(){
+  textSize(canvasWidth/18);
+  if(isVertical)textSize(canvasWidth/12);
+  textAlign(CENTER);
+  fill('#a91f13');
+  text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
+  image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    //playBtn.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
-    //playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
-    //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
-    playGIF.display();
-    if(playGIF.over()) {
-      console.log("OVER");
-      playGIF.play();
-    }
-    else playGIF.stop();
+  image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+  image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+  image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
-    if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
-    arrowMove += (arrowMoveRight) ? 2 : -2;
-    if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
-    arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
-    arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
+  textAlign(CENTER);
+  textSize(canvasWidth/30);
+  text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
-    cursor(CROSS);
-
-    return;
+  playGIF.display();
+  if(playGIF.over()) {
+    console.log("OVER");
+    playGIF.play();
   }
-  else if(gameStatus == 1){
-    textSize(canvasWidth/28);
-    textAlign(CENTER);
-    fill('#a91f13');
-    text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
-    image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
+  else playGIF.stop();
 
-    for(var i = 0; i<5; i++){
-      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? canvasWidth/28 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
-      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/28 : 0), canvasWidth/15, canvasWidth/15);
-    }
-    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
+  if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
+  arrowMove += (arrowMoveRight) ? 2 : -2;
+  if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
+  arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
+  arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
 
-    //playBtn.display();
-    playGIF.display();
-    if(playGIF.over()) {
-      console.log("OVER");
-      playGIF.play();
-    }
-    else playGIF.stop();
-    cursor(CROSS);
-    return;
-  }else{
-    noCursor();
-    image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+  cursor(CROSS);
+}
 
-    if(gameStatus == 2){
-      mouseY = 0;
-      player.display();
-      player.ingredients.forEach((ingredient, i) => {ingredient.display();});
-      player.badIngredient.forEach((badIngredient, i) => {badIngredient.display();});
+function instructionView(){
+  textSize(canvasWidth/28);
+  textAlign(CENTER);
+  fill('#a91f13');
+  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
+  image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-      textSize(canvasWidth/22);
-      textAlign(CENTER);
-      text(points, canvasWidth - canvasWidth/18, canvasWidth/14);
-      image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
-    }
-
-    if(gameStatus == 3){
-      image(endImg, 0,0, canvasWidth, canvasHeight);
-      textAlign(CENTER);
-      fill('#fffcd3');
-      textSize(canvasWidth/19);
-      text("Game Over", canvasWidth/2, canvasHeight/4);
-      textSize(canvasWidth/34);
-      text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
-      textSize(canvasWidth/19);
-      text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
-
-      playAgainBtn.display();
-
-      cursor(CROSS);
-    }
-    time += 25;
+  for(var i = 0; i<5; i++){
+    image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? canvasWidth/28 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
+    if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2-canvasWidth/10 + ((i%2==0) ? canvasWidth/28 : 0), canvasWidth/15, canvasWidth/15);
   }
+  image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
+
+  //playBtn.display();
+  playGIF.display();
+  if(playGIF.over()) {
+    console.log("OVER");
+    playGIF.play();
+  }
+  else playGIF.stop();
+  cursor(CROSS);
+}
+
+function endView(){
+  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+  image(endImg, 0,0, canvasWidth, canvasHeight);
+  textAlign(CENTER);
+  fill('#fffcd3');
+  textSize(canvasWidth/19);
+  text("Game Over", canvasWidth/2, canvasHeight/4);
+  textSize(canvasWidth/34);
+  text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
+  textSize(canvasWidth/19);
+  text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
+
+  playAgainBtn.display();
+
+  cursor(CROSS);
+}
+
+function mouseClicked() {
+  if(gameStatus == 2) return;
+  if(playGIF.over() && (gameStatus == 0 || gameStatus == 1))
+    play();
+  if(arrowLeft.over() && gameStatus == 0)
+    choosenPizza = getNextPizzaImgIndex(false);
+  if(arrowRight.over() && gameStatus == 0)
+    choosenPizza = getNextPizzaImgIndex(true);
+  if(playAgainBtn.over() && gameStatus == 3)
+    gameStatus = 0;
+}
+
+function play(){
+  gameStatus = (gameStatus==0) ? 1 : 2;
+  player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
+  points = 0;
+  time = 0;
+
+  startMaxSpeed = 1;
+  startMinSpeed = 1;
+  timeDivider = 1;
+
+  timeToNextIngredient = 60;
+  timeToNextBadIngredient = 170;
+  ingredientsCount = 5;
+
+  if(isVertical){
+    timeToNextIngredient = 50;
+    timeToNextBadIngredient = 160
+  }
+
+  player.start();
 }
 
 function getRandomIngredientX(){
@@ -256,51 +286,6 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function mouseClicked() {
-  click();
-}
-
-function click(){
-  if(gameStatus == 2) return;
-  if(playGIF.over() && (gameStatus == 0 || gameStatus == 1)){
-    gameStatus = (gameStatus==0) ? 1 : 2;
-    player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
-    points = 0;
-    time = 0;
-
-    startMaxSpeed = 1;
-    startMinSpeed = 1;
-    timeDivider = 1;
-
-    timeToNextIngredient = 60;
-    timeToNextBadIngredient = 170;
-    ingredientsCount = 5;
-
-    if(isVertical){
-      timeToNextIngredient = 50;
-      timeToNextBadIngredient = 160
-    }
-
-    player.start();
-    console.log("----------------Play----------------");
-  }
-  if(arrowLeft.over() && gameStatus == 0){
-    choosenPizza = getNextPizzaImgIndex(false);
-    console.log("click - left  -  " + choosenPizza);
-    playerChooseAnimationState = 1;
-  }
-  if(arrowRight.over() && gameStatus == 0){
-    choosenPizza = getNextPizzaImgIndex(true);
-    console.log("click - right - " + choosenPizza);
-    playerChooseAnimationState = 1;
-  }
-  if(playAgainBtn.over() && gameStatus == 3){
-    gameStatus = 0;
-    console.log("----------------Again----------------");
-  }
-
 }
 
 class Player {
@@ -438,9 +423,9 @@ class Ingredient {
 }
 
 class Button {
-  constructor(posX, posY, img, width, height) {
-    this.x = posX;
-    this.y = posY;
+  constructor(img, width, height) {
+    this.x = 0;
+    this.y = 0;
     this.img = img;
     this.width = width;
     this.height = height;
@@ -450,7 +435,8 @@ class Button {
     stroke(0);
     if (this.over()) tint(84, 28, 16);
     else noTint();//tint(65, 9, 7);
-
+    this.x = x;
+    this.y = y;
     image(this.img, x, y, this.width, this.height);
   }
 
