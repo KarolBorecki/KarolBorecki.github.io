@@ -226,7 +226,7 @@ function mouseClicked() {
     choosenPizza = getNextPizzaImgIndex(false);
   if(arrowRight.over() && gameStatus == 0)
     choosenPizza = getNextPizzaImgIndex(true);
-  if(playAgainBtn.over() && gameStatus == 3)
+  if(playAgainGIF.over() && gameStatus == 3)
     gameStatus = 0;
 }
 
