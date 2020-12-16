@@ -79,6 +79,10 @@ function preload() {
     canvasHeight=windowHeight;
     canvasWidth = canvasHeight*1.8;
   }
+  if(windowWidth<windowHeight){
+    canvasWidth = windowWidth;
+    canvasHeight = windowHeight;
+  }
 
   playBtnImg = loadImage("img/layout/start_01.png");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
