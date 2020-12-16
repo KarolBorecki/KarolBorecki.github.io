@@ -123,6 +123,7 @@ function draw() {
   background(255, 252, 212);
   noTint();
   playGIF.display();
+  playGIF.play();
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
