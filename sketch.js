@@ -198,7 +198,7 @@ function endView(){
   textSize(canvasWidth/19);
   text("Game Over", canvasWidth/2, canvasHeight/4);
   textSize(canvasWidth/34);
-  text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
+  text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
   textSize(canvasWidth/19);
   var pizzaCount = Math.floor(points/3)
   text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
