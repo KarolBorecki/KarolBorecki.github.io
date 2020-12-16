@@ -102,7 +102,7 @@ function setup() {
   frameRate(40);
 
   cnvs = createCanvas(canvasWidth, canvasHeight);
-  cnvs.touchStarted(click);
+  cnvs.touchStarted(mouseClicked);
 
   if(isVertical){
     minSpeed+=3;
