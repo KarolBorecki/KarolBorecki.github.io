@@ -142,7 +142,10 @@ function draw() {
     //playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
     //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
     playGIF.display();
-    if(playGIF.over()) playGIF.play();
+    if(playGIF.over()) {
+      console.log("OVER");
+      playGIF.play();
+    }
     else playGIF.stop();
 
     if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
@@ -439,12 +442,12 @@ class GifBtn {
 
   display(){
     image(this.img[this.actualFrame], this.x, this.y, this.width, this.height);
+    if(!this.isPlaying) return;
     this.time++;
     if(this.time%3!=0) return;
-    if(this.isPlaying)
-      if(this.actualFrame<frames)
-        this.actualFrame++;
-      else this.isPlaying = false;
+    if(this.actualFrame<frames)
+      this.actualFrame++;
+    else this.isPlaying = false;
   }
 
   stop(){
