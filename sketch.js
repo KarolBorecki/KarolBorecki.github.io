@@ -77,7 +77,7 @@ function preload() {
   }
 
   playBtnImg = loadImage("img/layout/start_01.png");
-  playBtnAnim =  createImg("img/layout/playBtnAnim.gif");
+  playBtnAnim =  loadImage("img/layout/playBtnAnim.gif");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   floorImg = loadImage("img/layout/floor.png");
