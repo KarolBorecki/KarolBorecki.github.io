@@ -444,8 +444,8 @@ class GifBtn {
     image(this.img[this.actualFrame], this.x, this.y, this.width, this.height);
     if(!this.isPlaying) return;
     this.time++;
-    if(this.time%3!=0) return;
-    if(this.actualFrame<this.frames)
+    if(this.time%2!=0) return;
+    if(this.actualFrame<this.frames-1)
       this.actualFrame++;
     else this.isPlaying = false;
   }
