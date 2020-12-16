@@ -77,7 +77,7 @@ function preload() {
   }
 
   playBtnImg = loadImage("img/layout/start_01.png");
-  playBtnAnim =  loadImage("img/layout/playBtnAnim.gif");
+  playBtnAnim =  createImg("img/layout/playBtnAnim.gif");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   floorImg = loadImage("img/layout/floor.png");
@@ -133,7 +133,8 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
-    image(playBtnAnim, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7)
+    playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
+    playBtnAnim.size(canvasWidth/7, canvasWidth/7);
     arrowLeft.display();
     arrowRight.display();
     cursor(CROSS);
