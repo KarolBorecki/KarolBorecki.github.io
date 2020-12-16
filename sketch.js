@@ -204,7 +204,7 @@ function instructionView(){
 function endView(){
   image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
   image(endImg, 0,0, canvasWidth, canvasHeight);
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
   fill('#fffcd3');
   textSize(canvasWidth/19);
   text("Game Over", canvasWidth/2, canvasHeight/4);
