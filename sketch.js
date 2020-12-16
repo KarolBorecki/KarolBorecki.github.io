@@ -137,9 +137,8 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
-    playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
-    playBtnAnim.size(canvasWidth/7, canvasWidth/7);
-    playBtnAnim.pause();
+    //playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
+    //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
     arrowLeft.display();
     arrowRight.display();
     cursor(CROSS);
