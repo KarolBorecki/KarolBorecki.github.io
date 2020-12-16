@@ -66,6 +66,7 @@ var arrowMove = 0;
 var arrowMoveRight = true;
 
 var isVertical = false;
+
 function preload() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
@@ -109,23 +110,11 @@ function setup() {
   playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15, canvasWidth/7, canvasWidth/7);
 }
 
-function setCanvasDimension(){
-  canvasWidth = windowWidth;
-  canvasHeight = canvasWidth/1.8;
-  if(canvasHeight>windowHeight){
-    canvasHeight=windowHeight;
-    canvasWidth = canvasHeight*1.8;
-  }
-  if(windowWidth<windowHeight){
-    canvasWidth = windowWidth;
-    canvasHeight = windowHeight;
-    isVertical = true;
-  }
-}
 
 function windowResized() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
+  if(canvasHeight>canvasWidth) isVertical = true;
   resizeCanvas(canvasWidth, canvasHeight);
 }
 
