@@ -171,7 +171,7 @@ function menuView(){
 
   textAlign(CENTER);
   textSize(canvasWidth/30);
-  text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
+  text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/18, canvasWidth/4, canvasWidth/11)
 
   playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
 
