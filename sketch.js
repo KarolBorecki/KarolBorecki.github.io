@@ -409,3 +409,37 @@ class Button {
     return mouseX > this.x && mouseX < this.x + this.width && mouseY > this.y && mouseY < this.y + this.height;
   }
 }
+
+class Gif {
+  constructor(path, frames, posX, posY, width, height) {
+    this.img = [];
+    for(var i = 0; i<frames; i++)
+      this.img[i] = loadImage(path.toString() + i.toString() + ".png");
+
+    this.x = posX;
+    this.y = posY;
+    this.width = width;
+    this.height = height;
+
+    this.frames = frames;
+
+    this.actualFrame = 0;
+    this.isPlaying = false;
+  }
+
+  display(){
+    image(this.img[actualFrame], this.x, this.y, this.width, this.height);
+    if(isPlaying) actualFrame=(actualFrame+1)%(frames-1);
+  }
+
+  stop(){
+    isPlaying = false;
+  }
+
+  play(){
+    isPlaying = true;
+  }
+  setFrame(frame){
+    actualFrame = frame;
+  }
+}
