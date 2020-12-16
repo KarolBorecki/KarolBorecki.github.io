@@ -103,11 +103,11 @@ function setup() {
     maxSpeed+=3;
   }
 
-  arrowLeft  = new Button(arrowLeftImg, canvasWidth/8, canvasWidth/11)
-  arrowRight  = new Button(arrowRightImg, canvasWidth/8, canvasWidth/11)
+  arrowLeft  = new Button(arrowLeftImg)
+  arrowRight  = new Button(arrowRightImg)
 
-  playGIF = new GifBtn("img/layout/playBtn", 15, canvasWidth/7, canvasWidth/7);
-  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15, canvasWidth/7, canvasWidth/7);
+  playGIF = new GifBtn("img/layout/playBtn", 15);
+  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15);
 }
 
 
@@ -162,13 +162,13 @@ function menuView(){
   textSize(canvasWidth/30);
   text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/15, canvasWidth/4, canvasWidth/11)
 
-  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
+  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
 
   if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
   arrowMove += (arrowMoveRight) ? 2 : -2;
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
-  arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
-  arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
+  arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22, canvasWidth/8, canvasWidth/11);
+  arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
   cursor(CROSS);
 }
@@ -186,7 +186,7 @@ function instructionView(){
   }
   image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
 
-  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
+  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
   cursor(CROSS);
 }
 
@@ -203,7 +203,7 @@ function endView(){
   var pizzaCount = Math.floor(points/3)
   text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
 
-  playAgainGIF.display(canvasWidth*5/12, canvasHeight/2);
+  playAgainGIF.display(canvasWidth*5/12, canvasHeight/2, canvasWidth/7, canvasWidth/7);
 
   cursor(CROSS);
 }
@@ -391,21 +391,23 @@ class Ingredient {
 }
 
 class Button {
-  constructor(img, width, height) {
+  constructor(img) {
     this.x = 0;
     this.y = 0;
     this.img = img;
-    this.width = width;
-    this.height = height;
+    this.width = 0;
+    this.height = 0;
   }
 
-  display(x, y) {
+  display(x, y, w, h) {
     stroke(0);
     if (this.over()) tint(84, 28, 16);
     else noTint();//tint(65, 9, 7);
     this.x = x;
     this.y = y;
-    image(this.img, x, y, this.width, this.height);
+    this.width = w;
+    this.height = h;
+    image(this.img, x, y, w, h);
   }
 
   over() {
@@ -414,15 +416,15 @@ class Button {
 }
 
 class GifBtn {
-  constructor(path, frames, width, height) {
+  constructor(path, frames) {
     this.img = [];
     for(var i = 0; i<frames; i++)
       this.img[i] = loadImage(path.toString()+ "/" + (i+1).toString() + ".png");
 
     this.x = 0;
     this.y = 0;
-    this.width = width;
-    this.height = height;
+    this.width = 0;
+    this.height = 0;
 
     this.frames = frames;
 
@@ -431,10 +433,12 @@ class GifBtn {
     this.time = 0;
   }
 
-  display(x, y){
-    image(this.img[this.actualFrame], x, y, this.width, this.height);
+  display(x, y, w, h){
+    image(this.img[this.actualFrame], x, y, w, h);
     this.x=x;
     this.y=y;
+    this.width = w;
+    this.height = h;
 
     if(this.over()) this.play();
     else this.stop();
