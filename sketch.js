@@ -24,10 +24,6 @@ var time = 0;
 
 var choosenPizza = 0;
 
-let playBtn;
-let playBtnImg;
-let playBtnAnim;
-
 let arrowLeft;
 let arrowRight;
 let arrowRightImg;
@@ -49,9 +45,6 @@ let pointsFrame;
 let xImg;
 let okImg
 let endImg;
-
-let playAgainBtn;
-let playAgainBtnImg;
 
 let playGIF;
 
@@ -109,12 +102,12 @@ function setup() {
     maxSpeed+=3;
   }
 
-  playAgainBtn = new Button(playAgainBtnImg, canvasWidth/7, canvasWidth/7);
 
   arrowLeft  = new Button(arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(arrowRightImg, canvasWidth/8, canvasWidth/11)
 
-  playGIF = new GifBtn("img/layout/playBtn", 15, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
+  playGIF = new GifBtn("img/layout/playBtn", 15, canvasWidth/7, canvasWidth/7);
+  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15, canvasWidth/7, canvasWidth/7);
 }
 
 function setCanvasDimension(){
@@ -180,12 +173,7 @@ function menuView(){
   textSize(canvasWidth/30);
   text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
-  playGIF.display();
-  if(playGIF.over()) {
-    console.log("OVER");
-    playGIF.play();
-  }
-  else playGIF.stop();
+  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
 
   if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
   arrowMove += (arrowMoveRight) ? 2 : -2;
@@ -209,13 +197,7 @@ function instructionView(){
   }
   image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
 
-  //playBtn.display();
-  playGIF.display();
-  if(playGIF.over()) {
-    console.log("OVER");
-    playGIF.play();
-  }
-  else playGIF.stop();
+  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
   cursor(CROSS);
 }
 
@@ -231,7 +213,7 @@ function endView(){
   textSize(canvasWidth/19);
   text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
 
-  playAgainBtn.display();
+  playAgainGIF.display(canvasWidth*5/12, canvasHeight/2);
 
   cursor(CROSS);
 }
@@ -250,7 +232,10 @@ function mouseClicked() {
 
 function play(){
   gameStatus = (gameStatus==0) ? 1 : 2;
+  if(gameStatus == 1) return;
   player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
+  player.start();
+
   points = 0;
   time = 0;
 
@@ -266,8 +251,6 @@ function play(){
     timeToNextIngredient = 50;
     timeToNextBadIngredient = 160
   }
-
-  player.start();
 }
 
 function getRandomIngredientX(){
@@ -324,7 +307,6 @@ class Player {
       image(this.img, this.x, this.startPosY, this.width, this.height);
 
       var val = Math.floor(timeToNextIngredient/Math.sqrt(timeDivider));
-      console.log(val + " --------- " + time/25);
 
       if((time/25)%Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)) == 0) this.fallIngredient();
       if((time/25)%Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider)) == 0) this.fallBadIngredient();
@@ -335,12 +317,10 @@ class Player {
 
   fallIngredient(){
     if(gameStatus != 2) return;
-    //console.log("Trying to fall with lastFall = " + player.lastFall);
     player.lastFall=getRandomInt(0, player.ingredients.length-1);
     for(var i=player.lastFall; i<player.ingredients.length; i++)
       if(!player.ingredients[i].isFalling){
         player.ingredients[i].fall();
-        console.log("Falling: " + player.ingredients[i].type + " speed: " + player.ingredients[i].speed + " (" + maxSpeed * Math.sqrt(startMinSpeed) + ")");
         return;
       }
     player.addRandomIngredient();
@@ -357,7 +337,6 @@ class Player {
     for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
       if(!player.badIngredient[i].isFalling){
         player.badIngredient[i].fall();
-        console.log("Falling bad ingredient " + player.badIngredient.type);
         return;
       }
     player.badIngredient.push(new Ingredient(player.ingredientstsTypes[4], true));
@@ -366,7 +345,6 @@ class Player {
   addRandomIngredient(){
     if(gameStatus != 2) return;
     let type = player.ingredientstsTypes[getRandomInt(0, player.typesCount-1)];
-    console.log("Spawning: " + type + " - speed: " + maxSpeed * Math.sqrt(maxSpeed) +  " ingredientsCount: " + ingredientsCount);
     player.ingredients.push(new Ingredient(type, false));
     ingredientsCount++;
   }
@@ -446,7 +424,7 @@ class Button {
 }
 
 class GifBtn {
-  constructor(path, frames, posX, posY, width, height) {
+  constructor(path, frames, width, height) {
     this.img = [];
     for(var i = 0; i<frames; i++)
       this.img[i] = loadImage(path.toString()+ "/" + (i+1).toString() + ".png");
@@ -463,8 +441,14 @@ class GifBtn {
     this.time = 0;
   }
 
-  display(){
-    image(this.img[this.actualFrame], this.x, this.y, this.width, this.height);
+  display(x, y){
+    image(this.img[this.actualFrame], x, y, this.width, this.height);
+    this.x=x;
+    this.y=y;
+
+    if(this.over()) this.play();
+    else this.stop();
+
     if(!this.isPlaying) return;
     this.time++;
     if(this.time%2!=0) return;
