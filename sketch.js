@@ -49,10 +49,9 @@ let pointsFrame;
 let xImg;
 let okImg
 let endImg;
-let pickupAnim;
 
 let playAgainBtn;
-let playAgainBtnImg;
+let playAgainBtnImg;ś
 
 var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
 [10, 6, 19, 5, 2], //Chicken curry
@@ -67,6 +66,9 @@ var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
 
 var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
 "Ham & Salami hot", "Ham & Mushroom", "Barbecue", "Kebab", "Salami"];
+
+var pizzaMove = 0;
+var pizzaMoveRight = true;
 
 function preload() {
   canvasWidth = windowWidth;
@@ -124,6 +126,8 @@ function draw() {
     text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
+    if(Math.abs(pizzaMove)>canvasWidth/12) pizzaMoveRight = !pizzaMoveRight;
+    pizzaMove += (pizzaMoveRight) ? 2 : -2;
     image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
@@ -135,6 +139,7 @@ function draw() {
     playBtn.display();
     playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
     playBtnAnim.size(canvasWidth/7, canvasWidth/7);
+    playBtnAnim.pause();
     arrowLeft.display();
     arrowRight.display();
     cursor(CROSS);
@@ -227,7 +232,7 @@ function click(){
     timeDivider = 1;
 
     timeToNextIngredient = 60;
-    timeToNextBadIngredient = 150;
+    timeToNextBadIngredient = 170;
     ingredientsCount = 5;
     player.start();
     console.log("----------------Play----------------");
