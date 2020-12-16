@@ -171,7 +171,13 @@ function draw() {
     }
     image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
 
-    playBtn.display();
+    //playBtn.display();
+    playGIF.display();
+    if(playGIF.over()) {
+      console.log("OVER");
+      playGIF.play();
+    }
+    else playGIF.stop();
     cursor(CROSS);
     return;
   }else{
@@ -233,7 +239,7 @@ function mouseClicked() {
 
 function click(){
   if(gameStatus == 2) return;
-  if(playBtn.over() && (gameStatus == 0 || gameStatus == 1)){
+  if(playGIF.over() && (gameStatus == 0 || gameStatus == 1)){
     gameStatus = (gameStatus==0) ? 1 : 2;
     player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
     points = 0;
