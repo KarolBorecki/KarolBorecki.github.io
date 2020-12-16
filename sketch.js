@@ -116,14 +116,13 @@ function setup() {
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
 
-  playGIF = new Gif("img/layout/playBtn", 15, 0, 0, 200, 200);
+  playGIF = new GifBtn("img/layout/playBtn", 15, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
 }
 
 function draw() {
   background(255, 252, 212);
   noTint();
-  playGIF.display();
-  playGIF.play();
+
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
@@ -139,10 +138,12 @@ function draw() {
     textSize(canvasWidth/30);
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
-    playBtn.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
+    //playBtn.display(canvasWidth*5/12, canvasHeight-canvasWidth/7);
     //playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
     //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
-
+    playGIF.display();
+    if(playGIF.over()) playGIF.play();
+    else playGIF.stop();
 
     if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
     arrowMove += (arrowMoveRight) ? 2 : -2;
@@ -418,7 +419,7 @@ class Button {
   }
 }
 
-class Gif {
+class GifBtn {
   constructor(path, frames, posX, posY, width, height) {
     this.img = [];
     for(var i = 0; i<frames; i++)
@@ -433,14 +434,21 @@ class Gif {
 
     this.actualFrame = 0;
     this.isPlaying = false;
+    this.time = 0;
   }
 
   display(){
     image(this.img[this.actualFrame], this.x, this.y, this.width, this.height);
-    if(this.isPlaying) this.actualFrame=(this.actualFrame+1)%(this.frames-1);
+    time++;
+    if(time%3!=0) return;
+    if(this.isPlaying)
+      if(this.actualFrame<frames)
+        this.actualFrame++;
+      else isPlaying = false;
   }
 
   stop(){
+    actualFrame = 0;
     this.isPlaying = false;
   }
 
@@ -449,5 +457,9 @@ class Gif {
   }
   setFrame(frame){
     this.actualFrame = frame;
+  }
+
+  over() {
+    return mouseX > this.x && mouseX < this.x + this.width && mouseY > this.y && mouseY < this.y + this.height;
   }
 }
