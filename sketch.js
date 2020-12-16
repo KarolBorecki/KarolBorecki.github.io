@@ -160,7 +160,7 @@ function gameView(){
 function menuView(){
   textSize(canvasWidth/18);
   if(isVertical)textSize(canvasWidth/12);
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
   fill('#a91f13');
   text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
@@ -169,7 +169,7 @@ function menuView(){
   image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
   image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
   textSize(canvasWidth/30);
   text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/15, canvasWidth/4, canvasWidth/11)
 
@@ -186,7 +186,7 @@ function menuView(){
 
 function instructionView(){
   textSize(canvasWidth/28);
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
   fill('#a91f13');
   text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
