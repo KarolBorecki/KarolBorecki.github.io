@@ -67,8 +67,6 @@ var arrowMoveRight = true;
 
 var isVertical = false;
 function preload() {
-  setCanvasDimension();
-
   playBtnImg = loadImage("img/layout/start_01.png");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
@@ -83,8 +81,6 @@ function preload() {
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
-  //pickupAnim = loadImage("img/layout/pickupEffect-Anim.gif");
-
   for(var i = 0; i<ingredientsTypesCount; i++){
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
     if(i<playersTypesCount)playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
@@ -93,15 +89,18 @@ function preload() {
 
 function setup() {
   frameRate(40);
-
+  var canvasDiv = document.getElementById('game');
+  canvasWidth = canvasDiv.offsetWidth;
+  canvasHeight = canvasDiv.offsetHeight;
   cnvs = createCanvas(canvasWidth, canvasHeight);
+  cnvs.parent("game");
+
   cnvs.touchStarted(mouseClicked);
 
   if(isVertical){
     minSpeed+=3;
     maxSpeed+=3;
   }
-
 
   arrowLeft  = new Button(arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(arrowRightImg, canvasWidth/8, canvasWidth/11)
