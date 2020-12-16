@@ -126,7 +126,7 @@ function draw() {
     text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
     image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-    if(Math.abs(pizzaMove)>canvasWidth/20) pizzaMoveState++;
+    if(pizzaMove>canvasWidth/20) pizzaMoveState==1;
     if(pizzaMoveState!=2) pizzaMove += (pizzaMoveState==0) ? 2 : -2;
     if(pizzaMoveState == 1 && (pizzaMove<=canvasWidth/100 || pizzaMove>=-canvasWidth/100)){
       pizzaMoveState = 2
