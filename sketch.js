@@ -67,8 +67,8 @@ var arrowMoveRight = true;
 
 var isVertical = false;
 function preload() {
-  canvasWidth = document.getElementById("square").offsetWidth;
-  canvasHeight = document.getElementById("square").offsetHeight;
+  canvasWidth = document.getElementById("game").offsetWidth;
+  canvasHeight = document.getElementById("game").offsetHeight;
 
   playBtnImg = loadImage("img/layout/start_01.png");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
@@ -93,7 +93,7 @@ function preload() {
 function setup() {
   frameRate(40);
   cnvs = createCanvas(canvasWidth, canvasHeight);
-  cnvs.parent("square");
+  cnvs.parent("game");
 
   cnvs.touchStarted(mouseClicked);
 
@@ -124,8 +124,8 @@ function setCanvasDimension(){
 }
 
 function windowResized() {
-  canvasWidth = document.getElementById("square").offsetWidth;
-  canvasHeight = document.getElementById("square").offsetHeight;
+  canvasWidth = document.getElementById("game").offsetWidth;
+  canvasHeight = document.getElementById("game").offsetHeight;
   resizeCanvas(canvasWidth, canvasHeight);
 }
 
