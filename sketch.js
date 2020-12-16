@@ -51,7 +51,7 @@ let okImg
 let endImg;
 
 let playAgainBtn;
-let playAgainBtnImg;ś
+let playAgainBtnImg;
 
 var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
 [10, 6, 19, 5, 2], //Chicken curry
