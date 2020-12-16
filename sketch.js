@@ -196,7 +196,7 @@ function endView(){
   textAlign(CENTER, CENTER);
   fill('#fffcd3');
   textSize(canvasWidth/19);
-  text("Game Over", canvasWidth/2, canvasHeight/4);
+  text("Game Over", canvasWidth/2, canvasHeight*5/24);
   textSize(canvasWidth/34);
   text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
   textSize(canvasWidth/19);
