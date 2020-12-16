@@ -53,6 +53,8 @@ let endImg;
 let playAgainBtn;
 let playAgainBtnImg;
 
+let playGIF;
+
 var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
 [10, 6, 19, 5, 2], //Chicken curry
 [15, 19, 1, 20, 8], //ham garlic
@@ -79,7 +81,6 @@ function preload() {
   }
 
   playBtnImg = loadImage("img/layout/start_01.png");
-  //playBtnAnim =  createImg("img/layout/playBtnAnim.gif");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
   floorImg = loadImage("img/layout/floor.png");
@@ -114,11 +115,14 @@ function setup() {
 
   arrowLeft  = new Button(canvasWidth*3/16, canvasHeight/2+canvasWidth/22,  arrowLeftImg, canvasWidth/8, canvasWidth/11)
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
+
+  playGIF = new Gif("img/layout/playBtn", 15, 0, 0, 200, 200);
 }
 
 function draw() {
   background(255, 252, 212);
   noTint();
+  playGif.display();
   if(gameStatus == 0){
     textSize(canvasWidth/18);
     textAlign(CENTER);
