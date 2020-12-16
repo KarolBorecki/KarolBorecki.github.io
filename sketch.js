@@ -72,6 +72,7 @@ var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
 var arrowMove = 0;
 var arrowMoveRight = true;
 
+var isVertical = false;
 function preload() {
   canvasWidth = windowWidth;
   canvasHeight = canvasWidth/1.8;
@@ -82,6 +83,7 @@ function preload() {
   if(windowWidth<windowHeight){
     canvasWidth = windowWidth;
     canvasHeight = windowHeight;
+    isVertical = true;
   }
 
   playBtnImg = loadImage("img/layout/start_01.png");
@@ -112,6 +114,11 @@ function setup() {
   cnvs = createCanvas(canvasWidth, canvasHeight);
   cnvs.touchStarted(click);
 
+  if(isVertical){
+    minSpeed+=3;
+    maxSpeed+=3;
+  }
+
   playBtn = new Button(canvasWidth*5/12, canvasHeight-canvasWidth/7,
     playBtnImg, canvasWidth/7, canvasWidth/7);
   playAgainBtn = new Button(canvasWidth/2-canvasWidth/14, canvasHeight/2,
@@ -129,6 +136,7 @@ function draw() {
 
   if(gameStatus == 0){
     textSize(canvasWidth/18);
+    if(isVertical)textSize(canvasWidth/12);
     textAlign(CENTER);
     fill('#a91f13');
     text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
@@ -256,6 +264,12 @@ function click(){
     timeToNextIngredient = 60;
     timeToNextBadIngredient = 170;
     ingredientsCount = 5;
+
+    if(isVertical){
+      timeToNextIngredient = 50;
+      timeToNextBadIngredient = 160
+    }
+
     player.start();
     console.log("----------------Play----------------");
   }
