@@ -152,7 +152,7 @@ function gameView(){
 
   textSize(canvasWidth/22);
   textAlign(CENTER, CENTER);
-  text(points, canvasWidth - canvasWidth/18, 0, canvasWidth/9, canvasWidth/9);
+  text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   time += 25;
 }
@@ -162,7 +162,7 @@ function menuView(){
   if(isVertical)textSize(canvasWidth/12);
   textAlign(CENTER, CENTER);
   fill('#a91f13');
-  text("Zagraj!", canvasWidth/4, canvasHeight/12, canvasWidth/2, canvasWidth/8);
+  text("Zagraj!", canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
   image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
@@ -188,7 +188,7 @@ function instructionView(){
   textSize(canvasWidth/28);
   textAlign(CENTER, CENTER);
   fill('#a91f13');
-  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/12, canvasWidth/2, canvasWidth/8);
+  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
   for(var i = 0; i<5; i++){
