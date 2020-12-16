@@ -133,8 +133,7 @@ function draw() {
     text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/12, canvasWidth/4, canvasWidth/11)
 
     playBtn.display();
-    playBtnAnim.position(canvasWidth*5/12+canvasWidth/100, canvasHeight-canvasWidth/7+canvasWidth/100);
-    playBtnAnim.size(canvasWidth/7, canvasWidth/7);
+    image(playBtnAnim, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7)
     arrowLeft.display();
     arrowRight.display();
     cursor(CROSS);
@@ -363,7 +362,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickupEffect, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
+      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
