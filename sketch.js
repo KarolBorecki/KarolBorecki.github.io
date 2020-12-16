@@ -435,18 +435,18 @@ class Gif {
   }
 
   display(){
-    image(this.img[actualFrame], this.x, this.y, this.width, this.height);
-    if(isPlaying) actualFrame=(actualFrame+1)%(frames-1);
+    image(this.img[this.actualFrame], this.x, this.y, this.width, this.height);
+    if(this.isPlaying) this.actualFrame=(this.actualFrame+1)%(this.frames-1);
   }
 
   stop(){
-    isPlaying = false;
+    this.isPlaying = false;
   }
 
   play(){
-    isPlaying = true;
+    this.isPlaying = true;
   }
   setFrame(frame){
-    actualFrame = frame;
+    this.actualFrame = frame;
   }
 }
