@@ -211,7 +211,8 @@ function endView(){
   textSize(canvasWidth/34);
   text("Udało ci się zebrać " + points + " składniki możesz zrobić", canvasWidth/4, canvasHeight*7/25, canvasWidth/2);
   textSize(canvasWidth/19);
-  text(Math.floor(points/3) + " Pizz!!!", canvasWidth/2, canvasHeight/2);
+  var pizzaCount = Math.floor(points/3)
+  text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
 
   playAgainGIF.display(canvasWidth*5/12, canvasHeight/2);
 
