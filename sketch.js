@@ -74,17 +74,7 @@ var arrowMoveRight = true;
 
 var isVertical = false;
 function preload() {
-  canvasWidth = windowWidth;
-  canvasHeight = canvasWidth/1.8;
-  if(canvasHeight>windowHeight){
-    canvasHeight=windowHeight;
-    canvasWidth = canvasHeight*1.8;
-  }
-  if(windowWidth<windowHeight){
-    canvasWidth = windowWidth;
-    canvasHeight = windowHeight;
-    isVertical = true;
-  }
+  setCanvasDimension();
 
   playBtnImg = loadImage("img/layout/start_01.png");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
@@ -128,6 +118,29 @@ function setup() {
   arrowRight  = new Button(canvasWidth*11/16, canvasHeight/2+canvasWidth/22,  arrowRightImg, canvasWidth/8, canvasWidth/11)
 
   playGIF = new GifBtn("img/layout/playBtn", 15, canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
+}
+
+function setCanvasDimension(){
+  canvasWidth = windowWidth;
+  canvasHeight = canvasWidth/1.8;
+  if(canvasHeight>windowHeight){
+    canvasHeight=windowHeight;
+    canvasWidth = canvasHeight*1.8;
+  }
+  if(windowWidth<windowHeight){
+    canvasWidth = windowWidth;
+    canvasHeight = windowHeight;
+    isVertical = true;
+  }
+}
+
+function windowResized() {
+  setCanvasDimension();
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+function touchMoved(event) {
+  console.log(event);
 }
 
 function draw() {
