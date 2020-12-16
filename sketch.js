@@ -448,7 +448,7 @@ class GifBtn {
   }
 
   stop(){
-    actualFrame = 0;
+    this.actualFrame = 0;
     this.isPlaying = false;
   }
 
