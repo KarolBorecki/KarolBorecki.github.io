@@ -139,9 +139,9 @@ function draw() {
     //playBtnAnim.size(canvasWidth/7, canvasWidth/7);
 
 
-    if(Math.abs(arrowMove)>canvasWidth/20) arrowMoveRight = !arrowMoveRight;
+    if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
     arrowMove += (arrowMoveRight) ? 2 : -2;
-
+    if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
     arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
     arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22);
 
