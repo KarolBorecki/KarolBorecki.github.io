@@ -162,7 +162,7 @@ function menuView(){
   if(isVertical)textSize(canvasWidth/12);
   textAlign(CENTER, CENTER);
   fill('#a91f13');
-  text("Zagraj!", canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
+  text("Zagraj!", canvasWidth/4, canvasHeight/10, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
   image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
@@ -188,7 +188,7 @@ function instructionView(){
   textSize(canvasWidth/28);
   textAlign(CENTER, CENTER);
   fill('#a91f13');
-  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/9, canvasWidth/2, canvasWidth/8);
+  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/10, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
   for(var i = 0; i<5; i++){
