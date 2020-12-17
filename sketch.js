@@ -186,7 +186,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
 
-    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2, canvasWidth/3, canvasWidth/8)
+    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight*5/12-canvasWidth/14+canvasWidth*3/10+canvasWidth/8, canvasWidth/3, canvasWidth/8)
 
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
 
