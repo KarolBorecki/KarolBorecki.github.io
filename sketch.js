@@ -445,9 +445,10 @@ class GifBtn {
     this.width = w;
     this.height = h;
 
-    if(this.over() && !this.isDone) {
+    if(this.over()) {
       this.isDone = true;
-      this.play();
+      if(!this.isDone)
+        this.play();
     }
     else {
       this.stop();
