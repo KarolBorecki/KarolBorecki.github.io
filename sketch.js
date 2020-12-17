@@ -71,6 +71,7 @@ var isVertical = false;
 function preload() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
+  if(canvasHeight>canvasWidth) isVertical = true;
 
   playGIF = new GifBtn("img/layout/playBtn", 28);
 
@@ -175,10 +176,10 @@ function menuView(){
     arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
     arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
   }else{
-    image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasHeight/5);
+    image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
 
-    image(playersImg[choosenPizza], canvasWidth/4, canvasHeight/2-canvasWidth/14, canvasWidth/2, canvasWidth*3/10);
-    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
+    image(playersImg[choosenPizza], canvasWidth/4, canvasHeight/2-canvasWidth/14, canvasWidth, canvasWidth*3/10);
+    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight/2-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
 
     text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2+canvasWidth/20, canvasWidth/3, canvasWidth/16)
