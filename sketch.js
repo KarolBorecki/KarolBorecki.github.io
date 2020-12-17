@@ -366,7 +366,7 @@ class Player {
   display(w, h){
     this.width = w;
     this.height = h;
-    this.y = (isVertical) ? canvasHeight/5 : canvasWidth/9;
+    this.y = (isVertical) ? canvasHeight*4/5 : canvasWidth*8/9;
     if(gameStatus == 2){
       this.x = mouseX - w/2;
       image(this.img, this.x, this.y, w, h);
