@@ -164,9 +164,9 @@ function gameView(){
     text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
     image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   }else{
-    image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*9/10, canvasHeight*9/5, canvasHeight/5);
+    image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*8/10, canvasHeight*9/5, canvasHeight/5);
     textSize(canvasWidth/6);
-    text(points, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/4);
+    text(points, canvasWidth - canvasWidth/3, 0, canvasWidth/4, canvasWidth/4);
     image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
   }
 
@@ -237,8 +237,8 @@ function instructionView(){
     playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
   }else{
     textSize(canvasWidth/14);
-    image(underline, canvasWidth/10, canvasHeight/10, canvasWidth*4/5, canvasWidth*3/10);
-    text(pizzaNames[choosenPizza], canvasWidth/10, canvasHeight/10, canvasWidth*4/5, canvasWidth*3/10);
+    image(underline, canvasWidth/10, canvasHeight/20, canvasWidth*4/5, canvasWidth*3/10);
+    text(pizzaNames[choosenPizza], canvasWidth/10, canvasHeight/20, canvasWidth*4/5, canvasWidth*3/10);
 
     /*for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight*7/16 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
@@ -383,7 +383,7 @@ class Player {
   display(w, h){
     this.width = w;
     this.height = h;
-    this.y = (isVertical) ? canvasHeight*9/10 : canvasHeight - canvasWidth/9;
+    this.y = (isVertical) ? canvasHeight*8/10 : canvasHeight - canvasWidth/9;
     if(gameStatus == 2){
       this.x = mouseX - w/2;
       image(this.img, this.x, this.y, w, h);
