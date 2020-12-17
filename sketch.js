@@ -109,7 +109,7 @@ function setup() {
   arrowRight  = new Button(arrowRightImg)
 
   playGIF = new GifBtn("img/layout/playBtn", 28);
-  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15);
+  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 28);
 }
 
 
@@ -199,7 +199,7 @@ function endView(){
     w=canvasWidth;
     h=canvasWidth/1.6;
   }
-  image(endImg, 0,0, w, h);
+  image(endImg, canvasWidth/2-w/2,canvasHeight/2-h/2, w, h);
   textAlign(CENTER, CENTER);
   fill(167, 24, 20);
   textSize(canvasWidth/19);
