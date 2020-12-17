@@ -141,17 +141,26 @@ function draw() {
 
 function gameView(){
   noCursor();
-  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
   mouseY = 0;
+  fill(255, 251, 210);
+  textAlign(CENTER, CENTER);
+
+  if(!isVertical){
+    image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+    textSize(canvasWidth/22);
+    text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
+    image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+  }else{
+    image(floorImg, -canvasWidth/4, canvasHeight-canvasWidth/4.5, canvasWidth*2, canvasWidth/4.5);
+    textSize(canvasWidth/15);
+    text(points, canvasWidth - canvasWidth/5, 0, canvasWidth/3, canvasWidth/5);
+    image(pointsFrame, canvasWidth - canvasWidth/5, 0, canvasWidth/3, canvasWidth/5);
+  }
+
   player.display();
   player.ingredients.forEach((ingredient, i) => {ingredient.display();});
   player.badIngredient.forEach((badIngredient, i) => {badIngredient.display();});
 
-  fill(255, 251, 210);
-  textSize(canvasWidth/22);
-  textAlign(CENTER, CENTER);
-  text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
-  image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   time += 25;
 }
 
@@ -180,7 +189,7 @@ function menuView(){
     arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
     arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
   }else{
-    textSize(canvasWidth/15);
+    textSize(canvasWidth/17);
     image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
 
     image(playersImg[choosenPizza], canvasWidth/4, canvasHeight*5/12-canvasWidth/14, canvasWidth/2, canvasWidth*3/10);
