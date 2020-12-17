@@ -41,6 +41,7 @@ let floorImg;
 let lifeImg;
 let pickUpEffectImg;
 let underline;
+let caption;
 let pointsFrame;
 let xImg;
 let okImg
@@ -77,6 +78,7 @@ function preload() {
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
+  caption = loadImage("img/layout/caption.png");
   pointsFrame = loadImage("img/layout/counterFrame.png");
   xImg = loadImage("img/layout/x.png");
   okImg = loadImage("img/layout/ok.png");
@@ -151,8 +153,7 @@ function menuView(){
   textSize(canvasWidth/18);
   textAlign(CENTER, CENTER);
   fill(255, 251, 210);
-  text("Zagraj!", canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
-  image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
+  image(caption, canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
 
   image(playersImg[choosenPizza], canvasWidth/4+canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
   image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
