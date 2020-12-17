@@ -160,15 +160,15 @@ function menuView(){
 
   textAlign(CENTER, CENTER);
   textSize(canvasWidth/34);
-  text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/18, canvasWidth/4, canvasWidth/11)
+  text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/24, canvasWidth/4, canvasWidth/11)
 
   playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
 
   if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
   arrowMove += (arrowMoveRight) ? 2 : -2;
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
-  arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/32, canvasWidth/8, canvasWidth/16);
-  arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/32, canvasWidth/8, canvasWidth/16);
+  arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22, canvasWidth/8, canvasWidth/16);
+  arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/22, canvasWidth/8, canvasWidth/16);
 
   cursor(CROSS);
 }
