@@ -176,8 +176,8 @@ function instructionView(){
   textSize(canvasWidth/18);
   textAlign(CENTER, CENTER);
   fill(255, 251, 210);
-  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
+  text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
 
   for(var i = 0; i<5; i++){
     image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
