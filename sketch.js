@@ -163,6 +163,7 @@ function menuView(){
   if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
   arrowMove += (arrowMoveRight) ? 2 : -2;
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
+  textFont(fontBold);
 
   if(!isVertical){
     textSize(canvasWidth/34);
@@ -179,7 +180,7 @@ function menuView(){
     arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
     arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
   }else{
-    textSize(canvasWidth/14);
+    textSize(canvasWidth/15);
     image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
 
     image(playersImg[choosenPizza], canvasWidth/4, canvasHeight*5/12-canvasWidth/14, canvasWidth/2, canvasWidth*3/10);
@@ -201,7 +202,7 @@ function instructionView(){
   fill(167, 24, 20);
 
   if(!isVertical){
-    textSize(canvasWidth/20);
+    textSize(canvasWidth/13);
     image(underline, canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
     text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
 
