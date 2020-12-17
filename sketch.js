@@ -457,12 +457,13 @@ class GifBtn {
     if(this.time%2!=0) return;
 
     if(this.side){
+      this.isDone  = true;
       if(this.actualFrame<this.frames-1)
         this.actualFrame++;
       else {
         this.side = false;
         this.isPlaying = false;
-        this.isDone  = true;
+
       }
     }else{
       if(this.actualFrame>0)
