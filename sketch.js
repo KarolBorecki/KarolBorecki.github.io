@@ -150,7 +150,7 @@ function gameView(){
 function menuView(){
   textSize(canvasWidth/18);
   textAlign(CENTER, CENTER);
-  fill(169, 31, 19);
+  fill(255, 251, 210);
   text("Zagraj!", canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -176,7 +176,7 @@ function menuView(){
 function instructionView(){
   textSize(canvasWidth/28);
   textAlign(CENTER, CENTER);
-  fill(169, 31, 19);
+  fill(255, 251, 210);
   text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -194,7 +194,7 @@ function endView(){
   image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
   image(endImg, 0,0, canvasWidth, canvasHeight);
   textAlign(CENTER, CENTER);
-  fill('#fffcd3');
+  fill(167, 24, 20);
   textSize(canvasWidth/19);
   text("Game Over", canvasWidth/2, canvasHeight*5/24);
   textSize(canvasWidth/34);
@@ -402,7 +402,7 @@ class Button {
   display(x, y, w, h) {
     stroke(0);
     if (this.over()) tint(252, 84, 48);
-    else tint(195, 27, 21);
+    else tint(255, 251, 210);
     this.x = x;
     this.y = y;
     this.width = w;
