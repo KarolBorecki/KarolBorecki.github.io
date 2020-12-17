@@ -159,7 +159,7 @@ function menuView(){
   image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
   textAlign(CENTER, CENTER);
-  textSize(canvasWidth/30);
+  textSize(canvasWidth/34);
   text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/15, canvasWidth/4, canvasWidth/11)
 
   playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
@@ -442,7 +442,6 @@ class GifBtn {
     this.height = h;
 
     if(this.over()) {
-      console.log("OVEr");
       if(!this.isDone)
         this.play();
       this.isDone = true;
