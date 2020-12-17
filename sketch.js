@@ -179,7 +179,7 @@ function instructionView(){
   textSize(canvasWidth/20);
   textAlign(CENTER, CENTER);
   fill(167, 24, 20);
-  image(underline, canvasWidth/8, canvasHeight/17, canvasWidth*3/4, canvasWidth*3/16);
+  image(underline, canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
   text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
 
   for(var i = 0; i<5; i++){
