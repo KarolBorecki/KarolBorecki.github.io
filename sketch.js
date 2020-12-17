@@ -401,8 +401,8 @@ class Button {
 
   display(x, y, w, h) {
     stroke(0);
-    if (this.over()) tint(168, 56, 32);
-    else tint(130, 18, 14);
+    if (this.over()) tint(252, 84, 48);
+    else tint(195, 27, 21);
     this.x = x;
     this.y = y;
     this.width = w;
