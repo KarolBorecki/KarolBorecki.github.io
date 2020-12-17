@@ -157,7 +157,7 @@ function menuView(){
   text("Zagraj!", canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-  image(playersImg[choosenPizza], canvasWidth/4-canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+  image(playersImg[choosenPizza], canvasWidth/4+canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
   image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
   image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
@@ -431,7 +431,7 @@ class GifBtn {
 
     this.frames = frames;
 
-    this.actualFrame = 0;
+    this.actualFrame = this.frames-1;
     this.isPlaying = false;
     this.time = 0;
     this.side = false;
@@ -449,7 +449,7 @@ class GifBtn {
 
     if(!this.isPlaying) return;
     this.time++;
-    
+
     if(this.time%2!=0) return;
 
     if(this.side){
@@ -467,7 +467,7 @@ class GifBtn {
   }
 
   stop(){
-    this.actualFrame = this.frames;
+    this.actualFrame = this.frames-1;
     this.isPlaying = false;
   }
 
