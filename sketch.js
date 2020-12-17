@@ -122,7 +122,7 @@ function windowResized() {
 }
 
 function touchMoved(event) {
-  console.log(event);
+  //console.log(event);
 }
 
 function draw() {
@@ -445,6 +445,7 @@ class GifBtn {
     this.height = h;
 
     if(this.over()) {
+      console.log("OVEr");
       if(!this.isDone)
         this.play();
       this.isDone = true;
