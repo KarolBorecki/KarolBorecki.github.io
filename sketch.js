@@ -150,13 +150,13 @@ function gameView(){
 }
 
 function menuView(){
-  fill(167, 24, 20);
   image(caption, canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
 
   image(playersImg[choosenPizza], canvasWidth/4+canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
   image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
   image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
+  fill(255, 251, 210);
   textAlign(CENTER, CENTER);
   textSize(canvasWidth/34);
   text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2+canvasWidth/20, canvasWidth/3, canvasWidth/16)
@@ -175,7 +175,7 @@ function menuView(){
 function instructionView(){
   textSize(canvasWidth/18);
   textAlign(CENTER, CENTER);
-  fill(255, 251, 210);
+  fill(167, 24, 20);
   image(underline, canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
   text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
 
