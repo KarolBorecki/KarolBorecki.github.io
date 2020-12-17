@@ -150,7 +150,7 @@ function gameView(){
 }
 
 function menuView(){
-  fill(255, 251, 210);
+  fill(167, 24, 20);
   image(caption, canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
 
   image(playersImg[choosenPizza], canvasWidth/4+canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
