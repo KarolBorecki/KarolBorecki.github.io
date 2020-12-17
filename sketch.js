@@ -142,7 +142,7 @@ function gameView(){
 
   textSize(canvasWidth/22);
   textAlign(CENTER, CENTER);
-  text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+  text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/15, canvasWidth/9);
   image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   time += 25;
 }
@@ -159,7 +159,7 @@ function menuView(){
   image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
   textAlign(CENTER, CENTER);
-  textSize(canvasWidth/34);
+  textSize(canvasWidth/32);
   text(pizzaNames[choosenPizza], canvasWidth*3/8, canvasHeight/2+canvasWidth/15, canvasWidth/4, canvasWidth/11)
 
   playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
