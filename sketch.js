@@ -60,6 +60,9 @@ var playersIngredients = [[0, 11, 18, 19, 16], //4 Cheese
 [19, 9, 16, 5, 7]//Salami
 ]
 
+var playerWidth;
+var ingredientWidth;
+
 var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
 "Ham & Salami hot", "Ham & Mushroom", "Barbecue", "Kebab", "Salami"];
 
@@ -69,10 +72,7 @@ var arrowMoveRight = true;
 var isVertical = false;
 
 function preload() {
-  canvasWidth = document.getElementById("game").offsetWidth;
-  canvasHeight = document.getElementById("game").offsetHeight;
-  if(canvasHeight>canvasWidth) isVertical = true;
-  else isVertical = false
+  setSizes();
 
   playGIF = new GifBtn("img/layout/playBtn", 28);
 
@@ -118,11 +118,24 @@ function setup() {
 
 
 function windowResized() {
+  setSizes();
+  resizeCanvas(canvasWidth, canvasHeight);
+}
+
+function setSizes(){
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
-  if(canvasHeight>canvasWidth) isVertical = true;
-  else isVertical = false
-  resizeCanvas(canvasWidth, canvasHeight);
+  if(canvasHeight>canvasWidth) {
+    isVertical = true;
+    playerWidth = canvasWidth/3;
+    ingredientWidth = canvasWidth/4;
+  }
+  else {
+    isVertical = false
+    playerWidth = canvasWidth/4;
+    ingredientWidth = canvasWidth/7;
+  }
+
 }
 
 function touchMoved(event) {
@@ -157,9 +170,9 @@ function gameView(){
     image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
   }
 
-  player.display(canvasWidth/4, canvasWidth/8);
-  player.ingredients.forEach((ingredient, i) => {ingredient.display(canvasWidth/7);});
-  player.badIngredient.forEach((badIngredient, i) => {badIngredient.display(canvasWidth/7);});
+  player.display(playerWidth, playerWidth/2);
+  player.ingredients.forEach((ingredient, i) => {ingredient.display(ingredientWidth);});
+  player.badIngredient.forEach((badIngredient, i) => {badIngredient.display(ingredientWidth);});
 
   time += 25;
 }
@@ -196,7 +209,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
 
-    text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight*5/12-canvasWidth/14+canvasWidth*3/20+canvasWidth/8, canvasWidth*3/4, canvasWidth/8)
+    text(pizzaNames[choosenPizza], canvasWidth/8, canvasHeight*5/12-canvasWidth/14+canvasWidth*3/20+canvasWidth/8, canvasWidth*3/4, canvasWidth/8)
 
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
 
