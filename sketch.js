@@ -72,6 +72,7 @@ function preload() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
   if(canvasHeight>canvasWidth) isVertical = true;
+  else isVertical = false
 
   playGIF = new GifBtn("img/layout/playBtn", 28);
 
@@ -120,6 +121,7 @@ function windowResized() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
   if(canvasHeight>canvasWidth) isVertical = true;
+  else isVertical = false
   resizeCanvas(canvasWidth, canvasHeight);
 }
 
