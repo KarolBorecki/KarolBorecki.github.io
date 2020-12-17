@@ -106,7 +106,7 @@ function setup() {
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
 
-  playGIF = new GifBtn("img/layout/playBtn", 29);
+  playGIF = new GifBtn("img/layout/playBtn", 28);
   playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15);
 }
 
@@ -428,7 +428,7 @@ class GifBtn {
 
     this.frames = frames;
 
-    this.actualFrame = this.frames-1;
+    this.actualFrame = 0;
     this.isPlaying = false;
     this.time = 0;
     this.isDone = false;
@@ -466,7 +466,7 @@ class GifBtn {
   }
 
   stop(){
-    this.actualFrame = this.frames-1;
+    this.actualFrame = 0;
     this.isPlaying = false;
   }
 
