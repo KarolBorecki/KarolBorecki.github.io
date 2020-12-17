@@ -249,9 +249,9 @@ function instructionView(){
     image(ingredientsImg[playersIngredients[choosenPizza][0]], canvasWidth/6, canvasHeight/3, canvasWidth/3, canvasWidth/3);
     image(ingredientsImg[playersIngredients[choosenPizza][1]], canvasWidth/6+canvasWidth/3, canvasHeight/3, canvasWidth/3, canvasWidth/3);
 
-    image(ingredientsImg[playersIngredients[choosenPizza][2]], canvasWidth/6, canvasHeight/2, canvasWidth/3, canvasWidth/3);
-    image(ingredientsImg[playersIngredients[choosenPizza][3]], canvasWidth/6+canvasWidth/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
-    image(ingredientsImg[playersIngredients[choosenPizza][4]], canvasWidth/6 + canvasWidth*2/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
+    image(ingredientsImg[playersIngredients[choosenPizza][2]], canvasWidth/12, canvasHeight/2, canvasWidth/3, canvasWidth/3);
+    image(ingredientsImg[playersIngredients[choosenPizza][3]], canvasWidth/12+canvasWidth/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
+    image(ingredientsImg[playersIngredients[choosenPizza][4]], canvasWidth/12 + canvasWidth*2/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
 
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
   }
