@@ -109,7 +109,7 @@ function setup() {
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
 
-  playGIF = new GifBtn("img/layout/playBtn", 15);
+  playGIF = new GifBtn("img/layout/playBtn", 29);
   playAgainGIF = new GifBtn("img/layout/playAgainBtn", 15);
 }
 
