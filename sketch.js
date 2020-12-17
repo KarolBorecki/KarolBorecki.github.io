@@ -74,9 +74,6 @@ function preload() {
   font = loadFont("fonts/OpenSans-Regular.ttf")
   fontBold = loadFont("fonts/OpenSans-Bold.ttf")
 
-  playBtnImg = loadImage("img/layout/start_01.png");
-  playAgainBtnImg = loadImage("img/layout/playAgain.png");
-
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
