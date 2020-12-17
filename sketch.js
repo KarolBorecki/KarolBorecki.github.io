@@ -402,7 +402,7 @@ class Button {
   display(x, y, w, h) {
     stroke(0);
     if (this.over()) tint(84, 28, 16);
-    else noTint();//tint(65, 9, 7);
+    else tint(65, 9, 7);
     this.x = x;
     this.y = y;
     this.width = w;
