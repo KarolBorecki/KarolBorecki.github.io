@@ -188,8 +188,8 @@ function menuView(){
 
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
 
-    arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
-    arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
+    arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/8, canvasWidth/4, canvasWidth/8);
+    arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/8, canvasWidth/4, canvasWidth/8);
   }
   cursor(CROSS);
 }
