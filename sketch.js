@@ -434,6 +434,7 @@ class GifBtn {
     this.actualFrame = 0;
     this.isPlaying = false;
     this.time = 0;
+    this.side = false;
   }
 
   display(x, y, w, h){
@@ -448,14 +449,25 @@ class GifBtn {
 
     if(!this.isPlaying) return;
     this.time++;
+    
     if(this.time%2!=0) return;
-    if(this.actualFrame<this.frames-1)
-      this.actualFrame++;
-    else this.isPlaying = false;
+
+    if(this.side){
+      if(this.actualFrame<this.frames-1)
+        this.actualFrame++;
+      else {
+        side = false;
+        isPlaying = false;
+      }
+    }else{
+      if(this.actualFrame>0)
+        this.actualFrame--;
+      else side = true;
+    }
   }
 
   stop(){
-    this.actualFrame = 0;
+    this.actualFrame = this.frames;
     this.isPlaying = false;
   }
 
