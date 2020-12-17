@@ -127,7 +127,7 @@ function setSizes(){
   canvasHeight = document.getElementById("game").offsetHeight;
   if(canvasHeight>canvasWidth) {
     isVertical = true;
-    playerWidth = canvasWidth/3;
+    playerWidth = canvasWidth/2;
     ingredientWidth = canvasWidth/4;
   }
   else {
@@ -165,7 +165,7 @@ function gameView(){
     image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   }else{
     image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*4/5, canvasHeight*9/5, canvasHeight/5);
-    textSize(canvasWidth/9);
+    textSize(canvasWidth/6);
     text(points, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
     image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
   }
