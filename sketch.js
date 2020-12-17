@@ -456,13 +456,13 @@ class GifBtn {
       if(this.actualFrame<this.frames-1)
         this.actualFrame++;
       else {
-        side = false;
-        isPlaying = false;
+        this.side = false;
+        this.isPlaying = false;
       }
     }else{
       if(this.actualFrame>0)
         this.actualFrame--;
-      else side = true;
+      else this.side = true;
     }
   }
 
