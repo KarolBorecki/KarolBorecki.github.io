@@ -182,9 +182,9 @@ function menuView(){
     textSize(canvasWidth/12);
     image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
 
-    image(playersImg[choosenPizza], canvasWidth/4, canvasHeight/2-canvasWidth/14, canvasWidth/3, canvasWidth*3/10);
-    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight/3-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
-    image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/3-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
+    image(playersImg[choosenPizza], canvasWidth/4, canvasHeight*5/12-canvasWidth/14, canvasWidth/2, canvasWidth*3/10);
+    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
+    image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
 
     text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2+canvasWidth/6, canvasWidth/3, canvasWidth/8)
 
