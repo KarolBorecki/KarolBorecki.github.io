@@ -240,11 +240,15 @@ function instructionView(){
     image(underline, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
     text(pizzaNames[choosenPizza], canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
 
-    for(var i = 0; i<5; i++){
+    /*for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight*7/16 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
       if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight*7/16 + ((i%2==0) ? 0 : -canvasWidth/14), canvasWidth/15, canvasWidth/15);
     }
     image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight*7/16 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
+*/
+    image(ingredientsImg[playersIngredients[choosenPizza][0]], canvasWidth/6, canvasHeight/2, canvasWidth/3, canvasWidth/3);
+    image(ingredientsImg[playersIngredients[choosenPizza][1]], canvasWidth/6+canvasWidth/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
+
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
   }
 
