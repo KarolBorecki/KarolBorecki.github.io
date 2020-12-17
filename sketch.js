@@ -127,12 +127,12 @@ function setSizes(){
   canvasHeight = document.getElementById("game").offsetHeight;
   if(canvasHeight>canvasWidth) {
     isVertical = true;
-    playerWidth = canvasHeight/2.5;
+    playerWidth = canvasWidth/2;
     ingredientWidth = canvasWidth/4;
   }
   else {
     isVertical = false
-    playerWidth = canvasWidth/4.5;
+    playerWidth = canvasWidth/4;
     ingredientWidth = canvasWidth/7;
   }
 
@@ -316,11 +316,11 @@ function play(){
 }
 
 function getRandomIngredientX(){
-  return random(canvasWidth/10, canvasWidth-canvasWidth/10);
+  return random(canvasWidth/10, canvasWidth-canvasWidth/7);
 }
 
 function getRandomIngredientY(){
-  return random(-canvasWidth/8, -canvasWidth/9);
+  return random(-canvasWidth/3, -canvasWidth/4);
 }
 
 function getNextPizzaImgIndex(increment){
