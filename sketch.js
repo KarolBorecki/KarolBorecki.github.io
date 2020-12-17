@@ -180,12 +180,11 @@ function gameView(){
 function menuView(){
   fill(255, 251, 210);
   textAlign(CENTER, CENTER);
-
+  textFont(fontBold);
 
   if(Math.abs(arrowMove)>canvasWidth/100) arrowMoveRight = !arrowMoveRight;
   arrowMove += (arrowMoveRight) ? 2 : -2;
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
-  textFont(fontBold);
 
   if(!isVertical){
     textSize(canvasWidth/34);
@@ -222,6 +221,7 @@ function menuView(){
 function instructionView(){
   textAlign(CENTER, CENTER);
   fill(167, 24, 20);
+  textFont(fontBold);
 
   if(!isVertical){
     textSize(canvasWidth/13);
@@ -237,8 +237,8 @@ function instructionView(){
     playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
   }else{
     textSize(canvasWidth/14);
-    image(underline, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth*3/10);
-    text(pizzaNames[choosenPizza], canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth*3/10);
+    image(underline, canvasWidth/10, canvasHeight/7, canvasWidth*4/5, canvasWidth*3/10);
+    text(pizzaNames[choosenPizza], canvasWidth/10, canvasHeight/7, canvasWidth*4/5, canvasWidth*3/10);
 
     /*for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight*7/16 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
@@ -247,16 +247,16 @@ function instructionView(){
     image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight*7/16 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
     */
     image(ingredientsImg[playersIngredients[choosenPizza][0]], canvasWidth/6, canvasHeight/3, canvasWidth/3, canvasWidth/3);
-    image(okImg, canvasWidth/6+canvasWidth/3, canvasHeight/3, canvasWidth/10, canvasWidth/10);
+    image(okImg, canvasWidth/6+canvasWidth/3-canvasWidth/10, canvasHeight/3, canvasWidth/10, canvasWidth/10);
 
     image(ingredientsImg[playersIngredients[choosenPizza][1]], canvasWidth/6+canvasWidth/3, canvasHeight/3, canvasWidth/3, canvasWidth/3);
-    image(okImg, canvasWidth/6+canvasWidth*2/3, canvasHeight/3, canvasWidth/10, canvasWidth/10);
+    image(okImg, canvasWidth/6+canvasWidth*2/3-canvasWidth/10, canvasHeight/3, canvasWidth/10, canvasWidth/10);
 
     image(ingredientsImg[playersIngredients[choosenPizza][2]], 0, canvasHeight/2, canvasWidth/3, canvasWidth/3);
-    image(okImg, canvasWidth/3, canvasHeight/2, canvasWidth/10, canvasWidth/10);
+    image(okImg, canvasWidth/3-canvasWidth/10, canvasHeight/2, canvasWidth/10, canvasWidth/10);
 
     image(ingredientsImg[playersIngredients[choosenPizza][3]], canvasWidth/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
-    image(okImg, canvasWidth*2/3, canvasHeight/2, canvasWidth/10, canvasWidth/10);
+    image(okImg, canvasWidth*2/3-canvasWidth/10, canvasHeight/2, canvasWidth/10, canvasWidth/10);
 
     image(ingredientsImg[playersIngredients[choosenPizza][4]], canvasWidth*2/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
     image(xImg, canvasWidth*2/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
