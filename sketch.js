@@ -369,14 +369,14 @@ class Player {
     this.y = (isVertical) ? canvasHeight/5 : canvasWidth/9;
     if(gameStatus == 2){
       this.x = mouseX - w/2;
-      image(this.img, this.x, this.startPosY, w, h);
+      image(this.img, this.x, this.y, w, h);
 
       var val = Math.floor(timeToNextIngredient/Math.sqrt(timeDivider));
 
       if((time/25)%Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)) == 0) this.fallIngredient();
       if((time/25)%Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider)) == 0) this.fallBadIngredient();
     }else{
-      image(this.img, this.x, this.startPosY, w, h);
+      image(this.img, this.x, this.y, w, h);
     }
   }
 
