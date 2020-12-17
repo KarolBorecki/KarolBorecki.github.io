@@ -71,6 +71,9 @@ function preload() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
 
+  font = loadFont("fonts/OpenSans-Regular.ttf")
+  fontBold = loadFont("fonts/OpenSans-Bold.ttf")
+
   playBtnImg = loadImage("img/layout/start_01.png");
   playAgainBtnImg = loadImage("img/layout/playAgain.png");
 
@@ -125,6 +128,7 @@ function touchMoved(event) {
 function draw() {
   background(255, 252, 212);
   noTint();
+  textFont(font);
   if(gameStatus == 0) menuView();
   else if(gameStatus == 1) instructionView();
   else if(gameStatus == 2)gameView();
@@ -148,13 +152,12 @@ function gameView(){
 
 function menuView(){
   textSize(canvasWidth/18);
-  if(isVertical)textSize(canvasWidth/12);
   textAlign(CENTER, CENTER);
   fill('#a91f13');
   text("Zagraj!", canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
-  image(playersImg[choosenPizza], canvasWidth*3/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
+  image(playersImg[choosenPizza], canvasWidth/4-canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
   image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
   image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
