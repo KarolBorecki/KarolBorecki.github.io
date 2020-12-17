@@ -460,7 +460,7 @@ class GifBtn {
     if(this.actualFrame<this.frames-1)
       this.actualFrame++;
     else {
-      this.isPlaying = false;
+      this.stop();
     }
 
   }
