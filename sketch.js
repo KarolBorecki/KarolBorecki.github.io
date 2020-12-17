@@ -147,7 +147,7 @@ function gameView(){
   fill(255, 251, 210);
   textSize(canvasWidth/22);
   textAlign(CENTER, CENTER);
-  text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+  text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
   image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   time += 25;
 }
@@ -213,7 +213,7 @@ function endView(){
   var pizzaCount = Math.floor(points/3)
   text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
 
-  playAgainGIF.display(canvasWidth*5/12, canvasHeight*3/4, canvasWidth/7, canvasWidth/7);
+  playAgainGIF.display(canvasWidth*5/12, canvasHeight*5/8, canvasWidth/7, canvasWidth/7);
 
   cursor(CROSS);
 }
