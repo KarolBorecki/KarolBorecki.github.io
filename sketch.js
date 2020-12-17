@@ -182,7 +182,7 @@ function instructionView(){
 
   for(var i = 0; i<5; i++){
     image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight/2 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
-    if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2 + ((i%2==0) ? 0 : -canvasWidth/10), canvasWidth/15, canvasWidth/15);
+    if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight/2 + ((i%2==0) ? 0 : -canvasWidth/14), canvasWidth/15, canvasWidth/15);
   }
   image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight/2 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
 
