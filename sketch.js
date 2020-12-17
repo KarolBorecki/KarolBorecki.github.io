@@ -123,7 +123,7 @@ function touchMoved(event) {
 }
 
 function draw() {
-  background(255, 252, 212);
+  background(167, 24, 20);
   noTint();
   textFont(font);
   if(gameStatus == 0) menuView();
