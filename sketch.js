@@ -153,7 +153,7 @@ function gameView(){
 function menuView(){
   textSize(canvasWidth/18);
   textAlign(CENTER, CENTER);
-  fill('#a91f13');
+  fill(169, 31, 19);
   text("Zagraj!", canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -179,7 +179,7 @@ function menuView(){
 function instructionView(){
   textSize(canvasWidth/28);
   textAlign(CENTER, CENTER);
-  fill('#a91f13');
+  fill(169, 31, 19);
   text(pizzaNames[choosenPizza], canvasWidth/4, canvasHeight/18, canvasWidth/2, canvasWidth/8);
   image(underline, canvasWidth/4, canvasHeight/4.5, canvasWidth/2, canvasWidth/16);
 
@@ -434,7 +434,6 @@ class GifBtn {
     this.actualFrame = this.frames-1;
     this.isPlaying = false;
     this.time = 0;
-    this.side = false;
     this.isDone = false;
   }
 
@@ -460,13 +459,11 @@ class GifBtn {
 
     if(this.time%2!=0) return;
 
-      this.isDone  = true;
-      if(this.actualFrame<this.frames-1)
-        this.actualFrame++;
-      else {
-        this.side = false;
-        this.isPlaying = false;
-      }
+    if(this.actualFrame<this.frames-1)
+      this.actualFrame++;
+    else {
+      this.isPlaying = false;
+    }
 
   }
 
