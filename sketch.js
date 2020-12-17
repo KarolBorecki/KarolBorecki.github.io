@@ -191,7 +191,7 @@ function menuView(){
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
 
     arrowLeft.display(canvasWidth/20 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/3, canvasWidth/3, canvasWidth/6);
-    arrowRight.display(canvasWidth*19/20-canvasWidth/6 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/3, canvasWidth/3, canvasWidth/6);
+    arrowRight.display(canvasWidth*19/20-canvasWidth/3 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/3, canvasWidth/3, canvasWidth/6);
   }
   cursor(CROSS);
 }
