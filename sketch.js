@@ -191,7 +191,15 @@ function instructionView(){
 
 function endView(){
   image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
-  image(endImg, 0,0, canvasWidth, canvasHeight);
+  var w,h;
+  if(canvasWidth>canvasHeight){
+    w=canvasHeight*1.6;
+    h=canvasHeight;
+  }else{
+    w=canvasWidth;
+    h=canvasWidth/1.6;
+  }
+  image(endImg, 0,0, w, h);
   textAlign(CENTER, CENTER);
   fill(167, 24, 20);
   textSize(canvasWidth/19);
@@ -440,7 +448,7 @@ class GifBtn {
     this.width = w;
     this.height = h;
 
-    if(this.over()) {
+    if(this.over() || this.isPlaying) {
       if(!this.isDone)
         this.play();
       this.isDone = true;
