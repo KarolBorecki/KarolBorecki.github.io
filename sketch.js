@@ -166,7 +166,7 @@ function gameView(){
   }else{
     image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*8/10, canvasHeight*9/5, canvasHeight/5);
     textSize(canvasWidth/6);
-    text(points, canvasWidth - canvasWidth/3, 0, canvasWidth/4, canvasWidth/4);
+    text(points, canvasWidth - canvasWidth/4, 0, canvasWidth/4, canvasWidth/4);
     image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
   }
 
