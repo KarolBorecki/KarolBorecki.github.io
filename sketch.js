@@ -151,15 +151,15 @@ function gameView(){
     text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
     image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   }else{
-    image(floorImg, canvasWidth/2, canvasHeight*4/5, canvasHeight*9/5, canvasHeight/5);
-    textSize(canvasWidth/15);
-    text(points, canvasWidth - canvasWidth/5, 0, canvasWidth/3, canvasWidth/3);
-    image(pointsFrame, canvasWidth - canvasWidth/5, 0, canvasWidth/3, canvasWidth/3);
+    image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*4/5, canvasHeight*9/5, canvasHeight/5);
+    textSize(canvasWidth/9);
+    text(points, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
+    image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
   }
 
-  player.display();
-  player.ingredients.forEach((ingredient, i) => {ingredient.display();});
-  player.badIngredient.forEach((badIngredient, i) => {badIngredient.display();});
+  player.display(canvasWidth/4, canvasWidth/8);
+  player.ingredients.forEach((ingredient, i) => {ingredient.display(canvasWidth/7);});
+  player.badIngredient.forEach((badIngredient, i) => {badIngredient.display(canvasWidth/7);});
 
   time += 25;
 }
@@ -182,7 +182,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
 
-    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2+canvasWidth/20, canvasWidth/3, canvasWidth/16)
+    text(pizzaNames[choosenPizza], canvasWidth/3, canvasHeight/2+canvasWidth/20, canvasWidth/3, canvasWidth/16)
 
     playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
 
@@ -350,17 +350,19 @@ class Player {
 
   }
 
-  display(){
+  display(w, h){
+    this.width = w;
+    this.height = h;
     if(gameStatus == 2){
-      this.x = mouseX - this.width/2;
-      image(this.img, this.x, this.startPosY, this.width, this.height);
+      this.x = mouseX - w/2;
+      image(this.img, this.x, this.startPosY, w, h);
 
       var val = Math.floor(timeToNextIngredient/Math.sqrt(timeDivider));
 
       if((time/25)%Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)) == 0) this.fallIngredient();
       if((time/25)%Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider)) == 0) this.fallBadIngredient();
     }else{
-      image(this.img, this.x, this.startPosY, this.width, this.height);
+      image(this.img, this.x, this.startPosY, w, h);
     }
   }
 
@@ -411,25 +413,26 @@ class Ingredient {
     this.selfTimer = 0;
 }
 
-  display(){
+  display(w){
+    this.width = w;
     if(!this.isFalling) return;
     if(!this.isPicked){
       this.standardY += this.speed;
-      image(this.img, this.x, this.standardY, this.width, this.width);
+      image(this.img, this.x, this.standardY, w, w);
       if(this.standardY > canvasHeight) {
         this.renew();
       }
       else if(this.standardY > player.startPosY - player.width/4 &&
         this.standardY < player.startPosY + player.width/6 &&
-        this.x > mouseX - player.width/2 - this.width/4 &&
-        this.x < mouseX + player.width/2 - this.width/4 && !this.isPicked){
+        this.x > mouseX - player.width/2 - w/4 &&
+        this.x < mouseX + player.width/2 - w/4 && !this.isPicked){
         if(this.isBad) gameStatus = 3;
         else points++;
 
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-this.width/2, this.standardY+this.width/8, this.width*2, this.width*2);
+      image(pickUpEffectImg, this.x-w/2, this.standardY+w/8, w*2, w*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
