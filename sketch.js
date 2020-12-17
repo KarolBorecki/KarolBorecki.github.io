@@ -72,6 +72,8 @@ function preload() {
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
 
+  playGIF = new GifBtn("img/layout/playBtn", 28);
+
   font = loadFont("fonts/OpenSans-Regular.ttf")
   fontBold = loadFont("fonts/OpenSans-Bold.ttf")
 
@@ -108,7 +110,7 @@ function setup() {
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
 
-  playGIF = new GifBtn("img/layout/playBtn", 28);
+
   playAgainGIF = new GifBtn("img/layout/playAgainBtn", 28);
 }
 
