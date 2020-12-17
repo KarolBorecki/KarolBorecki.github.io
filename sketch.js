@@ -186,7 +186,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
 
-    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight*5/12-canvasWidth/14+canvasWidth*3/10+canvasWidth/8, canvasWidth/3, canvasWidth/8)
+    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight*5/12-canvasWidth/14+canvasWidth*3/20+canvasWidth/8, canvasWidth/3, canvasWidth/8)
 
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
 
@@ -197,19 +197,25 @@ function menuView(){
 }
 
 function instructionView(){
-  textSize(canvasWidth/20);
   textAlign(CENTER, CENTER);
   fill(167, 24, 20);
-  image(underline, canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
-  text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
 
-  for(var i = 0; i<5; i++){
-    image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight*7/16 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
-    if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight*7/16 + ((i%2==0) ? 0 : -canvasWidth/14), canvasWidth/15, canvasWidth/15);
+  if(!isVertical){
+    textSize(canvasWidth/20);
+    image(underline, canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
+    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth*13/40, canvasHeight/25, canvasWidth*13/20, canvasWidth*13/80);
+
+    for(var i = 0; i<5; i++){
+      image(ingredientsImg[playersIngredients[choosenPizza][i]], (canvasWidth/12 + canvasWidth/6*i), canvasHeight*7/16 - ((i%2==0) ? 0 :  canvasWidth/14), canvasWidth/6, canvasWidth/6);
+      if(i<4)image(okImg, (canvasWidth/6 + canvasWidth/6*i), canvasHeight*7/16 + ((i%2==0) ? 0 : -canvasWidth/14), canvasWidth/15, canvasWidth/15);
+    }
+    image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight*7/16 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
+
+    playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
+  }else{
+    playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
   }
-  image(xImg, (canvasWidth/12 + canvasWidth/6*4), canvasHeight*7/16 - canvasWidth/28, canvasWidth/6, canvasWidth/6);
 
-  playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
   cursor(CROSS);
 }
 
