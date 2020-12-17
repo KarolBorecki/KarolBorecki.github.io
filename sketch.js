@@ -164,7 +164,7 @@ function gameView(){
     text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
     image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
   }else{
-    image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*4/5, canvasHeight*9/5, canvasHeight/5);
+    image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*9/10, canvasHeight*9/5, canvasHeight/5);
     textSize(canvasWidth/6);
     text(points, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
     image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
@@ -295,7 +295,7 @@ function mouseClicked() {
 function play(){
   gameStatus = (gameStatus==0) ? 1 : 2;
   if(gameStatus == 1) return;
-  player = new Player(choosenPizza, canvasWidth/4, canvasWidth/8, playersIngredients[choosenPizza], 4);
+  player = new Player(choosenPizza, playersIngredients[choosenPizza], 4);
   player.start();
 
   points = 0;
@@ -334,9 +334,9 @@ function getRandomInt(min, max) {
 }
 
 class Player {
-  constructor(type, width, height, ingredientTypes, typesCount){
-    this.width = width;
-    this.height = height;
+  constructor(type, ingredientTypes, typesCount){
+    this.width = 0;
+    this.height = 0;
     this.img = playersImg[type];
 
     this.ingredientstsTypes = ingredientTypes;
@@ -346,7 +346,7 @@ class Player {
     this.badIngredient = [];
 
     this.startPosX = canvasWidth/2 - width/2;
-    this.startPosY = canvasHeight - this.height;
+    this.y = 0;
 
     this.lastFall = 0;
     this.lastFallBad = 0;
@@ -366,6 +366,7 @@ class Player {
   display(w, h){
     this.width = w;
     this.height = h;
+    this.y = (isVertical) ? canvasHeight/5 : canvasWidth/9;
     if(gameStatus == 2){
       this.x = mouseX - w/2;
       image(this.img, this.x, this.startPosY, w, h);
@@ -435,8 +436,8 @@ class Ingredient {
       if(this.standardY > canvasHeight) {
         this.renew();
       }
-      else if(this.standardY > player.startPosY - player.width/4 &&
-        this.standardY < player.startPosY + player.width/6 &&
+      else if(this.standardY > player.y - player.width/4 &&
+        this.standardY < player.y + player.width/6 &&
         this.x > mouseX - player.width/2 - w/4 &&
         this.x < mouseX + player.width/2 - w/4 && !this.isPicked){
         if(this.isBad) gameStatus = 3;
