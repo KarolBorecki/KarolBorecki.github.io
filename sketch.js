@@ -186,12 +186,12 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight/2-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
     image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
 
-    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2+canvasWidth/5, canvasWidth/3, canvasWidth/8)
+    text(pizzaNames[choosenPizza], canvasWidth/2-canvasWidth/6, canvasHeight/2+canvasWidth*4/15, canvasWidth/3, canvasWidth/8)
 
     playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
 
-    arrowLeft.display(canvasWidth/20 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/3, canvasWidth/3, canvasWidth/6);
-    arrowRight.display(canvasWidth*19/20-canvasWidth/3 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/3, canvasWidth/3, canvasWidth/6);
+    arrowLeft.display(canvasWidth/20 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/6, canvasWidth/3, canvasWidth/6);
+    arrowRight.display(canvasWidth*19/20-canvasWidth/3 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/6, canvasWidth/3, canvasWidth/6);
   }
   cursor(CROSS);
 }
