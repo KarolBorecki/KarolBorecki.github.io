@@ -198,7 +198,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
-    text(pizzaNames[choosenPizza], wM*9, hM*8+wM*2, wM*12, hM*1.5);
+    text(pizzaNames[choosenPizza], wM*9, hM*13, wM*12, hM*1.5);
 
     playGIF.display(wM*13, hM*14, wM*4, wM*4);
 
