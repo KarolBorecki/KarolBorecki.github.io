@@ -191,7 +191,7 @@ function menuView(){
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
 
   if(!isVertical){
-    textSize(wM*10);
+    textSize(wM*1.5);
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
     image(playersImg[choosenPizza], wM*11.5, hM*8, wM*7, wM*4);
