@@ -150,7 +150,7 @@ function draw() {
   background(167, 24, 20);
   noTint();
   textFont(font);
-  stroke(0);
+  noStroke();
   if(gameStatus == 0) menuView();
   else if(gameStatus == 1) instructionView();
   else if(gameStatus == 2)gameView();
@@ -161,7 +161,7 @@ function gameView(){
   noCursor();
   mouseY = 0;
   fill(255, 251, 210);
-  stroke(0);
+  noStroke();
   textAlign(CENTER, CENTER);
 
   if(!isVertical){
@@ -185,7 +185,7 @@ function gameView(){
 
 function menuView(){
   fill(255, 251, 210);
-  stroke(0);
+  noStroke();
   textAlign(CENTER, CENTER);
   textFont(fontBold);
 
@@ -228,7 +228,7 @@ function menuView(){
 function instructionView(){
   textAlign(CENTER, CENTER);
   fill(167, 24, 20);
-  stroke(0);
+  noStroke();
   textFont(fontBold);
 
   if(!isVertical){
@@ -278,7 +278,7 @@ function instructionView(){
 
 function endView(){
   if(!isVertical){
-    stroke(0);
+    noStroke();
     image(floorImg, wM*3, hM*17-wM*3, wM*24, wM*3);
 
     image(endImg, wM*3.5, canvasHeight/2-wM*23/3.2, wM*23, wM*23/1.6);
