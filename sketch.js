@@ -46,6 +46,7 @@ let pointsFrame;
 let xImg;
 let okImg
 let endImg;
+let endMobileImg;
 
 let playGIF;
 
@@ -70,6 +71,7 @@ var arrowMove = 0;
 var arrowMoveRight = true;
 
 var isVertical = false;
+var wM, hM;
 
 function preload() {
   setSizes();
@@ -87,6 +89,7 @@ function preload() {
   xImg = loadImage("img/layout/x.png");
   okImg = loadImage("img/layout/ok.png");
   endImg = loadImage("img/layout/gameoverScreen.png");
+  endMobileImg = loadImage("img/layout/endView-Mobile.png");
 
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
@@ -135,7 +138,8 @@ function setSizes(){
     playerWidth = canvasWidth/4;
     ingredientWidth = canvasWidth/7;
   }
-
+  wM = canvasWidth/30;
+  hM = canvasHeight/19;
 }
 
 function touchMoved(event) {
@@ -188,18 +192,18 @@ function menuView(){
 
   if(!isVertical){
     textSize(canvasWidth/34);
-    image(caption, canvasWidth/4, canvasHeight/16, canvasWidth/2, canvasWidth/8);
+    image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
-    image(playersImg[choosenPizza], canvasWidth/4+canvasWidth/8, canvasHeight/2-canvasWidth/14, canvasWidth/4, canvasWidth/7);
-    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/8, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
-    image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight/2-canvasWidth/22, canvasWidth/8, canvasWidth/11);
+    image(playersImg[choosenPizza], wM*11.5, hM*8, wM*7, wM*4);
+    image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
+    image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
-    text(pizzaNames[choosenPizza], canvasWidth/3, canvasHeight/2+canvasWidth/20, canvasWidth/3, canvasWidth/16)
+    text(pizzaNames[choosenPizza], wM*12.5, hM*12, wM*5, hM*12)
 
-    playGIF.display(canvasWidth*5/12, canvasHeight-canvasWidth/7, canvasWidth/7, canvasWidth/7);
+    playGIF.display(wM*13, hM*14, wM*4, wM*4);
 
-    arrowLeft.display(canvasWidth*3/16 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
-    arrowRight.display(canvasWidth*11/16 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/20, canvasWidth/8, canvasWidth/16);
+    arrowLeft.display(wM*8 + (arrowLeft.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
+    arrowRight.display(wM*19 + (arrowRight.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
   }else{
     textSize(canvasWidth/17);
     image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
@@ -269,31 +273,25 @@ function instructionView(){
 }
 
 function endView(){
-  image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
-  var w,h;
-  if(canvasWidth>canvasHeight){
-    w=canvasHeight*1.6;
-    h=canvasHeight;
-  }else{
-    w=canvasWidth;
-    h=canvasWidth/1.6;
+  if(!isVertical){
+    image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+
+    image(endImg, canvasWidth/2 - canvasHeight*1.6/2,0, canvasHeight*1.6, canvasHeight);
+    textAlign(CENTER, CENTER);
+    fill(167, 24, 20);
+    textSize(canvasWidth/22);
+    textFont(fontBold);
+    text("Game Over", canvasWidth/2, canvasHeight*5/24);
+    textSize(canvasWidth/36);
+    textFont(font);
+    text("Udało ci się zebrać " + points.toString() + (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
+    textSize(canvasWidth/21);
+    textFont(fontBold);
+    var pizzaCount = Math.floor(points/3)
+    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
+
+    playAgainGIF.display(canvasWidth/2-canvasWidth/14, canvasHeight/2+canvasHeight/25, canvasWidth/7, canvasWidth/7);
   }
-  image(endImg, canvasWidth/2-w/2,canvasHeight/2-h/2, w, h);
-  textAlign(CENTER, CENTER);
-  fill(167, 24, 20);
-  textSize(canvasWidth/22);
-  textFont(fontBold);
-  text("Game Over", canvasWidth/2, canvasHeight*5/24);
-  textSize(canvasWidth/36);
-  textFont(font);
-  text("Udało ci się zebrać " + points.toString() + (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
-  textSize(canvasWidth/21);
-  textFont(fontBold);
-  var pizzaCount = Math.floor(points/3)
-  text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
-
-  playAgainGIF.display(canvasWidth/2-canvasWidth/14, canvasHeight/2+canvasHeight/25, canvasWidth/7, canvasWidth/7);
-
   cursor(CROSS);
 }
 
