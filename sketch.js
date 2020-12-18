@@ -78,8 +78,8 @@ function preload() {
 
   playGIF = new GifBtn("img/layout/playBtn", 28);
 
-  font = loadFont("fonts/OpenSans-Regular.ttf")
-  fontBold = loadFont("fonts/OpenSans-Bold.ttf")
+  font = loadFont("fonts/regular.ttf")
+  fontBold = loadFont("fonts/bold.ttf")
 
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
@@ -282,7 +282,7 @@ function endView(){
     textSize(canvasWidth/32);
     textFont(fontBold);
     text("Game Over", canvasWidth/2, hM*7);
-    textSize(canvasWidth/44);
+    textSize(canvasWidth/49);
     textFont(font);
     text("Udało ci się zebrać " + points.toString() +
     (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić",
