@@ -78,8 +78,8 @@ function preload() {
 
   playGIF = new GifBtn("img/layout/playBtn", 28);
 
-  font = loadFont("fonts/regular.ttf")
-  fontBold = loadFont("fonts/bold.ttf")
+  font = loadFont("fonts/1.ttf")
+  fontBold = loadFont("fonts/2.ttf")
 
   floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
