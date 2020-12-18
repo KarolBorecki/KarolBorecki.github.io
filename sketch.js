@@ -198,7 +198,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
-    text(pizzaNames[choosenPizza], wM*9, hM*13, wM*12, hM*1.5);
+    text(pizzaNames[choosenPizza], wM*9, hM*11, wM*12, hM*1.5);
 
     playGIF.display(wM*13, hM*14, wM*4, wM*4);
 
@@ -281,16 +281,18 @@ function endView(){
     fill(167, 24, 20);
     textSize(canvasWidth/28);
     textFont(fontBold);
-    text("Game Over", canvasWidth/2, canvasHeight*5/24);
+    text("Game Over", canvasWidth/2, hM*6);
     textSize(canvasWidth/40);
     textFont(font);
-    text("Udało ci się zebrać " + points.toString() + (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić", canvasWidth/4, canvasHeight*8/25, canvasWidth/2);
+    text("Udało ci się zebrać " + points.toString() +
+    (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić",
+    canvasWidth/2, hM*8);
     textSize(canvasWidth/25);
     textFont(fontBold);
     var pizzaCount = Math.floor(points/3)
-    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, canvasHeight/2);
+    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*10);
 
-    playAgainGIF.display(canvasWidth/2-canvasWidth/14, canvasHeight/2+canvasHeight/25, canvasWidth/7, canvasWidth/7);
+    playAgainGIF.display(wM*13, hM*11, wM*4, wM*4);
   }
   cursor(CROSS);
 }
