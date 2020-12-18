@@ -198,7 +198,7 @@ function menuView(){
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
-    text(pizzaNames[choosenPizza], wM*9, hM*12, wM*12, hM*1.5);
+    text(pizzaNames[choosenPizza], wM*9, hM*11.5, wM*12, hM*1.5);
 
     playGIF.display(wM*13, hM*14, wM*4, wM*4);
 
@@ -281,7 +281,7 @@ function endView(){
     fill(167, 24, 20);
     textSize(canvasWidth/32);
     textFont(fontBold);
-    text("Game Over", canvasWidth/2, hM*6);
+    text("Game Over", canvasWidth/2, hM*7);
     textSize(canvasWidth/44);
     textFont(font);
     text("Udało ci się zebrać " + points.toString() +
