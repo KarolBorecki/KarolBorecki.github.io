@@ -266,7 +266,7 @@ function instructionView(){
     image(ingredientsImg[playersIngredients[choosenPizza][4]], canvasWidth*2/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
     image(xImg, canvasWidth*2/3, canvasHeight/2, canvasWidth/3, canvasWidth/3);
 
-    playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
+    playGIF.display(wM*13, hM*11, wM*4, wM*4);
   }
 
   cursor(CROSS);
@@ -274,9 +274,9 @@ function instructionView(){
 
 function endView(){
   if(!isVertical){
-    image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+    image(floorImg, wM*3, hM*17-wM*3, wM*24, wM*3);
 
-    image(endImg, canvasWidth/2 - canvasHeight*1.6/2,0, canvasHeight*1.6, canvasHeight);
+    image(endImg, wM*3.5, canvasHeight/2-wM*23/3.2, wM*23, wM*23/1.6);
     textAlign(CENTER, CENTER);
     fill(167, 24, 20);
     textSize(canvasWidth/22);
