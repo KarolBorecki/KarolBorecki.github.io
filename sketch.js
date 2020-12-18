@@ -297,7 +297,7 @@ function endView(){
     var pizzaCount = Math.floor(points/3)
     text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*10);
 
-    playAgainGIF.display(wM*13, hM*11, wM*4, wM*4);
+    playAgainGIF.display(wM*13, hM*9, wM*4, wM*4);
   }
   cursor(CROSS);
 }
