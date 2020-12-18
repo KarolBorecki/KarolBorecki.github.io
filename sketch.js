@@ -492,7 +492,7 @@ class Button {
 
   display(x, y, w, h) {
     stroke(0);
-    if (this.over()) tint(252, 84, 48);
+    if (this.over()) tint(255, 251, 210);
     else tint(255, 251, 210);
     this.x = x;
     this.y = y;
