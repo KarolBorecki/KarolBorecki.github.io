@@ -228,9 +228,9 @@ function instructionView(){
   textFont(fontBold);
 
   if(!isVertical){
-    textSize(canvasWidth/13);
-    image(underline, wM*13, hM*4, wM*14, wM*3.5);
-    text(pizzaNames[choosenPizza], wM*13, hM*4, wM*14, wM*3.5);
+    textSize(canvasWidth/20);
+    image(underline, wM*10, hM*4, wM*10, wM*10/4);
+    text(pizzaNames[choosenPizza], wM*10, hM*4, wM*10, wM*10/4);
 
     for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (wM*5 + wM*4*i), ((i%2==0) ? hM*9 :  hM*7), wM*4, wM*4);
