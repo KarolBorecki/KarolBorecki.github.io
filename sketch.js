@@ -132,13 +132,13 @@ function setSizes(){
   hM = canvasHeight/19;
   if(canvasHeight>canvasWidth) {
     isVertical = true;
-    playerWidth = canvasWidth/2;
+    playerWidth = canvasWidth/3;
     ingredientWidth = canvasWidth/4;
   }
   else {
     isVertical = false
-    playerWidth = wM*5;
-    ingredientWidth = wM*4;
+    playerWidth = wM*5.5;
+    ingredientWidth = wM*3.5;
   }
 }
 
@@ -165,8 +165,8 @@ function gameView(){
   if(!isVertical){
     image(floorImg, wM*3, hM*17-wM*3, wM*24, wM*3);
     textSize(canvasWidth/22);
-    text(points, wM*25, wM, wM*3, wM*3);
-    image(pointsFrame, wM*26, wM, wM*3, wM*3);
+    text(points, wM*25.5, wM, wM*3.5, wM*3.5);
+    image(pointsFrame, wM*25.5, wM, wM*3.5, wM*3.5);
   }else{
     image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*8/10, canvasHeight*9/5, canvasHeight/5);
     textSize(canvasWidth/6);
