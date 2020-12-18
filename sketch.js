@@ -128,6 +128,8 @@ function windowResized() {
 function setSizes(){
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
+  wM = canvasWidth/30;
+  hM = canvasHeight/19;
   if(canvasHeight>canvasWidth) {
     isVertical = true;
     playerWidth = canvasWidth/2;
@@ -135,11 +137,9 @@ function setSizes(){
   }
   else {
     isVertical = false
-    playerWidth = canvasWidth/4;
-    ingredientWidth = canvasWidth/7;
+    playerWidth = wM*5;
+    ingredientWidth = wM*3;
   }
-  wM = canvasWidth/30;
-  hM = canvasHeight/19;
 }
 
 function touchMoved(event) {
@@ -163,10 +163,10 @@ function gameView(){
   textAlign(CENTER, CENTER);
 
   if(!isVertical){
-    image(floorImg, 0, canvasHeight-canvasWidth/9, canvasWidth, canvasWidth/9);
+    image(floorImg, wM*3, hM*17-wM*3, wM*24, wM*3);
     textSize(canvasWidth/22);
-    text(points, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/13);
-    image(pointsFrame, canvasWidth - canvasWidth/9, 0, canvasWidth/9, canvasWidth/9);
+    text(points, wM*25, wM, wM*3, wM*4);
+    image(pointsFrame, wM*25, wM, wM*3, wM*4);
   }else{
     image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*8/10, canvasHeight*9/5, canvasHeight/5);
     textSize(canvasWidth/6);
