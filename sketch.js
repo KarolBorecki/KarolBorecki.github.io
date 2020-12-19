@@ -253,17 +253,17 @@ function instructionView(){
     image(pizzaNamesIMG[choosenPizza], wM*1.5, hM*4, wM*15, wM*15/4);
 
     image(ingredientsImg[playersIngredients[choosenPizza][0]], wM*4, hM*9, wM*5, wM*5);
-    image(okImg, wM*9, hM*9, wM*2, wM*2);
+    image(okImg, wM*7, hM*9, wM*2, wM*2);
 
     image(ingredientsImg[playersIngredients[choosenPizza][1]], wM*9, hM*9, wM*5, wM*5);
-    image(okImg, wM*14, hM*9, wM*2, wM*2);
+    image(okImg, wM*12, hM*9, wM*2, wM*2);
 
 
     image(ingredientsImg[playersIngredients[choosenPizza][2]], wM*2, hM*14, wM*5, wM*5);
-    image(okImg, wM*7, hM*14, wM*2, wM*2);
+    image(okImg, wM*5, hM*14, wM*2, wM*2);
 
     image(ingredientsImg[playersIngredients[choosenPizza][3]], wM*6.5, hM*14, wM*5, wM*5);
-    image(okImg, wM*11.5, hM*14, wM*2, wM*2);
+    image(okImg, wM*9.5, hM*14, wM*2, wM*2);
 
     image(ingredientsImg[playersIngredients[choosenPizza][4]], wM*11, hM*14, wM*5, wM*5);
     image(xImg, wM*11, hM*14, wM*5, wM*5);
