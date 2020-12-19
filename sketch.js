@@ -183,7 +183,7 @@ function gameView(){
   }else{
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
     textSize(canvasWidth/10);
-    text(points, wM*13.5, wM*0.5, wM*4, wM*4);
+    text(points, wM*13.1, wM*0.5, wM*4, wM*4);
     image(pointsFrame, wM*13, wM, wM*4, wM*4);
   }
 
@@ -304,7 +304,7 @@ function endView(){
   }else{
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
 
-    image(endImg, wM, canvasHeight/2-wM*16/1.6, wM*16, wM*16/1.6);
+    image(endMobileImg, wM, canvasHeight/2-wM*16*1.6, wM*16, wM*16*1.6);
     textAlign(CENTER, CENTER);
     fill(167, 24, 20);
     textSize(canvasWidth/32);
