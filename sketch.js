@@ -66,6 +66,7 @@ var ingredientWidth;
 
 var pizzaNames = ["4 Cheese", "Chicken Curry", "Ham & Garlic Sauce", "Ham",
 "Ham & Salami hot", "Ham & Mushroom", "Barbecue", "Kebab", "Salami"];
+var pizzaNamesIMG = [];
 
 var arrowMove = 0;
 var arrowMoveRight = true;
@@ -96,7 +97,10 @@ function preload() {
 
   for(var i = 0; i<ingredientsTypesCount; i++){
     ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
-    if(i<playersTypesCount)playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+    if(i<playersTypesCount){
+      playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
+    }
   }
 }
 
@@ -233,8 +237,7 @@ function instructionView(){
 
   if(!isVertical){
     textSize(canvasWidth/28);
-    image(underline, wM*10, hM*3, wM*10, wM*10/4);
-    text(pizzaNames[choosenPizza], wM*10, hM*3, wM*10, wM*10/4);
+    image(pizzaNamesIMG[choosenPizza], wM*10, hM*3, wM*10, wM*10/4);
 
     for(var i = 0; i<5; i++){
       image(ingredientsImg[playersIngredients[choosenPizza][i]], (wM*5 + wM*4*i), ((i%2==0) ? hM*9 :  hM*7), wM*4, wM*4);
