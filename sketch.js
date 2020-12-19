@@ -77,7 +77,7 @@ var wM, hM;
 function preload() {
   setSizes();
 
-  playGIF = new GifBtn("img/layout/playBtn", 28);
+  playGIF = new GifBtn("img/layout/playBtn", 37);
 
   font = loadFont("fonts/regular.ttf")
   fontBold = loadFont("fonts/bold.ttf")
@@ -119,8 +119,7 @@ function setup() {
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
 
-
-  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 28);
+  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 37);
 }
 
 
@@ -132,15 +131,18 @@ function windowResized() {
 function setSizes(){
   canvasWidth = document.getElementById("game").offsetWidth;
   canvasHeight = document.getElementById("game").offsetHeight;
-  wM = canvasWidth/30;
-  hM = canvasHeight/19;
+
   if(canvasHeight>canvasWidth) {
     isVertical = true;
+    wM = canvasWidth/18;
+    hM = canvasHeight/26.5;
     playerWidth = canvasWidth/3;
     ingredientWidth = canvasWidth/4;
   }
   else {
-    isVertical = false
+    isVertical = false;
+    wM = canvasWidth/30;
+    hM = canvasHeight/19;
     playerWidth = wM*5.5;
     ingredientWidth = wM*2.6;
   }
@@ -213,18 +215,18 @@ function menuView(){
     arrowRight.display(wM*19 + (arrowRight.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
   }else{
     textSize(canvasWidth/17);
-    image(caption, canvasWidth/10, canvasHeight/6, canvasWidth*4/5, canvasWidth/5);
+    image(caption, wM*1.5, hM*4, wM*15, wM*15/4);
 
-    image(playersImg[choosenPizza], canvasWidth/4, canvasHeight*5/12-canvasWidth/14, canvasWidth/2, canvasWidth*3/10);
-    image(playersImg[getNextPizzaImgIndex(false)], canvasWidth/4- canvasWidth/5, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
-    image(playersImg[getNextPizzaImgIndex(true)], canvasWidth*3/4, canvasHeight*5/12-canvasWidth/22, canvasWidth/5, canvasWidth*3/25);
+    image(playersImg[choosenPizza], wM*5, hM*10, wM*8, wM*4);
+    image(playersImg[getNextPizzaImgIndex(false)], wM, hM*10.5, wM*3.5, hM*1.5);
+    image(playersImg[getNextPizzaImgIndex(true)], wM*13.5, hM*10.5, wM*3.5, hM*1.5);
 
-    text(pizzaNames[choosenPizza], canvasWidth/8, canvasHeight*5/12-canvasWidth/14+canvasWidth*3/20+canvasWidth/8, canvasWidth*3/4, canvasWidth/8)
+    text(pizzaNames[choosenPizza], wM*5.5, hM*15, wM*7, hM*3)
 
-    playGIF.display(canvasWidth/3, canvasHeight-canvasWidth/3, canvasWidth/3, canvasWidth/3);
+    playGIF.display(wM*6, hM*20.5, wM*6, wM*6);
 
-    arrowLeft.display(canvasWidth/20 + (arrowLeft.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/6, canvasWidth/3, canvasWidth/6);
-    arrowRight.display(canvasWidth*19/20-canvasWidth/3 + (arrowRight.over() ? arrowMove : 0), canvasHeight/2+canvasWidth/6, canvasWidth/3, canvasWidth/6);
+    arrowLeft.display(wM*2 + (arrowLeft.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
+    arrowRight.display(wM*11.5 + (arrowRight.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
   }
   cursor(CROSS);
 }
