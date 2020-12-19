@@ -221,6 +221,7 @@ function menuView(){
     translate(canvasWidth/2, canvasHeight/2);
     rotate(180);
     image(playersImg[choosenPizza], wM*11.5, hM*8, wM*7, wM*4);
+    fill(43, 234, 80);
     rect(300, 100, 200, 200);
 
     rotate(0);
