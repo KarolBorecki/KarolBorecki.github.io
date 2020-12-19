@@ -183,7 +183,7 @@ function gameView(){
   }else{
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
     textSize(canvasWidth/10);
-    text(points, wM*13, wM*0.5, wM*4, wM*4);
+    text(points, wM*13.5, wM*0.5, wM*4, wM*4);
     image(pointsFrame, wM*13, wM, wM*4, wM*4);
   }
 
@@ -301,6 +301,26 @@ function endView(){
     text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*10);
 
     playAgainGIF.display(wM*13, hM*10, wM*4, wM*4);
+  }else{
+    image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
+
+    image(endImg, wM, canvasHeight/2-wM*16/1.6, wM*16, wM*16/1.6);
+    textAlign(CENTER, CENTER);
+    fill(167, 24, 20);
+    textSize(canvasWidth/32);
+    textFont(fontBold);
+    text("Game Over", canvasWidth/2, hM*7);
+    textSize(canvasWidth/49);
+    textFont(font);
+    text("Udało ci się zebrać " + points.toString() +
+    (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić",
+    wM*10, hM*8, wM*10);
+    textSize(canvasWidth/26);
+    textFont(fontBold);
+    var pizzaCount = Math.floor(points/3)
+    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*10);
+
+    playAgainGIF.display(wM*13, hM*10, wM*4, wM*4);
   }
   cursor(CROSS);
 }
@@ -391,7 +411,7 @@ class Player {
   display(w, h){
     this.width = w;
     this.height = h;
-    this.y = (isVertical) ? canvasHeight-canvasWidth/3-h/3 : hM*17-wM*3-h/3;
+    this.y = (isVertical) ? canvasHeight-canvasWidth/3-h/4 : hM*17-wM*3-h/3;
     if(gameStatus == 2){
       this.x = mouseX - w/2;
       image(this.img, this.x, this.y, w, h);
