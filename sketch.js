@@ -212,7 +212,7 @@ function menuView(){
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
     if(playerAnimCount<=5){
-      if(playerMove>=1) {
+      if(Math.abs(playerMove)>=1) {
         playerAnimState=!playerAnimState;
         playerAnimCount++;
       }
