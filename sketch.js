@@ -211,12 +211,12 @@ function menuView(){
     textSize(canvasWidth/38);
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
-    if(playerAnimCount<=5){
+    if(playerAnimCount<=3){
       if(Math.abs(playerMove)>=1) {
         playerAnimState=!playerAnimState;
         playerAnimCount++;
       }
-      playerMove += playerAnimState ? 0.2 : -0.2;
+      playerMove += playerAnimState ? 0.05 : -0.05;
     } else playerMove = 0;
 
     push();
@@ -346,10 +346,14 @@ function mouseClicked() {
   if(gameStatus == 2) return;
   if(playGIF.over() && (gameStatus == 0 || gameStatus == 1))
     play();
-  if(arrowLeft.over() && gameStatus == 0)
+  if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
-  if(arrowRight.over() && gameStatus == 0)
+    playerAnimCount = 0;
+  }
+  if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
+    playerAnimCount = 0;
+  }
   if(playAgainGIF.over() && gameStatus == 3)
     gameStatus = 0;
 }
