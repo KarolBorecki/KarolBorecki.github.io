@@ -252,10 +252,10 @@ function instructionView(){
     textSize(canvasWidth/14);
     image(pizzaNamesIMG[choosenPizza], wM*1.5, hM*4, wM*15, wM*15/4);
 
-    image(ingredientsImg[playersIngredients[choosenPizza][0]], wM*3, hM*9, wM*5, wM*5);
+    image(ingredientsImg[playersIngredients[choosenPizza][0]], wM*4, hM*9, wM*5, wM*5);
     image(okImg, wM*3, hM*9, wM*5, wM*5);//
 
-    image(ingredientsImg[playersIngredients[choosenPizza][1]], wM*10, hM*9, wM*5, wM*5);
+    image(ingredientsImg[playersIngredients[choosenPizza][1]], wM*9, hM*9, wM*5, wM*5);
     image(okImg, wM*3, hM*9, wM*5, wM*5);//
 
 
