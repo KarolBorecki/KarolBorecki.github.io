@@ -259,13 +259,13 @@ function instructionView(){
     image(okImg, wM*3, hM*9, wM*5, wM*5);//
 
 
-    image(ingredientsImg[playersIngredients[choosenPizza][2]], wM*2, hM*15, wM*5, wM*5);
+    image(ingredientsImg[playersIngredients[choosenPizza][2]], wM*2, hM*14, wM*5, wM*5);
     image(okImg, wM*3, hM*9, wM*5, wM*5);//
 
-    image(ingredientsImg[playersIngredients[choosenPizza][3]], wM*6.5, hM*15, wM*5, wM*5);
+    image(ingredientsImg[playersIngredients[choosenPizza][3]], wM*6.5, hM*14, wM*5, wM*5);
     image(okImg, wM*3, hM*9, wM*5, wM*5);//
 
-    image(ingredientsImg[playersIngredients[choosenPizza][4]], wM*11, hM*15, wM*5, wM*5);
+    image(ingredientsImg[playersIngredients[choosenPizza][4]], wM*11, hM*14, wM*5, wM*5);
     image(xImg, wM*3, hM*9, wM*5, wM*5);//
 
     playGIF.display(wM*6, hM*19, wM*6, wM*6);
