@@ -304,7 +304,7 @@ function endView(){
   }else{
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
 
-    image(endMobileImg, wM, canvasHeight/2-wM*16*1.6, wM*16, wM*16*1.6);
+    image(endMobileImg, wM, canvasHeight/2-wM*25.6/2, wM*16, wM*16*1.6);
     textAlign(CENTER, CENTER);
     fill(167, 24, 20);
     textSize(canvasWidth/32);
