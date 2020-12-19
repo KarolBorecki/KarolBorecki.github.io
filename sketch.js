@@ -98,7 +98,7 @@ function preload() {
       playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
       pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
     }
-    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickuEffect/" + i.toString() + ".png"));
+    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + i.toString() + ".png"));
   }
 }
 
