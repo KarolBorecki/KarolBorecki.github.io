@@ -486,9 +486,9 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg[pickupEffectIndex], this.x-w/2, this.standardY+w/8, w*2, w*2);
-      pickupEffectIndex++;
-      if(pickupEffectIndex>=4) this.renew();
+      image(pickUpEffectImg[this.pickupEffectIndex], this.x-w/2, this.standardY+w/8, w*2, w*2);
+      this.pickupEffectIndex++;
+      if(this.pickupEffectIndex>=4) this.renew();
     }
   }
 
