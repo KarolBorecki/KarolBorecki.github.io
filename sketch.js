@@ -140,8 +140,8 @@ function setSizes(){
     isVertical = true;
     wM = canvasWidth/18;
     hM = canvasHeight/26.5;
-    playerWidth = canvasWidth/3;
-    ingredientWidth = canvasWidth/4;
+    playerWidth = wM*3;
+    ingredientWidth = wM*6.5;
   }
   else {
     isVertical = false;
@@ -173,6 +173,7 @@ function gameView(){
   fill(255, 251, 210);
   noStroke();
   textAlign(CENTER, CENTER);
+  textFont(fontBold);
 
   if(!isVertical){
     image(floorImg, wM*3, hM*17-wM*3, wM*24, wM*3);
@@ -181,8 +182,8 @@ function gameView(){
     image(pointsFrame, wM*25.5, wM, wM*3.5, wM*3.5);
   }else{
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
-    textSize(canvasWidth/8);
-    text(points, wM*13, wM*0.5, wM*4, wM*4);
+    textSize(canvasWidth/10);
+    text(points, wM*13, wM, wM*4, wM*4);
     image(pointsFrame, wM*13, wM, wM*4, wM*4);
   }
 
@@ -390,7 +391,7 @@ class Player {
   display(w, h){
     this.width = w;
     this.height = h;
-    this.y = (isVertical) ? canvasHeight*8/10 : hM*17-wM*3-h/3;
+    this.y = (isVertical) ? canvasHeight-canvasWidth/3-h/2 : hM*17-wM*3-h/3;
     if(gameStatus == 2){
       this.x = mouseX - w/2;
       image(this.img, this.x, this.y, w, h);
