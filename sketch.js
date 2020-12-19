@@ -211,12 +211,12 @@ function menuView(){
     textSize(canvasWidth/38);
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
-    if(playerAnimCount<=3){
-      if(Math.abs(playerMove)>=1) {
+    if(playerAnimCount<=2){
+      if(Math.abs(playerMove)>=.2) {
         playerAnimState=!playerAnimState;
         playerAnimCount++;
       }
-      playerMove += playerAnimState ? 0.05 : -0.05;
+      playerMove += playerAnimState ? 0.1 : -0.1;
     } else playerMove = 0;
 
     push();
