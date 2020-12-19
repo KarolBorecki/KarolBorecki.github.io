@@ -221,10 +221,7 @@ function menuView(){
 
     push();
     translate(canvasWidth/2, hM*7+wM*2);
-    fill(43, 220, 13);
-    rect(0,0,20,20);
     rotate(playerMove);
-    console.log("angle: " + playerMove);
     image(playersImg[choosenPizza], -wM*3.5, -wM*2, wM*7, wM*4);
     pop();
     //fill(43, 234, 80);
