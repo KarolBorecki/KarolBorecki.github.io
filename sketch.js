@@ -127,6 +127,12 @@ function setup() {
   arrowRight  = new Button(arrowRightImg)
 
   playAgainGIF = new GifBtn("img/layout/playAgainBtn", 37);
+
+  var fixed = document.getElementById('game-container');
+
+  fixed.addEventListener('touchmove', function(e) {
+          e.preventDefault();
+  }, false);
 }
 
 
@@ -206,17 +212,17 @@ function menuView(){
   arrowMove += (arrowMoveRight) ? 2 : -2;
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
 
+  if(playerAnimCount<=2){
+    if(Math.abs(playerMove)>=.2) {
+      playerAnimState=!playerAnimState;
+      playerAnimCount++;
+    }
+    playerMove += playerAnimState ? 0.1 : -0.1;
+  } else playerMove = 0;
+
   if(!isVertical){
     textSize(canvasWidth/38);
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
-
-    if(playerAnimCount<=2){
-      if(Math.abs(playerMove)>=.2) {
-        playerAnimState=!playerAnimState;
-        playerAnimCount++;
-      }
-      playerMove += playerAnimState ? 0.1 : -0.1;
-    } else playerMove = 0;
 
     push();
     translate(canvasWidth/2, hM*7+wM*2);
@@ -239,7 +245,12 @@ function menuView(){
     textSize(canvasWidth/17);
     image(caption, wM*1.5, hM*4, wM*15, wM*15/4);
 
-    image(playersImg[choosenPizza], wM*5, hM*10, wM*8, wM*4);
+    push();
+    translate(canvasWidth/2, wM*8+wM*2);
+    rotate(playerMove);
+    image(playersImg[choosenPizza], -wM*4, -wM*2, wM*8, wM*4);
+    pop();
+
     image(playersImg[getNextPizzaImgIndex(false)], wM, hM*11, wM*3.5, hM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*13.5, hM*11, wM*3.5, hM*2);
 
