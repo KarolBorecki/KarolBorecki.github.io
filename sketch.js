@@ -307,15 +307,15 @@ function endView(){
     image(endMobileImg, wM, canvasHeight/2-wM*25.6/2, wM*16, wM*16*1.6);
     textAlign(CENTER, CENTER);
     fill(167, 24, 20);
-    textSize(canvasWidth/32);
+    textSize(canvasWidth/11);
     textFont(fontBold);
     text("Game Over", canvasWidth/2, hM*7);
-    textSize(canvasWidth/49);
+    textSize(canvasWidth/16);
     textFont(font);
     text("Udało ci się zebrać " + points.toString() +
     (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić",
     wM*10, hM*8, wM*10);
-    textSize(canvasWidth/26);
+    textSize(canvasWidth/10);
     textFont(fontBold);
     var pizzaCount = Math.floor(points/3)
     text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*10);
