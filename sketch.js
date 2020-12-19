@@ -220,7 +220,7 @@ function menuView(){
     } else playerMove = 0;
 
     push();
-    translate(canvasWidth/2, hM*7);
+    translate(canvasWidth/2, hM*7+wM*2);
     fill(43, 220, 13);
     rect(0,0,20,20);
     rotate(playerMove);
