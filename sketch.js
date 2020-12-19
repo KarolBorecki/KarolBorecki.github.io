@@ -335,7 +335,6 @@ function mouseClicked() {
 
 function play(){
   gameStatus = (gameStatus==0) ? 1 : 2;
-  if(gameStatus == 1) return;
   player = new Player(choosenPizza, playersIngredients[choosenPizza], 4);
   player.start();
 
