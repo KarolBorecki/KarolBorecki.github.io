@@ -71,6 +71,9 @@ var pizzaNamesIMG = [];
 
 var arrowMove = 0;
 var arrowMoveRight = true;
+var playerMove = 0;
+var playerAnimCount = 0;
+var playerAnimState = true;
 
 var isVertical = false;
 var wM, hM;
@@ -208,7 +211,18 @@ function menuView(){
     textSize(canvasWidth/38);
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
+    if(playerAnimCount<=5){
+      if(playerMove>=20) {
+        playerAnimState=!playerAnimState;
+        playerAnimCount++;
+      }
+      playerMove += playerAnimState ? 0.2 : -0.2;
+    } else playerMove = 0;
+    rotate(playerMove);
     image(playersImg[choosenPizza], wM*11.5, hM*8, wM*7, wM*4);
+
+
+    rotate(0);
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
