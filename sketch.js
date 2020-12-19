@@ -311,10 +311,10 @@ function endView(){
     textSize(canvasWidth/20);
     text("Udało ci się zebrać " + points.toString() +
     (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić",
-    wM*4.5, hM*11, wM*9);
+    wM*4.5, hM*10.5, wM*9);
     textSize(canvasWidth/9);
     var pizzaCount = Math.floor(points/3)
-    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*14);
+    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*14.5);
 
     playAgainGIF.display(wM*6, hM*15, wM*6, wM*6);
   }
