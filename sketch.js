@@ -39,7 +39,7 @@ let ingredientsTypesCount = 21;
 //layout Img
 let floorImg;
 let lifeImg;
-let pickUpEffectImg;
+let pickUpEffectImg = [];
 let underline;
 let caption;
 let pointsFrame;
@@ -83,7 +83,6 @@ function preload() {
   font = loadFont("fonts/regular.ttf")
   fontBold = loadFont("fonts/bold.ttf")
 
-  pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
   caption = loadImage("img/layout/caption.png");
   xImg = loadImage("img/layout/x.png");
@@ -99,6 +98,7 @@ function preload() {
       playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
       pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
     }
+    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickuEffect/" + i.toString() + ".png"));
   }
 }
 
@@ -486,7 +486,7 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg, this.x-w/2, this.standardY+w/8, w*2, w*2);
+      image(pickUpEffectImg[0], this.x-w/2, this.standardY+w/8, w*2, w*2);
       this.selfTimer += 25;
       if(this.selfTimer % 125 == 0) this.renew();
     }
