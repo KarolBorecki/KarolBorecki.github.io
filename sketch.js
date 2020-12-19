@@ -98,7 +98,7 @@ function preload() {
       playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
       pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
     }
-    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
+    if(i<9) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
   }
 }
 
@@ -488,7 +488,7 @@ class Ingredient {
     }else {
       image(pickUpEffectImg[this.pickupEffectIndex], this.x-w/2, this.standardY+w/8, w*2, w*2);
       this.pickupEffectIndex++;
-      if(this.pickupEffectIndex>=4) this.renew();
+      if(this.pickupEffectIndex>=8) this.renew();
     }
   }
 
