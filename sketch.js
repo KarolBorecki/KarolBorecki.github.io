@@ -140,8 +140,8 @@ function setSizes(){
     isVertical = true;
     wM = canvasWidth/18;
     hM = canvasHeight/26.5;
-    playerWidth = wM*3;
-    ingredientWidth = wM*6.5;
+    playerWidth = wM*6.5;
+    ingredientWidth = wM*3;
   }
   else {
     isVertical = false;
@@ -183,7 +183,7 @@ function gameView(){
   }else{
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
     textSize(canvasWidth/10);
-    text(points, wM*13, wM, wM*4, wM*4);
+    text(points, wM*13, wM*0.5, wM*4, wM*4);
     image(pointsFrame, wM*13, wM, wM*4, wM*4);
   }
 
