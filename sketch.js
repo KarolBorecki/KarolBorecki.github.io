@@ -307,14 +307,14 @@ function endView(){
     fill(167, 24, 20);
     textSize(canvasWidth/10);
     textFont(fontBold);
-    text("Game Over", canvasWidth/2, hM*7);
+    text("Game Over", canvasWidth/2, hM*8);
     textSize(canvasWidth/20);
     text("Udało ci się zebrać " + points.toString() +
     (points==1?" składnik" : ((points%10>=2 && points%10<=4) ? " składniki" : " składników")) + " możesz zrobić",
-    wM*10, hM*8, wM*10);
+    wM*4, hM*10, wM*10);
     textSize(canvasWidth/9);
     var pizzaCount = Math.floor(points/3)
-    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*10);
+    text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*12);
 
     playAgainGIF.display(wM*6, hM*15, wM*6, wM*6);
   }
