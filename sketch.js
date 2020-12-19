@@ -72,7 +72,7 @@ var pizzaNamesIMG = [];
 var arrowMove = 0;
 var arrowMoveRight = true;
 var playerMove = 0;
-var playerAnimCount = 0;
+var playerAnimCount = 6;
 var playerAnimState = true;
 
 var isVertical = false;
@@ -252,7 +252,7 @@ function menuView(){
     arrowLeft.display(wM*2 + (arrowLeft.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
     arrowRight.display(wM*11 + (arrowRight.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
 
-    click();
+    mouseClicked();
   }
   cursor(CROSS);
 }
@@ -296,7 +296,7 @@ function instructionView(){
     image(xImg, wM*11, hM*14, wM*5, wM*5);
 
     playGIF.display(wM*6, hM*19, wM*6, wM*6);
-    click();
+    mouseClicked();
   }
 
   cursor(CROSS);
@@ -341,7 +341,7 @@ function endView(){
     text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*14.5);
 
     playAgainGIF.display(wM*6, hM*15, wM*6, wM*6);
-    click();
+    mouseClicked();
   }
   cursor(CROSS);
 }
