@@ -172,7 +172,6 @@ function draw() {
 
 function gameView(){
   noCursor();
-  mouseY = 0;
   fill(255, 251, 210);
   noStroke();
   textAlign(CENTER, CENTER);
@@ -237,7 +236,6 @@ function menuView(){
     arrowLeft.display(wM*8 + (arrowLeft.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
     arrowRight.display(wM*19 + (arrowRight.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
   }else{
-    mouseY = 0;
     textSize(canvasWidth/17);
     image(caption, wM*1.5, hM*4, wM*15, wM*15/4);
 
@@ -275,7 +273,6 @@ function instructionView(){
 
     playGIF.display(wM*13, hM*14, wM*4, wM*4);
   }else{
-    mouseY = 0;
     textSize(canvasWidth/14);
     image(pizzaNamesIMG[choosenPizza], wM*1.5, hM*4, wM*15, wM*15/4);
 
@@ -323,7 +320,6 @@ function endView(){
 
     playAgainGIF.display(wM*13, hM*10, wM*4, wM*4);
   }else{
-    mouseY = 0;
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
 
     image(endMobileImg, wM, canvasHeight/2-wM*25.6/2, wM*16, wM*16*1.6);
