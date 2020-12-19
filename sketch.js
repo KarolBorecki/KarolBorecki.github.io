@@ -237,6 +237,7 @@ function menuView(){
     arrowLeft.display(wM*8 + (arrowLeft.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
     arrowRight.display(wM*19 + (arrowRight.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
   }else{
+    mouseY = 0;
     textSize(canvasWidth/17);
     image(caption, wM*1.5, hM*4, wM*15, wM*15/4);
 
@@ -250,6 +251,8 @@ function menuView(){
 
     arrowLeft.display(wM*2 + (arrowLeft.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
     arrowRight.display(wM*11 + (arrowRight.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
+
+    click();
   }
   cursor(CROSS);
 }
@@ -272,6 +275,7 @@ function instructionView(){
 
     playGIF.display(wM*13, hM*14, wM*4, wM*4);
   }else{
+    mouseY = 0;
     textSize(canvasWidth/14);
     image(pizzaNamesIMG[choosenPizza], wM*1.5, hM*4, wM*15, wM*15/4);
 
@@ -292,6 +296,7 @@ function instructionView(){
     image(xImg, wM*11, hM*14, wM*5, wM*5);
 
     playGIF.display(wM*6, hM*19, wM*6, wM*6);
+    click();
   }
 
   cursor(CROSS);
@@ -318,6 +323,7 @@ function endView(){
 
     playAgainGIF.display(wM*13, hM*10, wM*4, wM*4);
   }else{
+    mouseY = 0;
     image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
 
     image(endMobileImg, wM, canvasHeight/2-wM*25.6/2, wM*16, wM*16*1.6);
@@ -335,6 +341,7 @@ function endView(){
     text(pizzaCount + " Pizz" + (((pizzaCount%10>=2 && pizzaCount%10<=4) || pizzaCount==1) ? "e" : "") + "!!!", canvasWidth/2, hM*14.5);
 
     playAgainGIF.display(wM*6, hM*15, wM*6, wM*6);
+    click();
   }
   cursor(CROSS);
 }
