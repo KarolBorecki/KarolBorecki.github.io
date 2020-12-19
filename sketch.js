@@ -212,7 +212,7 @@ function menuView(){
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
     if(playerAnimCount<=5){
-      if(playerMove>=20) {
+      if(playerMove>=1) {
         playerAnimState=!playerAnimState;
         playerAnimCount++;
       }
@@ -221,7 +221,7 @@ function menuView(){
 
     push();
     translate(canvasWidth/2, hM*7-wM*2);
-    //rotate(PI/10.0);
+    rotate(playerMove);
     image(playersImg[choosenPizza], -wM*3.5, wM*2, wM*7, wM*4);
     pop();
     //fill(43, 234, 80);
