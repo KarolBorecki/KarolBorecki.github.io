@@ -226,7 +226,7 @@ function menuView(){
     playGIF.display(wM*6, hM*19, wM*6, wM*6);
 
     arrowLeft.display(wM*2 + (arrowLeft.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
-    arrowRight.display(wM*11.5 + (arrowRight.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
+    arrowRight.display(wM*11 + (arrowRight.over() ? arrowMove : 0), hM*16.5, wM*5, wM*2.5);
   }
   cursor(CROSS);
 }
