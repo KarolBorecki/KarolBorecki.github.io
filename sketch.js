@@ -204,12 +204,12 @@ function menuView(){
     image(caption, wM*10, hM*4, wM*10, wM*10/4);
 
     image(playersImg[choosenPizza], wM*11.5, hM*8, wM*7, wM*4);
-    image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*9, wM*4, wM*3);
-    image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*9, wM*4, wM*3);
+    image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
+    image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
-    text(pizzaNames[choosenPizza], wM*9, hM*11, wM*12, hM*1.5);
+    text(pizzaNames[choosenPizza], wM*9, hM*11.5, wM*12, hM*1.5);
 
-    playGIF.display(wM*13, hM*13, wM*4, wM*4);
+    playGIF.display(wM*13, hM*14, wM*4, wM*4);
 
     arrowLeft.display(wM*8 + (arrowLeft.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
     arrowRight.display(wM*19 + (arrowRight.over() ? arrowMove : 0), hM*12, wM*3, wM*1.5);
@@ -218,10 +218,10 @@ function menuView(){
     image(caption, wM*1.5, hM*4, wM*15, wM*15/4);
 
     image(playersImg[choosenPizza], wM*5, hM*10, wM*8, wM*4);
-    image(playersImg[getNextPizzaImgIndex(false)], wM, hM*10.5, wM*3.5, hM*1.5);
-    image(playersImg[getNextPizzaImgIndex(true)], wM*13.5, hM*10.5, wM*3.5, hM*1.5);
+    image(playersImg[getNextPizzaImgIndex(false)], wM, hM*11, wM*3.5, hM*2);
+    image(playersImg[getNextPizzaImgIndex(true)], wM*13.5, hM*11, wM*3.5, hM*2);
 
-    text(pizzaNames[choosenPizza], wM*5.5, hM*15, wM*7, hM*3)
+    text(pizzaNames[choosenPizza], wM*5.5, hM*14, wM*7, hM*3)
 
     playGIF.display(wM*6, hM*19, wM*6, wM*6);
 
