@@ -219,10 +219,10 @@ function menuView(){
       playerMove += playerAnimState ? 0.2 : -0.2;
     } else playerMove = 0;
     translate(canvasWidth/2, canvasHeight/2);
-    rotateZ(20);
+    rotate(180);
     image(playersImg[choosenPizza], wM*11.5, hM*8, wM*7, wM*4);
 
-    rotateZ(0);
+    rotate(0);
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
