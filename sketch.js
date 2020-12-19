@@ -47,6 +47,7 @@ let xImg;
 let okImg
 let endImg;
 let endMobileImg;
+let floorMobile;
 
 let playGIF;
 
@@ -82,15 +83,12 @@ function preload() {
   font = loadFont("fonts/regular.ttf")
   fontBold = loadFont("fonts/bold.ttf")
 
-  floorImg = loadImage("img/layout/floor.png");
   pickUpEffectImg = loadImage("img/layout/pickupEffect.png");
   underline = loadImage("img/layout/underline.png");
   caption = loadImage("img/layout/caption.png");
-  pointsFrame = loadImage("img/layout/counterFrame.png");
   xImg = loadImage("img/layout/x.png");
   okImg = loadImage("img/layout/ok.png");
-  endImg = loadImage("img/layout/gameoverScreen.png");
-  endMobileImg = loadImage("img/layout/endView-Mobile.png");
+
 
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
@@ -115,6 +113,12 @@ function setup() {
     minSpeed+=3;
     maxSpeed+=3;
   }
+
+  endImg = loadImage("img/layout/gameoverScreen.png");
+  endMobileImg = loadImage("img/layout/endView-Mobile.png");
+  floorMobile = loadImage("img/layout/floorMobile.png");
+  floorImg = loadImage("img/layout/floor.png");
+  pointsFrame = loadImage("img/layout/counterFrame.png");
 
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
@@ -176,10 +180,10 @@ function gameView(){
     text(points, wM*25.5, wM*0.5, wM*3.5, wM*3.5);
     image(pointsFrame, wM*25.5, wM, wM*3.5, wM*3.5);
   }else{
-    image(floorImg, canvasWidth/2-canvasHeight*9/10, canvasHeight*8/10, canvasHeight*9/5, canvasHeight/5);
-    textSize(canvasWidth/6);
-    text(points, canvasWidth - canvasWidth/4, 0, canvasWidth/4, canvasWidth/4);
-    image(pointsFrame, canvasWidth - canvasWidth/3, 0, canvasWidth/3, canvasWidth/3);
+    image(floorMobile, wM*3, hM*17-wM*3, wM*24, wM*3);
+    textSize(canvasWidth/8);
+    text(points, wM*25.5, wM*0.5, wM*3.5, wM*3.5);
+    image(pointsFrame, wM*25.5, wM, wM*3.5, wM*3.5);
   }
 
   player.display(playerWidth, playerWidth/2);
