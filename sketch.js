@@ -464,7 +464,7 @@ class Ingredient {
 
     this.renew();
 
-    this.selfTimer = 0;
+    this.pickupEffectIndex = 0;
 }
 
   display(w){
@@ -486,9 +486,9 @@ class Ingredient {
         this.isPicked = true;
       }
     }else {
-      image(pickUpEffectImg[0], this.x-w/2, this.standardY+w/8, w*2, w*2);
-      this.selfTimer += 25;
-      if(this.selfTimer % 125 == 0) this.renew();
+      image(pickUpEffectImg[pickupEffectIndex], this.x-w/2, this.standardY+w/8, w*2, w*2);
+      pickupEffectIndex++;
+      if(pickupEffectIndex>=4) this.renew();
     }
   }
 
@@ -502,7 +502,7 @@ class Ingredient {
     this.isFalling = false;
     this.speed = random(minSpeed * Math.sqrt(startMinSpeed), maxSpeed * Math.sqrt(startMaxSpeed)) * canvasHeight/800;
     this.isPicked = false;
-    this.selfTimer = 0;
+    this.pickupEffectIndex = 0;
   }
 }
 
