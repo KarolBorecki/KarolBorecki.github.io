@@ -180,10 +180,10 @@ function gameView(){
     text(points, wM*25.5, wM*0.5, wM*3.5, wM*3.5);
     image(pointsFrame, wM*25.5, wM, wM*3.5, wM*3.5);
   }else{
-    image(floorMobile, wM*3, hM*17-wM*3, wM*24, wM*3);
+    image(floorMobile, 0, canvasHeight-canvasWidth/3, canvasWidth, canvasWidth/3);
     textSize(canvasWidth/8);
-    text(points, wM*25.5, wM*0.5, wM*3.5, wM*3.5);
-    image(pointsFrame, wM*25.5, wM, wM*3.5, wM*3.5);
+    text(points, wM*13, wM*0.5, wM*4, wM*4);
+    image(pointsFrame, wM*13, wM, wM*4, wM*4);
   }
 
   player.display(playerWidth, playerWidth/2);
