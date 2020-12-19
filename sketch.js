@@ -356,6 +356,7 @@ function mouseClicked() {
   }
   if(playAgainGIF.over() && gameStatus == 3)
     gameStatus = 0;
+  mouseY = 0;
 }
 
 function play(){
