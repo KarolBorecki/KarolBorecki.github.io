@@ -224,7 +224,7 @@ function menuView(){
     fill(43, 234, 80);
     rect(300, 100, 200, 200);
     rotate(0);
-    translate(0,0);
+    //translate(0,0);
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
 
