@@ -596,13 +596,13 @@ class GifBtn {
   }
 
   display(x, y, w, h){
-    image(this.img[this.actualFrame], x, y, w, h);
     if(mouseIsPressed && this.over()){
       x-=w*0.05;
       y-=h*0.05;
       w*=1.1;
       h*=1.1;
     }
+    image(this.img[this.actualFrame], x, y, w, h);
     this.x=x;
     this.y=y;
     this.width = w;
