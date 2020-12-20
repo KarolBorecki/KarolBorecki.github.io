@@ -554,7 +554,15 @@ class Button {
 
   display(x, y, w, h) {
     stroke(0);
-    if (this.over()) tint(255, 251, 210);
+    if (this.over()) {
+      tint(255, 251, 210);
+      if(mouseIsPressed){
+        x-=w*0.05;
+        y-=h*0.05;
+        w*=1.1;
+        h*=1.1;
+      }
+    }
     else tint(255, 251, 210);
     this.x = x;
     this.y = y;
@@ -589,6 +597,12 @@ class GifBtn {
 
   display(x, y, w, h){
     image(this.img[this.actualFrame], x, y, w, h);
+    if(mouseIsPressed && this.over()){
+      x-=w*0.05;
+      y-=h*0.05;
+      w*=1.1;
+      h*=1.1;
+    }
     this.x=x;
     this.y=y;
     this.width = w;
