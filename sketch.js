@@ -126,7 +126,7 @@ function setup() {
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
 
-  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 37);
+  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 36);
 
   var fixed = document.getElementById('game-container');
 
