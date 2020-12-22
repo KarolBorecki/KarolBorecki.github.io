@@ -40,11 +40,9 @@ let ingredientsTypesCount = 21;
 let floorImg;
 let lifeImg;
 let pickUpEffectImg = [];
-let underline;
 let caption;
 let pointsFrame;
 let xImg;
-let okImg
 let endImg;
 let endMobileImg;
 let floorMobile;
@@ -86,10 +84,8 @@ function preload() {
   font = loadFont("fonts/regular.ttf")
   fontBold = loadFont("fonts/bold.ttf")
 
-  underline = loadImage("img/layout/underline.png");
   caption = loadImage("img/layout/caption.png");
   xImg = loadImage("img/layout/x.png");
-  okImg = loadImage("img/layout/ok.png");
 
 
   arrowRightImg = loadImage("img/layout/arrow.png");
@@ -212,7 +208,7 @@ function menuView(){
   arrowMove += (arrowMoveRight) ? 2 : -2;
   if(!arrowLeft.over() && !arrowRight.over()) arrowMove = 0;
 
-  if(playerAnimCount<=2){
+  if(playerAnimCount<=1){
     if(Math.abs(playerMove)>=.2) {
       playerAnimState=!playerAnimState;
       playerAnimCount++;
@@ -229,8 +225,6 @@ function menuView(){
     rotate(playerMove);
     image(playersImg[choosenPizza], -wM*3.5, -wM*2, wM*7, wM*4);
     pop();
-    //fill(43, 234, 80);
-    //rect(300, 100, 200, 200);
 
     image(playersImg[getNextPizzaImgIndex(false)], wM*6, hM*8, wM*4, wM*2);
     image(playersImg[getNextPizzaImgIndex(true)], wM*20, hM*8, wM*4, wM*2);
