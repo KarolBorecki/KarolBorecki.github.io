@@ -492,7 +492,7 @@ class Player {
     startMinSpeed += 0.25;
     startMaxSpeed += 0.25;
     timeDivider += 0.07;
-    timeDividerBad += 0.11
+    timeDividerBad += 0.13
 
     player.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
     for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
