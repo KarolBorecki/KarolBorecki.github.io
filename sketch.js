@@ -396,7 +396,9 @@ function keyPressed() {
   }
   else if (keyCode === RIGHT_ARROW && playerXpos<canvasWidth)
     playerXpos+=1;
-
+}
+function mouseMoved() {
+  playerXpos = mouseX;
 }
 
 function play(){
@@ -475,7 +477,7 @@ class Player {
     this.height = h;
     this.y = (isVertical) ? canvasHeight-canvasWidth/3-h/4 : hM*17-wM*3-h/3;
     if(gameStatus == 2){
-      this.x = mouseX - w/2;
+      this.x = playerXpos - w/2;
       image(this.img, this.x, this.y, w, h);
 
       var val = Math.floor(timeToNextIngredient/Math.sqrt(timeDivider));
