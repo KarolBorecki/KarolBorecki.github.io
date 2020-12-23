@@ -18,6 +18,7 @@ var startMinSpeed = 1;
 var timeToNextIngredient;
 var timeToNextBadIngredient;
 var timeDivider;
+var timeDividerBad;
 var ingredientsCount = 5;
 
 var time = 0;
@@ -190,7 +191,7 @@ function draw() {
   else if(gameStatus == 2)gameView();
   else if(gameStatus == 3)endView();
 
-  soundBtn.display(0, canvasHeight-wM*2, wM*2, wM*2);
+  soundBtn.display(wM, canvasHeight-wM*3, wM*2, wM*2);
 }
 
 function gameView(){
@@ -397,8 +398,9 @@ function play(){
   startMaxSpeed = 1;
   startMinSpeed = 1;
   timeDivider = 1;
+  timeDividerBad = 1;
 
-  timeToNextIngredient = 60;
+  timeToNextIngredient = 45;
   timeToNextBadIngredient = 170;
   ingredientsCount = 5;
 
@@ -467,7 +469,7 @@ class Player {
       var val = Math.floor(timeToNextIngredient/Math.sqrt(timeDivider));
 
       if((time/25)%Math.floor(timeToNextIngredient/Math.sqrt(timeDivider)) == 0) this.fallIngredient();
-      if((time/25)%Math.floor(timeToNextBadIngredient/Math.sqrt(timeDivider)) == 0) this.fallBadIngredient();
+      if((time/25)%Math.floor(timeToNextBadIngredient/Math.sqrt(timeDividerBad)) == 0) this.fallBadIngredient();
     }else{
       image(this.img, this.x, this.y, w, h);
     }
@@ -489,7 +491,8 @@ class Player {
 
     startMinSpeed += 0.25;
     startMaxSpeed += 0.25;
-    timeDivider += 0.08;
+    timeDivider += 0.07;
+    timeDividerBad += 0.11
 
     player.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
     for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
