@@ -34,6 +34,8 @@ var player;
 var playersImg = [];
 let playersTypesCount = 9;
 
+var playerXpos;
+
 var ingredientsImg = [];
 let ingredientsTypesCount = 21;
 
@@ -385,6 +387,14 @@ function mouseClicked() {
     if(!muted)clickSound.play();
   }
   mouseY = 0;
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW && playerXpos>0)
+    playerXpos-=1;
+  else if (keyCode === RIGHT_ARROW && playerXpos<canvasWidth)
+    playerXpos+=1;
+
 }
 
 function play(){
