@@ -194,6 +194,10 @@ function draw() {
   else if(gameStatus == 3)endView();
 
   soundBtn.display(wM, canvasHeight-wM*3, wM*2, wM*2);
+
+  if (keyIsDown(LEFT_ARROW)) playerXpos-=1;
+
+  if (keyIsDown(RIGHT_ARROW)) playerXpos+=1;
 }
 
 function gameView(){
@@ -387,15 +391,6 @@ function mouseClicked() {
     if(!muted)clickSound.play();
   }
   mouseY = 0;
-}
-
-function keyPressed() {
-  if (keyCode === LEFT_ARROW && playerXpos>0){
-    playerXpos-=1;
-    console.log("left");
-  }
-  else if (keyCode === RIGHT_ARROW && playerXpos<canvasWidth)
-    playerXpos+=1;
 }
 function mouseMoved() {
   playerXpos = mouseX;
