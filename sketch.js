@@ -189,7 +189,7 @@ function draw() {
   else if(gameStatus == 2)gameView();
   else if(gameStatus == 3)endView();
 
-  soundBtn.display(0, canvasHeight-wM*2, wM*2; wM*2);
+  soundBtn.display(0, canvasHeight-wM*2, wM*2, wM*2);
 }
 
 function gameView(){
