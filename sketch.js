@@ -128,6 +128,8 @@ function setup() {
     if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
   }
 
+  pickupSound = loadSound('sounds/pickup.wav');
+
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
 
@@ -348,18 +350,19 @@ function endView(){
 
 function mouseClicked() {
   if(gameStatus == 2) return;
-  if(playGIF.over() && (gameStatus == 0 || gameStatus == 1))
+  if(playGIF.over() && (gameStatus == 0 || gameStatus == 1)){
     play();
     clickSound.play();
+  }
   if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
     playerAnimCount = 0;
-    clickSound.play();
+    swipeSound.play();
   }
   if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
     playerAnimCount = 0;
-    clickSound.play();
+    swipeSound.play();
   }
   if(playAgainGIF.over() && gameStatus == 3){
     gameStatus = 0;
@@ -519,6 +522,7 @@ class Ingredient {
         else points++;
 
         this.isPicked = true;
+        pickupSound.play();
       }
     }else {
       image(pickUpEffectImg[this.pickupEffectIndex], this.x-w/2, this.standardY+w/8, w*2, w*2);
