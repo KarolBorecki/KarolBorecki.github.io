@@ -195,8 +195,8 @@ function draw() {
 
   soundBtn.display(wM, canvasHeight-wM*3, wM*2, wM*2);
 
-  if (keyIsDown(LEFT_ARROW)) playerXpos-=2.5;
-  if (keyIsDown(RIGHT_ARROW)) playerXpos+=2.5;
+  if (keyIsDown(LEFT_ARROW)) playerXpos-=5;
+  if (keyIsDown(RIGHT_ARROW)) playerXpos+=5;
 }
 
 function gameView(){
@@ -542,8 +542,8 @@ class Ingredient {
       }
       else if(this.standardY > player.y - player.width/4 &&
         this.standardY < player.y + player.width/6 &&
-        this.x > mouseX - player.width/2 - w/4 &&
-        this.x < mouseX + player.width/2 - w/4 && !this.isPicked){
+        this.x > player.x - player.width/2 - w/4 &&
+        this.x < player.x + player.width/2 - w/4 && !this.isPicked){
         if(this.isBad) gameStatus = 3;
         else points++;
 
