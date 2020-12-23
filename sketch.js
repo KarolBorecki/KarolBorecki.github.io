@@ -9,8 +9,8 @@ let fontBold;
 var gameStatus = 0;
 var points = 0;
 
-var maxSpeed = 5;
-var minSpeed = 3.5;
+var maxSpeed = 6;
+var minSpeed = 4.5;
 
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
@@ -46,6 +46,11 @@ let xImg;
 let endImg;
 let endMobileImg;
 let floorMobile;
+
+//sounds
+let clickSound;
+let swipeSound;
+let pickupSound;
 
 let playGIF;
 
@@ -85,20 +90,16 @@ function preload() {
   fontBold = loadFont("fonts/bold.ttf")
 
   caption = loadImage("img/layout/caption.png");
-  xImg = loadImage("img/layout/x.png");
-
 
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
 
-  for(var i = 0; i<ingredientsTypesCount; i++){
-    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
-    if(i<playersTypesCount){
-      playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
-      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
-    }
-    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
-  }
+  clickSound = loadSound('sounds/click.wav');
+  swipeSound = loadSound('sounds/swipe.wav');
+
+  for(var i = 0; i<playersTypesCount; i++)
+    playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+
 }
 
 function setup() {
@@ -118,6 +119,14 @@ function setup() {
   floorMobile = loadImage("img/layout/floorMobile.png");
   floorImg = loadImage("img/layout/floor.png");
   pointsFrame = loadImage("img/layout/counterFrame.png");
+  xImg = loadImage("img/layout/x.png");
+
+  for(var i = 0; i<ingredientsTypesCount; i++){
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
+    if(i<playersTypesCount)
+      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
+    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
+  }
 
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
@@ -341,16 +350,21 @@ function mouseClicked() {
   if(gameStatus == 2) return;
   if(playGIF.over() && (gameStatus == 0 || gameStatus == 1))
     play();
+    clickSound.play();
   if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
     playerAnimCount = 0;
+    clickSound.play();
   }
   if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
     playerAnimCount = 0;
+    clickSound.play();
   }
-  if(playAgainGIF.over() && gameStatus == 3)
+  if(playAgainGIF.over() && gameStatus == 3){
     gameStatus = 0;
+    clickSound.play();
+  }
   mouseY = 0;
 }
 
