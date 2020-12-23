@@ -377,6 +377,11 @@ function mouseClicked() {
     gameStatus = 0;
     if(!muted)clickSound.play();
   }
+  if(soundBtn.over()){
+    muted = !muted;
+    soundBtn.img = muted ? soundOFFImg  : soundONImg;
+    if(!muted)clickSound.play();
+  }
   mouseY = 0;
 }
 
