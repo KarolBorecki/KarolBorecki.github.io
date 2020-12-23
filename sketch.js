@@ -9,8 +9,8 @@ let fontBold;
 var gameStatus = 0;
 var points = 0;
 
-var maxSpeed = 6;
-var minSpeed = 4.5;
+var maxSpeed = 7;
+var minSpeed = 5.5;
 
 var startMaxSpeed = 1;
 var startMinSpeed = 1;
@@ -487,9 +487,9 @@ class Player {
   fallBadIngredient(){
     if(gameStatus != 2 || player.badIngredient.isFalling) return;
 
-    startMinSpeed += 0.4;
-    startMaxSpeed += 0.4;
-    timeDivider += 0.1;
+    startMinSpeed += 0.25;
+    startMaxSpeed += 0.25;
+    timeDivider += 0.08;
 
     player.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
     for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
