@@ -46,6 +46,8 @@ let xImg;
 let endImg;
 let endMobileImg;
 let floorMobile;
+let soundONImg;
+let soundOFFImg;
 
 //sounds
 let clickSound;
@@ -81,6 +83,9 @@ var playerAnimState = true;
 var isVertical = false;
 var wM, hM;
 
+let soundBtn;
+var muted = false;
+
 function preload() {
   setSizes();
 
@@ -90,9 +95,10 @@ function preload() {
   fontBold = loadFont("fonts/bold.ttf")
 
   caption = loadImage("img/layout/caption.png");
-
   arrowRightImg = loadImage("img/layout/arrow.png");
   arrowLeftImg = loadImage("img/layout/arrowLeft.png");
+  soundONImg = loadImage("img/layout/soundON.png");
+  soundOFFImg = loadImage("img/layout/soundOFF.png");
 
   clickSound = loadSound('sounds/click.wav');
   swipeSound = loadSound('sounds/swipe.wav');
@@ -132,6 +138,7 @@ function setup() {
 
   arrowLeft  = new Button(arrowLeftImg)
   arrowRight  = new Button(arrowRightImg)
+  soundBtn = new  Button(soundONImg);
 
   playAgainGIF = new GifBtn("img/layout/playAgainBtn", 36);
 
@@ -181,6 +188,8 @@ function draw() {
   else if(gameStatus == 1) instructionView();
   else if(gameStatus == 2)gameView();
   else if(gameStatus == 3)endView();
+
+  soundBtn.display(0, canvasHeight-wM*2, wM*2; wM*2);
 }
 
 function gameView(){
@@ -352,21 +361,21 @@ function mouseClicked() {
   if(gameStatus == 2) return;
   if(playGIF.over() && (gameStatus == 0 || gameStatus == 1)){
     play();
-    clickSound.play();
+    if(!muted)clickSound.play();
   }
   if(arrowLeft.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(false);
     playerAnimCount = 0;
-    swipeSound.play();
+    if(!muted)swipeSound.play();
   }
   if(arrowRight.over() && gameStatus == 0){
     choosenPizza = getNextPizzaImgIndex(true);
     playerAnimCount = 0;
-    swipeSound.play();
+    if(!muted)swipeSound.play();
   }
   if(playAgainGIF.over() && gameStatus == 3){
     gameStatus = 0;
-    clickSound.play();
+    if(!muted)clickSound.play();
   }
   mouseY = 0;
 }
@@ -522,7 +531,7 @@ class Ingredient {
         else points++;
 
         this.isPicked = true;
-        pickupSound.play();
+        if(!muted)pickupSound.play();
       }
     }else {
       image(pickUpEffectImg[this.pickupEffectIndex], this.x-w/2, this.standardY+w/8, w*2, w*2);
