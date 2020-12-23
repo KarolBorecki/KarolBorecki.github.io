@@ -193,7 +193,7 @@ function draw() {
   else if(gameStatus == 2)gameView();
   else if(gameStatus == 3)endView();
 
-  soundBtn.display(wM, canvasHeight-wM*3, wM*2, wM*2);
+  soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
 
   if (keyIsDown(LEFT_ARROW)) playerXpos-=15;
   if (keyIsDown(RIGHT_ARROW)) playerXpos+=15;
@@ -500,7 +500,7 @@ class Player {
     startMinSpeed += 0.25;
     startMaxSpeed += 0.25;
     timeDivider += 0.07;
-    timeDividerBad += 0.13
+    timeDividerBad += 0.14
 
     player.lastFallBad=getRandomInt(0, player.badIngredient.length-1);
     for(var i=player.lastFallBad; i<player.badIngredient.length; i++)
