@@ -103,8 +103,13 @@ function preload() {
   clickSound = loadSound('sounds/click.wav');
   swipeSound = loadSound('sounds/swipe.wav');
 
-  for(var i = 0; i<playersTypesCount; i++)
-    playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+  for(var i = 0; i<ingredientsTypesCount; i++){
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
+    if(i<playersTypesCount){
+      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
+      playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+    }
+  }
 
 }
 
@@ -127,12 +132,8 @@ function setup() {
   pointsFrame = loadImage("img/layout/counterFrame.png");
   xImg = loadImage("img/layout/x.png");
 
-  for(var i = 0; i<ingredientsTypesCount; i++){
-    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
-    if(i<playersTypesCount)
-      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
-    if(i<5) pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
-  }
+  for(var i=0; i<5; i++)
+    pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
 
   pickupSound = loadSound('sounds/pickup.wav');
 
