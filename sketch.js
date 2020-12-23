@@ -195,8 +195,8 @@ function draw() {
 
   soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
 
-  if (keyIsDown(LEFT_ARROW)) playerXpos-=22;
-  if (keyIsDown(RIGHT_ARROW)) playerXpos+=22;
+  if (keyIsDown(LEFT_ARROW)) playerXpos-=wM;
+  if (keyIsDown(RIGHT_ARROW)) playerXpos+=wM;
 }
 
 function gameView(){
