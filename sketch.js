@@ -390,8 +390,10 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  if (keyCode === LEFT_ARROW && playerXpos>0)
+  if (keyCode === LEFT_ARROW && playerXpos>0){
     playerXpos-=1;
+    console.log("left");
+  }
   else if (keyCode === RIGHT_ARROW && playerXpos<canvasWidth)
     playerXpos+=1;
 
