@@ -195,8 +195,8 @@ function draw() {
 
   soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
   if(!isVertical){
-    if (keyIsDown(LEFT_ARROW)) playerXpos-=wM;
-    if (keyIsDown(RIGHT_ARROW)) playerXpos+=wM;
+    if (keyIsDown(LEFT_ARROW)) playerXpos-=wM*0.8;
+    if (keyIsDown(RIGHT_ARROW)) playerXpos+=wM*0.8;
   }
 }
 
@@ -217,6 +217,7 @@ function gameView(){
     textSize(canvasWidth/10);
     text(points, wM*13.1, wM*0.5, wM*4, wM*4);
     image(pointsFrame, wM*13, wM, wM*4, wM*4);
+    playerXpos=mouseX;
   }
 
   player.display(playerWidth, playerWidth/2);
