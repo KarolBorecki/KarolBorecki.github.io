@@ -193,10 +193,10 @@ function draw() {
   else if(gameStatus == 2)gameView();
   else if(gameStatus == 3)endView();
 
-  soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
   if(!isVertical){
     if (keyIsDown(LEFT_ARROW)) playerXpos-=wM*0.8;
     if (keyIsDown(RIGHT_ARROW)) playerXpos+=wM*0.8;
+    soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
   }
 }
 
