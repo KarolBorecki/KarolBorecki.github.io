@@ -211,12 +211,14 @@ function draw() {
     image(loadingImg[(aL+1)%8], -wM*2, -wM*2, wM*4, wM*4)
     tint(255, 200);
     image(loadingImg[(aL+2)%8], -wM*2, -wM*2, wM*4, wM*4)
-    tint(255, 150);
+    tint(255, 180);
     image(loadingImg[(aL+3)%8], -wM*2, -wM*2, wM*4, wM*4)
-    tint(255, 100);
+    tint(255, 150);
     image(loadingImg[(aL+4)%8], -wM*2, -wM*2, wM*4, wM*4)
+    tint(255, 80);
+    image(loadingImg[(aL+5)%8], -wM*2, -wM*2, wM*4, wM*4)
     tint(255, 50);
-    image(loadingImg[(aL+4)%8], -wM*2, -wM*2, wM*4, wM*4)
+    image(loadingImg[(aL+6)%8], -wM*2, -wM*2, wM*4, wM*4)
     aL = (aL+1)%8;
   }
   else {
