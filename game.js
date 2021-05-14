@@ -101,7 +101,7 @@ function loadingFinished(asset){
 }
 
 function preload() {
-  for(int i=0; i<8; i++)
+  for(var i=0; i<8; i++)
     loadingImg[i] = loadImage("img/loading/loading"+(i+1).toString()+".png");
   setSizes();
 }
