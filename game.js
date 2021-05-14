@@ -4,6 +4,8 @@ var loading = true;
 var assetsToLoad = 130;
 var assetsLoaded = 0;
 
+var loadingImg = [];
+
 let canvasWidth;
 let canvasHeight;
 
@@ -99,6 +101,8 @@ function loadingFinished(asset){
 }
 
 function preload() {
+  for(int i=0; i<8; i++)
+    loadingImg[i] = loadImage("img/loading/loading"+(i+1).toString()+".png");
   setSizes();
 }
 
@@ -202,11 +206,8 @@ function draw() {
   translate(0,0);
   if(loading) {
     translate(width/2, height/2);
-    rotate(aL);
-    strokeWeight(4);
-    stroke(230);
-    line(0,0,100,0);
-    aL+=0.4;
+    image(loadImage[aL], -wM, -wM, wM*2, wM*2)
+    aL = (aL+1)%8;
   }
   else {
     if(gameStatus == 0) menuView();
