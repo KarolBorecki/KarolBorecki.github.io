@@ -193,12 +193,21 @@ function touchMoved(event) {
   //console.log(event);
 }
 
+var aL=0;
 function draw() {
   background(167, 24, 20);
   noTint();
   textFont(font);
   noStroke();
-  if(loading) rect(width/2-50, height/2-50, 100, 100);
+  translate(0,0);
+  if(loading) {
+    translate(width/2, height/2);
+    rotate(aL);
+    strokeWeight(4);
+    stroke(230);
+    line(0,0,100,0);
+    aL+=0.1;
+  }
   else {
     if(gameStatus == 0) menuView();
     else if(gameStatus == 1) instructionView();
