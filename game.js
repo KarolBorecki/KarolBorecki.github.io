@@ -194,7 +194,7 @@ function draw() {
   noTint();
   textFont(font);
   noStroke();
-  if(loading) rectangle(200, 200);
+  if(loading) rect(30, 20, 100, 100);
   else {
     if(gameStatus == 0) menuView();
     else if(gameStatus == 1) instructionView();
