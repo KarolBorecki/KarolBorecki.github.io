@@ -1,5 +1,7 @@
 let cnvs;
 
+var loading = true;
+
 let canvasWidth;
 let canvasHeight;
 
@@ -89,31 +91,12 @@ var wM, hM;
 let soundBtn;
 var muted = false;
 
+function loadingFinished(asset){
+  loading = false;
+}
+
 function preload() {
   setSizes();
-
-  playGIF = new GifBtn("img/layout/playBtn", 37);
-
-  font = loadFont("fonts/regular.ttf")
-  fontBold = loadFont("fonts/bold.ttf")
-
-  caption = loadImage("img/layout/caption.png");
-  arrowRightImg = loadImage("img/layout/arrow.png");
-  arrowLeftImg = loadImage("img/layout/arrowLeft.png");
-  soundONImg = loadImage("img/layout/soundON.png");
-  soundOFFImg = loadImage("img/layout/soundOFF.png");
-
-  clickSound = loadSound('sounds/click.wav');
-  swipeSound = loadSound('sounds/swipe.wav');
-
-  for(var i = 0; i<ingredientsTypesCount; i++){
-    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
-    if(i<playersTypesCount){
-      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
-      playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
-    }
-  }
-
 }
 
 function setup() {
@@ -151,6 +134,29 @@ function setup() {
   fixed.addEventListener('touchmove', function(e) {
           e.preventDefault();
   }, false);
+
+  //The most important game files loading - essential to go from loading to an actuall game
+  playGIF = new GifBtn("img/layout/playBtn", 37);
+
+  font = loadFont("fonts/regular.ttf")
+  fontBold = loadFont("fonts/bold.ttf")
+
+  caption = loadImage("img/layout/caption.png");
+  arrowRightImg = loadImage("img/layout/arrow.png");
+  arrowLeftImg = loadImage("img/layout/arrowLeft.png");
+  soundONImg = loadImage("img/layout/soundON.png");
+  soundOFFImg = loadImage("img/layout/soundOFF.png");
+
+  clickSound = loadSound('sounds/click.wav');
+  swipeSound = loadSound('sounds/swipe.wav', loadingFinished);
+
+  for(var i = 0; i<ingredientsTypesCount; i++){
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
+    if(i<playersTypesCount){
+      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
+      playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+    }
+  }
 }
 
 
@@ -188,15 +194,18 @@ function draw() {
   noTint();
   textFont(font);
   noStroke();
-  if(gameStatus == 0) menuView();
-  else if(gameStatus == 1) instructionView();
-  else if(gameStatus == 2)gameView();
-  else if(gameStatus == 3)endView();
+  if(loading) rectangle(200, 200);
+  else {
+    if(gameStatus == 0) menuView();
+    else if(gameStatus == 1) instructionView();
+    else if(gameStatus == 2)gameView();
+    else if(gameStatus == 3)endView();
 
-  if(!isVertical){
-    if (keyIsDown(LEFT_ARROW)) playerXpos-=wM*0.8;
-    if (keyIsDown(RIGHT_ARROW)) playerXpos+=wM*0.8;
-    soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
+    if(!isVertical){
+      if (keyIsDown(LEFT_ARROW)) playerXpos-=wM*0.8;
+      if (keyIsDown(RIGHT_ARROW)) playerXpos+=wM*0.8;
+      soundBtn.display(wM, canvasHeight-wM*2.5, wM*1.5, wM*1.5);
+    }
   }
 }
 
