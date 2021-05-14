@@ -206,7 +206,7 @@ function draw() {
     strokeWeight(4);
     stroke(230);
     line(0,0,100,0);
-    aL+=2;
+    aL+=0.4;
   }
   else {
     if(gameStatus == 0) menuView();
