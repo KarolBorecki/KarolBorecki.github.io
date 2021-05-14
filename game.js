@@ -207,9 +207,15 @@ function draw() {
   if(loading) {
     translate(width/2, height/2);
     image(loadingImg[aL], -wM*2, -wM*2, wM*4, wM*4)
+    tint(255, 250);
     image(loadingImg[(aL+1)%8], -wM*2, -wM*2, wM*4, wM*4)
+    tint(255, 200);
     image(loadingImg[(aL+2)%8], -wM*2, -wM*2, wM*4, wM*4)
+    tint(255, 150);
     image(loadingImg[(aL+3)%8], -wM*2, -wM*2, wM*4, wM*4)
+    tint(255, 100);
+    image(loadingImg[(aL+4)%8], -wM*2, -wM*2, wM*4, wM*4)
+    tint(255, 50);
     image(loadingImg[(aL+4)%8], -wM*2, -wM*2, wM*4, wM*4)
     aL = (aL+1)%8;
   }
