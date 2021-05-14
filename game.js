@@ -206,7 +206,7 @@ function draw() {
   translate(0,0);
   if(loading) {
     translate(width/2, height/2);
-    image(loadImage[aL], -wM, -wM, wM*2, wM*2)
+    image(loadingImg[aL], -wM, -wM, wM*2, wM*2)
     aL = (aL+1)%8;
   }
   else {
