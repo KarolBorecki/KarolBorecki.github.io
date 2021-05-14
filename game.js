@@ -1,7 +1,7 @@
 let cnvs;
 
 var loading = true;
-var assetsToLoad = 82;
+var assetsToLoad = 130;
 var assetsLoaded = 0;
 
 let canvasWidth;
@@ -114,30 +114,6 @@ function setup() {
     maxSpeed+=3;
   }
 
-  endImg = loadImage("img/layout/gameoverScreen.png");
-  endMobileImg = loadImage("img/layout/endView-Mobile.png");
-  floorMobile = loadImage("img/layout/floorMobile.png");
-  floorImg = loadImage("img/layout/floor.png");
-  pointsFrame = loadImage("img/layout/counterFrame.png");
-  xImg = loadImage("img/layout/x.png");
-
-  for(var i=0; i<5; i++)
-    pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png"));
-
-  pickupSound = loadSound('sounds/pickup.wav');
-
-  arrowLeft  = new Button(arrowLeftImg)
-  arrowRight  = new Button(arrowRightImg)
-  soundBtn = new  Button(soundONImg);
-
-  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 36);
-
-  var fixed = document.getElementById('game-container');
-
-  fixed.addEventListener('touchmove', function(e) {
-          e.preventDefault();
-  }, false);
-
   //The most important game files loading - essential to go from loading to an actuall game
   playGIF = new GifBtn("img/layout/playBtn", 37);
 
@@ -160,6 +136,31 @@ function setup() {
       playersImg.push(loadImage("img/players/player" + i.toString() + ".png", loadingFinished));
     }
   }
+
+  endImg = loadImage("img/layout/gameoverScreen.png", loadingFinished);
+  endMobileImg = loadImage("img/layout/endView-Mobile.png", loadingFinished);
+  floorMobile = loadImage("img/layout/floorMobile.png", loadingFinished);
+  floorImg = loadImage("img/layout/floor.png", loadingFinished);
+  pointsFrame = loadImage("img/layout/counterFrame.png", loadingFinished);
+  xImg = loadImage("img/layout/x.png", loadingFinished);
+
+  for(var i=0; i<5; i++)
+    pickUpEffectImg.push(loadImage("img/layout/pickupEffect/" + (i+1).toString() + ".png", loadingFinished));
+
+  pickupSound = loadSound('sounds/pickup.wav', loadingFinished);
+
+  arrowLeft  = new Button(arrowLeftImg)
+  arrowRight  = new Button(arrowRightImg)
+  soundBtn = new  Button(soundONImg);
+
+  playAgainGIF = new GifBtn("img/layout/playAgainBtn", 36);
+
+  var fixed = document.getElementById('game-container');
+
+  fixed.addEventListener('touchmove', function(e) {
+          e.preventDefault();
+  }, false);
+
 }
 
 
