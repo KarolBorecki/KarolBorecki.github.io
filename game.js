@@ -1,6 +1,8 @@
 let cnvs;
 
 var loading = true;
+var assetsToLoad = 82;
+var assetsLoaded = 0;
 
 let canvasWidth;
 let canvasHeight;
@@ -92,7 +94,8 @@ let soundBtn;
 var muted = false;
 
 function loadingFinished(asset){
-  loading = false;
+  assetsLoaded+=1;
+  if(assetsLoaded>=assetsToLoad) loading = false;
 }
 
 function preload() {
@@ -138,23 +141,23 @@ function setup() {
   //The most important game files loading - essential to go from loading to an actuall game
   playGIF = new GifBtn("img/layout/playBtn", 37);
 
-  font = loadFont("fonts/regular.ttf")
-  fontBold = loadFont("fonts/bold.ttf")
+  font = loadFont("fonts/regular.ttf", loadingFinished)
+  fontBold = loadFont("fonts/bold.ttf", loadingFinished)
 
-  caption = loadImage("img/layout/caption.png");
-  arrowRightImg = loadImage("img/layout/arrow.png");
-  arrowLeftImg = loadImage("img/layout/arrowLeft.png");
-  soundONImg = loadImage("img/layout/soundON.png");
-  soundOFFImg = loadImage("img/layout/soundOFF.png");
+  caption = loadImage("img/layout/caption.png", loadingFinished);
+  arrowRightImg = loadImage("img/layout/arrow.png", loadingFinished);
+  arrowLeftImg = loadImage("img/layout/arrowLeft.png", loadingFinished);
+  soundONImg = loadImage("img/layout/soundON.png", loadingFinished);
+  soundOFFImg = loadImage("img/layout/soundOFF.png", loadingFinished);
 
-  clickSound = loadSound('sounds/click.wav');
+  clickSound = loadSound('sounds/click.wav', loadingFinished);
   swipeSound = loadSound('sounds/swipe.wav', loadingFinished);
 
   for(var i = 0; i<ingredientsTypesCount; i++){
-    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png"));
+    ingredientsImg.push(loadImage("img/ingredients/ingredient" + i.toString() + ".png", loadingFinished));
     if(i<playersTypesCount){
-      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png"));
-      playersImg.push(loadImage("img/players/player" + i.toString() + ".png"));
+      pizzaNamesIMG.push(loadImage("img/names/name"+(i+1).toString()+".png", loadingFinished));
+      playersImg.push(loadImage("img/players/player" + i.toString() + ".png", loadingFinished));
     }
   }
 }
@@ -619,7 +622,7 @@ class GifBtn {
   constructor(path, frames) {
     this.img = [];
     for(var i = 0; i<frames; i++)
-      this.img[i] = loadImage(path.toString()+ "/" + (i+1).toString() + ".png");
+      this.img[i] = loadImage(path.toString()+ "/" + (i+1).toString() + ".png", loadingFinished);
 
     this.x = 0;
     this.y = 0;
